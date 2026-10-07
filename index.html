@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fleet — tuongphantrue</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+/* ---------- Design tokens ---------- */
+:root{
+  --bg:            #FFFFFF;  /* card / surface */
+  --canvas:        #F6F6F7;  /* page background */
+  --surface-alt:   #EDEDEF;  /* recessed fill, e.g. inputs, disabled */
+  --border:        #E1E1E4;
+
+  --text:          #17181A;
+  --text-secondary:#6E7178;
+  --text-tertiary: #7B7E85;
+
+  --brand:         #2563EB;
+  --brand-dark:    #1D4ED8;
+  --success:       #1E8A4C;
+  --danger:        #C13C30;
+
+  --cat-price:    #1D4ED8;
+  --cat-finance:  #7C3AED;
+  --cat-social:   #DB2777;
+
+  --radius-sm: 9px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  --shadow-card: 0 1px 2px rgba(16,24,40,.04);
+  --focus-ring: rgba(37,99,235,.15);
+
+  --font-display: 'Inter', sans-serif;
+  --font-body:    'Inter', sans-serif;
+}
+
+html[data-theme="dark"]{
+  --bg:            #1C1D1F;
+  --canvas:        #101112;
+  --surface-alt:   #26282B;
+  --border:        #2E3033;
+
+  --text:          #EDEEEF;
+  --text-secondary:#9DA0A6;
+  --text-tertiary: #84878E;
+
+  --brand:         #5B8DEF;
+  --brand-dark:    #82AAF5;
+  --success:       #34C77B;
+  --danger:        #E0574A;
+
+  --cat-price:    #5B8DEF;
+  --cat-finance:  #A78BFA;
+  --cat-social:   #F472B6;
+
+  --shadow-card: 0 1px 3px rgba(0,0,0,.4);
+  --focus-ring: rgba(91,141,239,.25);
+}
+html[data-theme="dark"] .avatar.price{background:rgba(91,141,239,.16);}
+html[data-theme="dark"] .avatar.finance{background:rgba(167,139,250,.16);}
+html[data-theme="dark"] .avatar.social{background:rgba(244,114,182,.16);}
+html[data-theme="dark"] .status-pill.success{background:rgba(52,199,123,.15);}
+html[data-theme="dark"] .status-pill.failure{background:rgba(224,87,74,.15);}
+
+/* ---------- Reset & accessibility base ---------- */
+*{box-sizing:border-box;}
+:focus-visible{outline:2px solid var(--text);outline-offset:2px;}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.001ms !important;transition-duration:.001ms !important;}
+}
+body{
+  margin:0;
+  background:var(--canvas);
+  color:var(--text);
+  font-family:var(--font-body);
+  -webkit-font-smoothing:antialiased;
+}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+
+/* ---------- Topbar ---------- */
+.topbar{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:12px 24px;
+  background:var(--bg);
+  border-bottom:1px solid var(--border);
+  position:sticky;
+  top:0;
+  z-index:10;
+  flex-wrap:wrap;
+}
+.brand{display:flex;align-items:center;gap:9px;flex-shrink:0;}
+.brand-icon{color:var(--brand);flex-shrink:0;}
+.brand-name{font-family:var(--font-display);font-weight:700;font-size:16.5px;letter-spacing:-0.01em;}
+.topbar-search{
+  display:flex;align-items:center;gap:8px;
+  background:var(--canvas);
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+  padding:8px 12px;
+  flex:1;max-width:320px;min-width:140px;
+}
+.topbar-search svg{color:var(--text-tertiary);flex-shrink:0;}
+.topbar-search input{
+  border:none;background:transparent;outline:none;
+  font-family:var(--font-body);font-size:13px;color:var(--text);width:100%;
+}
+.topbar-search input::placeholder{color:var(--text-tertiary);}
+.kbd-hint{
+  font-family:var(--font-body);font-size:10px;color:var(--text-tertiary);
+  background:var(--surface-alt);border:1px solid var(--border);
+  border-radius:4px;padding:1px 5px;flex-shrink:0;
+}
+.topbar-search:focus-within .kbd-hint{display:none;}
+.topbar-right{margin-left:auto;display:flex;align-items:center;gap:16px;}
+.theme-toggle{
+  background:none;border:none;cursor:pointer;color:var(--text-secondary);
+  display:flex;align-items:center;padding:4px;border-radius:6px;transition:.15s;
+}
+.theme-toggle:hover{color:var(--text);background:var(--canvas);}
+.topbar-link{font-family:var(--font-body);font-size:12px;color:var(--text-secondary);text-decoration:none;}
+.topbar-link:hover{color:var(--text);}
+
+/* ---------- Shell: sidebar + main ---------- */
+.app-shell{display:flex;}
+.sidebar{width:220px;flex-shrink:0;padding:32px 16px;position:sticky;top:57px;border-right:1px solid var(--border);background:var(--canvas);}
+.sidebar-label{
+  font-family:var(--font-body);font-size:10.5px;color:var(--text-tertiary);
+  text-transform:uppercase;letter-spacing:.08em;padding:0 12px;margin-bottom:8px;
+}
+.sidebar-section + .sidebar-section{border-top:1px solid var(--border);margin-top:20px;padding-top:20px;}
+summary.sidebar-label{
+  cursor:pointer;list-style:none;
+  display:flex;align-items:center;justify-content:space-between;
+}
+summary.sidebar-label::-webkit-details-marker{display:none;}
+summary.sidebar-label::marker{content:'';}
+.chevron{color:var(--text-tertiary);transition:transform .15s;flex-shrink:0;}
+details[open] > summary .chevron{transform:rotate(90deg);}
+.nav-item{
+  display:flex;align-items:center;gap:10px;
+  padding:9px 12px;border-radius:10px;
+  font-size:13.5px;font-weight:500;color:var(--text-secondary);
+  cursor:pointer;transition:.15s;text-decoration:none;
+}
+.nav-item:hover{background:var(--bg);color:var(--text);}
+.nav-item .dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;background:var(--text-tertiary);}
+.nav-item.price .dot{background:var(--cat-price);}
+.nav-item.finance .dot{background:var(--cat-finance);}
+.nav-item.social .dot{background:var(--cat-social);}
+.nav-item.active{background:var(--brand);color:#fff;}
+.nav-item.active .dot{background:#fff;}
+.nav-item .count{margin-left:auto;font-family:var(--font-body);font-size:11px;color:var(--text-tertiary);}
+.nav-item.active .count{color:rgba(255,255,255,.7);}
+
+.sidebar-token{padding:0 12px;}
+
+.main-content{flex:1;min-width:0;background:var(--bg);}
+.wrap{padding:40px 24px 60px;}
+
+/* ---------- Page header ---------- */
+header{margin-bottom:28px;}
+h1{
+  font-family:var(--font-display);font-weight:700;font-size:20px;line-height:1.3;
+  margin:0;letter-spacing:-0.01em;color:var(--text);
+}
+.header-count{font-weight:400;font-size:14px;color:var(--text-tertiary);margin-left:4px;}
+
+.token-box{
+  display:flex;align-items:center;gap:8px;
+  background:var(--canvas);border:1px solid var(--border);border-radius:var(--radius-md);
+  padding:10px 14px;width:100%;transition:border-color .15s, box-shadow .15s;
+}
+.token-box:focus-within{border-color:var(--text);box-shadow:0 0 0 3px var(--focus-ring);}
+.token-box input{border:none;background:transparent;outline:none;color:var(--text);font-family:var(--font-body);font-size:12.5px;width:100%;}
+.token-box input::placeholder{color:var(--text-tertiary);}
+.token-box label{font-family:var(--font-body);font-size:11px;color:var(--text-secondary);white-space:nowrap;}
+.side-actions{display:flex;gap:8px;margin-top:10px;}
+.side-actions button.ghost{flex:1;}
+.rate{font-family:var(--font-body);font-size:11px;color:var(--text-tertiary);margin:12px 4px 0;}
+
+button.ghost{
+  background:var(--bg);border:1px solid var(--border);color:var(--text-secondary);
+  font-family:var(--font-body);font-size:12px;padding:10px 16px;
+  border-radius:var(--radius-pill);cursor:pointer;transition:.15s;
+}
+button.ghost:hover{border-color:var(--text);color:var(--text);}
+button.ghost:active{background:var(--surface-alt);}
+
+/* ---------- Filter tabs (mobile fallback for the sidebar) ---------- */
+.filter-tabs{display:none;gap:6px;margin-bottom:20px;flex-wrap:wrap;}
+.tab{
+  font-family:var(--font-body);font-size:13px;font-weight:600;
+  background:transparent;border:1px solid transparent;color:var(--text-secondary);
+  padding:8px 14px;border-radius:var(--radius-sm);cursor:pointer;transition:.15s;
+}
+.tab:hover{color:var(--text);}
+.tab.active{background:var(--brand);color:#fff;}
+
+/* ---------- Bot list (genuine table, not cards) ---------- */
+
+.empty-state{
+  display:none;text-align:center;padding:52px 24px;
+  background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-lg);
+  font-family:var(--font-body);font-size:13px;color:var(--text-secondary);
+}
+.empty-state .detail{color:var(--text);font-weight:600;}
+.empty-state .clear-btn{
+  display:inline-block;margin-top:14px;padding:4px;
+  font-family:var(--font-body);font-size:12px;color:var(--text);
+  text-decoration:underline;cursor:pointer;background:none;border:none;
+}
+
+.table-card{
+  background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-card);overflow:hidden;
+}
+.table-head{
+  display:grid;grid-template-columns:2.2fr 1fr 1fr 1.3fr 90px 100px;gap:16px;
+  padding:13px 20px;border-bottom:1px solid var(--border);
+  font-family:var(--font-body);font-size:10.5px;color:var(--text-tertiary);
+  text-transform:uppercase;letter-spacing:.08em;
+}
+.th-sort{cursor:pointer;user-select:none;display:flex;align-items:center;gap:4px;transition:color .15s;}
+.th-sort:hover{color:var(--text);}
+.th-sort-right{justify-content:flex-end;}
+.sort-arrow{font-size:9px;opacity:0;transition:opacity .15s;}
+.th-sort.sort-active{color:var(--text);}
+.th-sort.sort-active .sort-arrow{opacity:1;}
+.board{min-width:640px;} /* lets the table scroll horizontally on narrow screens instead of breaking */
+.table-scroll{overflow-x:auto;}
+
+.row{
+  display:grid;grid-template-columns:2.2fr 1fr 1fr 1.3fr 90px 100px;gap:16px;align-items:center;
+  padding:14px 20px;border-bottom:1px solid var(--border);transition:background .15s;
+}
+.row:last-child{border-bottom:none;}
+.row:hover{background:var(--canvas);}
+
+.cell-bot{display:flex;align-items:center;gap:12px;min-width:0;}
+.avatar{
+  position:relative;width:34px;height:34px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-display);font-weight:700;font-size:12.5px;
+}
+.avatar.price{background:rgba(29,78,216,.15);color:var(--cat-price);}
+.avatar.finance{background:rgba(124,58,237,.15);color:var(--cat-finance);}
+.avatar.social{background:rgba(219,39,119,.15);color:var(--cat-social);}
+.avatar.none{background:var(--surface-alt);color:var(--text-secondary);}
+.avatar .light{
+  position:absolute;bottom:-2px;right:-2px;width:11px;height:11px;border-radius:50%;
+  background:var(--text-tertiary);border:2.5px solid var(--bg);
+}
+.light.success{background:var(--success);}
+.light.failure{background:var(--danger);}
+.light.pending{background:var(--text-tertiary);animation:pulse 1.4s ease-in-out infinite;}
+
+.name{font-family:var(--font-display);font-weight:600;font-size:14.5px;letter-spacing:-0.01em;}
+.name a{color:var(--text);text-decoration:none;}
+.name a:hover{text-decoration:underline;}
+.meta{font-family:var(--font-body);font-size:11px;color:var(--text-tertiary);margin-top:3px;}
+.skeleton{
+  display:inline-block;height:11px;border-radius:3px;
+  background:linear-gradient(90deg, var(--surface-alt) 25%, var(--border) 50%, var(--surface-alt) 75%);
+  background-size:200% 100%;animation:shimmer 1.4s ease-in-out infinite;
+}
+@keyframes shimmer{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
+
+.mail-line{
+  font-family:var(--font-body);font-size:11px;color:var(--text-secondary);margin-top:3px;
+  cursor:pointer;display:flex;align-items:center;gap:5px;max-width:100%;
+}
+.mail-line:hover{color:var(--text);}
+.mail-line .ico{color:var(--text-tertiary);flex-shrink:0;display:inline-flex;}
+.mail-line .subj{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.mail-line.empty{color:var(--text-tertiary);cursor:default;}
+.mail-line.empty:hover{color:var(--text-tertiary);}
+
+/* Category: colored dot + plain label — matches the TYPE column exactly */
+.dot-label{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--text);white-space:nowrap;}
+.dot-label .dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;background:var(--text-tertiary);}
+.dot-label.price .dot{background:var(--cat-price);}
+.dot-label.finance .dot{background:var(--cat-finance);}
+.dot-label.social .dot{background:var(--cat-social);}
+
+/* Status: soft-tint pill — matches the STATUS column exactly (a different pattern from category, confirmed by direct evidence) */
+.status-pill{
+  display:inline-block;font-size:12px;font-weight:600;
+  padding:4px 11px;border-radius:var(--radius-pill);white-space:nowrap;
+}
+.status-pill.success{background:rgba(30,138,76,.12);color:var(--success);}
+.status-pill.failure{background:rgba(193,60,48,.12);color:var(--danger);}
+.status-pill.pending{background:var(--surface-alt);color:var(--text-secondary);}
+.status-pill.unknown{background:var(--canvas);color:var(--text-tertiary);}
+
+.pulse-track{display:flex;gap:3px;align-items:flex-end;height:18px;}
+.pulse-bar{width:5px;border-radius:1px;background:var(--border);}
+.pulse-bar.success{background:var(--success);}
+.pulse-bar.failure{background:var(--danger);}
+
+.cell-time{font-family:var(--font-body);font-size:12px;color:var(--text-secondary);text-align:right;}
+
+.mail-panel{
+  grid-column:1 / -1;
+  max-height:0;opacity:0;overflow:hidden;margin:0;padding:0 14px;
+  background:var(--canvas);border:1px solid transparent;border-left:3px solid var(--text);
+  border-radius:0 var(--radius-md) var(--radius-md) 0;
+  font-family:var(--font-body);font-size:12px;line-height:1.7;
+  transition:max-height .25s ease, opacity .2s ease, margin-top .25s ease, padding .25s ease;
+}
+.mail-panel.open{max-height:400px;opacity:1;margin-top:14px;padding:14px;border-color:var(--border);}
+.mail-panel .subject{color:var(--text);font-weight:600;margin-bottom:6px;}
+.mail-panel .body-text{color:var(--text-secondary);white-space:pre-wrap;}
+.mail-panel .sent{color:var(--text-tertiary);font-size:11px;margin-top:10px;}
+
+.run-btn{
+  font-family:var(--font-body);font-size:12px;font-weight:600;
+  background:var(--brand);border:1px solid var(--brand);color:#fff;
+  padding:8px 14px;border-radius:var(--radius-sm);cursor:pointer;text-align:center;
+  transition:.15s;justify-self:end;
+}
+.run-btn:hover{background:var(--brand-dark);border-color:var(--brand-dark);}
+.run-btn:active:not(:disabled){transform:scale(.96);}
+.run-btn:disabled{opacity:.3;cursor:not-allowed;background:var(--surface-alt);border-color:var(--border);color:var(--text-secondary);}
+.run-btn.busy{background:var(--bg);color:var(--brand);border-color:var(--brand);}
+
+/* ---------- Responsive ---------- */
+@media (max-width:640px){
+  .app-shell{display:block;}
+  .sidebar{width:100%;position:static;padding:20px 16px 0;border-right:none;border-bottom:1px solid var(--border);}
+  .views-section{display:none;} /* filter-tabs replaces this on mobile */
+  .sidebar-section + .sidebar-section{margin-top:0;border-top:none;padding-top:0;} /* cancel the divider — its sibling is hidden, not gone from the DOM */
+  .topbar-search{display:none;}
+  .filter-tabs{display:flex;}
+  h1{font-size:22px;}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">
+    <svg class="brand-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+    <span class="brand-name">Fleet</span>
+  </div>
+  <div class="topbar-search">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+    <input id="topSearch" type="text" placeholder="Search bots...">
+    <kbd class="kbd-hint">Ctrl+K</kbd>
+  </div>
+  <div class="topbar-right">
+    <button class="theme-toggle" id="themeToggle" title="Toggle dark mode">
+      <svg id="themeIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <a class="topbar-link" id="ghOrgLink" href="#" target="_blank" rel="noopener">GitHub ↗</a>
+  </div>
+</div>
+
+<div class="app-shell">
+  <aside class="sidebar">
+    <details class="sidebar-section views-section" open>
+      <summary class="sidebar-label">
+        views
+        <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+      </summary>
+      <nav>
+        <a class="nav-item active" data-filter="all"><span class="dot"></span>All bots<span class="count" id="countAll">—</span></a>
+        <a class="nav-item price" data-filter="price"><span class="dot"></span>Price<span class="count" id="countPrice">—</span></a>
+        <a class="nav-item finance" data-filter="finance"><span class="dot"></span>Finance<span class="count" id="countFinance">—</span></a>
+        <a class="nav-item social" data-filter="social"><span class="dot"></span>Social<span class="count" id="countSocial">—</span></a>
+      </nav>
+    </details>
+
+    <details class="sidebar-section" open>
+      <summary class="sidebar-label">
+        connect
+        <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+      </summary>
+      <div class="sidebar-token">
+      <div class="token-box">
+        <label for="tok">TOKEN</label>
+        <input id="tok" type="password" placeholder="paste a fine-grained PAT to enable Run now">
+      </div>
+      <div class="side-actions">
+        <button class="ghost" id="saveTok">save</button>
+        <button class="ghost" id="refresh" title="Refresh now">↻</button>
+      </div>
+      <div class="rate" id="rateInfo"></div>
+      <div class="rate" id="lastUpdated"></div>
+    </div>
+    </details>
+  </aside>
+
+  <main class="main-content">
+<div class="wrap">
+
+  <header>
+    <h1>Bot fleet<span class="header-count" id="listCount"> — bots</span></h1>
+  </header>
+
+  <div class="filter-tabs">
+    <button class="tab active" data-filter="all">All</button>
+    <button class="tab" data-filter="price">Price</button>
+    <button class="tab" data-filter="finance">Finance</button>
+    <button class="tab" data-filter="social">Social</button>
+  </div>
+
+  <div class="table-card">
+    <div class="table-scroll">
+      <div class="table-head">
+        <div class="th-sort" data-sort="bot">bot<span class="sort-arrow"></span></div>
+        <div class="th-sort" data-sort="category">category<span class="sort-arrow"></span></div>
+        <div class="th-sort" data-sort="status">status<span class="sort-arrow"></span></div>
+        <div>history</div>
+        <div class="th-sort th-sort-right" data-sort="time" style="text-align:right">last run<span class="sort-arrow"></span></div>
+        <div></div>
+      </div>
+      <div class="board" id="board">
+        <!-- rows injected here -->
+      </div>
+    </div>
+  </div>
+  <div class="empty-state" id="emptyState">
+    <div>no bots match<span class="detail" id="emptyStateDetail"></span></div>
+    <button class="clear-btn" id="clearFiltersBtn">clear filters</button>
+  </div>
+
+</div>
+  </main>
+</div>
+
+<script>
+/* ============================================================
+   Theme — runs first, before anything else, to minimize any
+   flash of the wrong theme.
+   ============================================================ */
+const MOON_ICON = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+const SUN_ICON = '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+
+function applyTheme(theme){
+  document.documentElement.setAttribute('data-theme', theme);
+  document.getElementById('themeIcon').innerHTML = theme === 'dark' ? SUN_ICON : MOON_ICON;
+  localStorage.setItem('fleet_theme', theme);
+}
+applyTheme(localStorage.getItem('fleet_theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+document.getElementById('themeToggle').addEventListener('click', () => {
+  applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+});
+
+/* ============================================================
+   State — populated once config.json loads. index.html itself
+   never needs editing to add/remove/relabel a bot.
+   ============================================================ */
+let OWNER, REPOS;
+let currentFilter = localStorage.getItem('fleet_filter') || 'all';
+let searchQuery = localStorage.getItem('fleet_search') || '';
+
+const board    = document.getElementById('board');
+const tokInput = document.getElementById('tok');
+const rateInfo = document.getElementById('rateInfo');
+
+/* ============================================================
+   Boot
+   ============================================================ */
+async function loadConfig(){
+  try{
+    const res = await fetch('./config.json?_=' + Date.now());
+    if(!res.ok) throw new Error(`HTTP ${res.status}`);
+    const cfg = await res.json();
+    OWNER = cfg.owner;
+    REPOS = cfg.repos || [];
+
+    document.getElementById('ghOrgLink').href = `https://github.com/${OWNER}`;
+    updateSidebarCounts();
+    renderAll();
+    updateLastRefreshed();
+
+    setInterval(() => {
+      REPOS.forEach(loadRepo);
+      REPOS.forEach(loadLatestEmail);
+      updateLastRefreshed();
+    }, 5 * 60 * 1000);
+  }catch(e){
+    board.innerHTML = `<div style="padding:20px 4px;color:var(--danger);font-family:var(--font-body);font-size:12.5px;">couldn't load config.json (${e.message}) — make sure it sits in the same folder as index.html.</div>`;
+  }
+}
+
+/* ============================================================
+   Controls: token persistence, search, filters, keyboard
+   ============================================================ */
+tokInput.value = localStorage.getItem('gh_pat') || '';
+document.getElementById('saveTok').addEventListener('click', () => {
+  localStorage.setItem('gh_pat', tokInput.value.trim());
+  renderAll();
+});
+document.getElementById('refresh').addEventListener('click', renderAll);
+
+function setFilter(filter){
+  currentFilter = filter;
+  localStorage.setItem('fleet_filter', filter);
+  document.querySelectorAll('[data-filter]').forEach(el => {
+    el.classList.toggle('active', el.dataset.filter === filter);
+  });
+  applyFilter();
+}
+document.querySelectorAll('[data-filter]').forEach(el => {
+  el.addEventListener('click', () => setFilter(el.dataset.filter));
+});
+if(currentFilter !== 'all'){
+  document.querySelectorAll('[data-filter]').forEach(el => {
+    el.classList.toggle('active', el.dataset.filter === currentFilter);
+  });
+}
+
+document.getElementById('topSearch').value = searchQuery;
+document.getElementById('topSearch').addEventListener('input', (e) => {
+  searchQuery = e.target.value.trim().toLowerCase();
+  localStorage.setItem('fleet_search', searchQuery);
+  applyFilter();
+});
+document.getElementById('clearFiltersBtn').addEventListener('click', () => {
+  searchQuery = '';
+  localStorage.setItem('fleet_search', '');
+  document.getElementById('topSearch').value = '';
+  setFilter('all');
+});
+document.addEventListener('keydown', (e) => {
+  if((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k'){
+    e.preventDefault();
+    const box = document.getElementById('topSearch');
+    box.focus();
+    box.select();
+  }
+});
+
+function applyFilter(){
+  let visible = 0;
+  document.querySelectorAll('.row').forEach(row => {
+    const matchesCategory = (currentFilter === 'all' || row.dataset.category === currentFilter);
+    const matchesSearch = !searchQuery || row.id.toLowerCase().includes(searchQuery);
+    const show = matchesCategory && matchesSearch;
+    row.style.display = show ? '' : 'none';
+    if(show) visible++;
+  });
+
+  const total = REPOS ? REPOS.length : 0;
+  const healthy = document.querySelectorAll('.light.success').length;
+  const countText = visible === total ? `${total} bots` : `${visible} of ${total}`;
+  const listCount = document.getElementById('listCount');
+  if(listCount) listCount.textContent = ` — ${countText} · ${healthy} healthy`;
+
+  const emptyState = document.getElementById('emptyState');
+  const tableCard = document.querySelector('.table-card');
+  if(visible === 0){
+    const bits = [];
+    if(currentFilter !== 'all') bits.push(`category "${currentFilter}"`);
+    if(searchQuery) bits.push(`search "${searchQuery}"`);
+    document.getElementById('emptyStateDetail').textContent = bits.length ? ` for ${bits.join(' + ')}` : '';
+    emptyState.style.display = 'block';
+    if(tableCard) tableCard.style.display = 'none';
+  }else{
+    emptyState.style.display = 'none';
+    if(tableCard) tableCard.style.display = '';
+  }
+}
+
+/* ============================================================
+   Column sorting
+   ============================================================ */
+let currentSort = JSON.parse(localStorage.getItem('fleet_sort') || 'null') || { field: null, dir: 'asc' };
+
+function sortValue(row, field){
+  if(field === 'bot') return row.id.toLowerCase();
+  if(field === 'category') return (row.dataset.category || '').toLowerCase();
+  if(field === 'status') return Number(row.dataset.statusSort ?? 9);
+  if(field === 'time') return Number(row.dataset.timeSort ?? 0);
+  return '';
+}
+
+function applySort(){
+  if(!currentSort.field) return;
+  const rows = Array.from(document.querySelectorAll('.row'));
+  const dir = currentSort.dir === 'asc' ? 1 : -1;
+  rows.sort((a, b) => {
+    const va = sortValue(a, currentSort.field), vb = sortValue(b, currentSort.field);
+    if(va < vb) return -1 * dir;
+    if(va > vb) return 1 * dir;
+    return 0;
+  });
+  rows.forEach(r => board.appendChild(r));
+  updateSortIndicators();
+}
+
+function updateSortIndicators(){
+  document.querySelectorAll('.th-sort').forEach(th => {
+    const active = th.dataset.sort === currentSort.field;
+    th.classList.toggle('sort-active', active);
+    th.querySelector('.sort-arrow').textContent = active ? (currentSort.dir === 'asc' ? '▲' : '▼') : '';
+  });
+}
+
+document.querySelectorAll('.th-sort').forEach(th => {
+  th.addEventListener('click', () => {
+    const field = th.dataset.sort;
+    currentSort = (currentSort.field === field)
+      ? { field, dir: currentSort.dir === 'asc' ? 'desc' : 'asc' }
+      : { field, dir: 'asc' };
+    localStorage.setItem('fleet_sort', JSON.stringify(currentSort));
+    applySort();
+  });
+});
+
+/* ============================================================
+   Sidebar / overview numbers
+   ============================================================ */
+function updateSidebarCounts(){
+  const counts = { price: 0, finance: 0, social: 0 };
+  REPOS.forEach(r => { if(counts[r.category] !== undefined) counts[r.category]++; });
+  document.getElementById('countAll').textContent = REPOS.length;
+  document.getElementById('countPrice').textContent = counts.price;
+  document.getElementById('countFinance').textContent = counts.finance;
+  document.getElementById('countSocial').textContent = counts.social;
+}
+
+function refreshStats(){
+  applyFilter(); // re-derives the header's "N bots · N healthy" text as each repo's status resolves
+}
+
+function updateLastRefreshed(){
+  const el = document.getElementById('lastUpdated');
+  if(el) el.textContent = `updated ${new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}`;
+}
+
+/* ============================================================
+   Small helpers
+   ============================================================ */
+function timeAgo(iso){
+  if(!iso) return '—';
+  const s = Math.floor((Date.now() - new Date(iso).getTime())/1000);
+  if(s < 60) return `${s}s ago`;
+  const m = Math.floor(s/60); if(m < 60) return `${m}m ago`;
+  const h = Math.floor(m/60); if(h < 24) return `${h}h ago`;
+  const d = Math.floor(h/24); return `${d}d ago`;
+}
+
+function escapeHtml(str){
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+function conclusionInfo(run){
+  if(!run) return {cls:'unknown', label:'no runs yet'};
+  if(run.status !== 'completed') return {cls:'pending', label: run.status.replace('_',' ')};
+  if(run.conclusion === 'success') return {cls:'success', label:'success'};
+  if(run.conclusion === 'failure') return {cls:'failure', label:'failed'};
+  return {cls:'unknown', label: run.conclusion || 'unknown'};
+}
+
+function pulseBars(runs){
+  const last10 = runs.slice(0, 10).reverse();
+  const bars = last10.map(r => {
+    const ok = r.status === 'completed' && r.conclusion === 'success';
+    const cls = r.status !== 'completed' ? '' : (ok ? 'success' : 'failure');
+    return `<div class="pulse-bar ${cls}" style="height:${ok ? 20 : 12}px"></div>`;
+  });
+  while(bars.length < 10) bars.unshift(`<div class="pulse-bar" style="height:6px"></div>`);
+  return bars.join('');
+}
+
+/* ============================================================
+   Row rendering
+   ============================================================ */
+function rowSkeleton(repo){
+  const initial = repo.name.charAt(0).toUpperCase();
+  const cat = repo.category || 'none';
+  return `
+  <div class="row" id="row-${repo.name}" data-category="${cat}">
+    <div class="cell-bot">
+      <div class="avatar ${cat}">${initial}<div class="light"></div></div>
+      <div style="min-width:0">
+        <div class="name"><a href="https://github.com/${OWNER}/${repo.name}" target="_blank" rel="noopener">${repo.name}</a></div>
+        <div class="meta"><span class="skeleton" style="width:110px"></span></div>
+        <div class="mail-line empty" id="mail-line-${repo.name}" tabindex="0" role="button" aria-expanded="false"><span class="ico"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m22 7-10 5L2 7"/></svg></span><span class="subj">—</span></div>
+      </div>
+    </div>
+    <div class="dot-label ${cat}"><span class="dot"></span>${repo.category || '—'}</div>
+    <div class="status-cell"><span class="skeleton" style="width:60px"></span></div>
+    <div class="pulse-track"></div>
+    <div class="cell-time">—</div>
+    <button class="run-btn" disabled>Run now</button>
+    <div class="mail-panel" id="mail-panel-${repo.name}"></div>
+  </div>`;
+}
+
+function renderAll(){
+  board.innerHTML = REPOS.map(rowSkeleton).join('');
+  applyFilter();
+  updateSortIndicators();
+  REPOS.forEach(loadRepo);
+  REPOS.forEach(loadLatestEmail);
+}
+
+/* ============================================================
+   GitHub Actions: status + trigger
+   ============================================================ */
+async function fetchRuns(repo){
+  const url = `https://api.github.com/repos/${OWNER}/${repo.name}/actions/runs?per_page=10`;
+  const res = await fetch(url, { headers: { 'Accept': 'application/vnd.github+json' }});
+  const remaining = res.headers.get('x-ratelimit-remaining');
+  if(remaining) rateInfo.textContent = `github api rate limit remaining: ${remaining}`;
+  if(!res.ok) throw new Error(`${res.status}`);
+  const data = await res.json();
+  return data.workflow_runs || [];
+}
+
+async function loadRepo(repo){
+  const row = document.getElementById(`row-${repo.name}`);
+  try{
+    const runs = await fetchRuns(repo);
+    const latest = runs[0];
+    const info = conclusionInfo(latest);
+    row.querySelector('.light').className = `light ${info.cls}`;
+    row.querySelector('.meta').textContent = latest ? `#${latest.run_number} · ${latest.event}` : 'no workflow runs found';
+    const statusCell = row.querySelector('.status-cell');
+    statusCell.className = `status-pill status-cell ${info.cls}`;
+    statusCell.textContent = info.label;
+    row.querySelector('.cell-time').textContent = latest ? timeAgo(latest.run_started_at || latest.created_at) : '—';
+    row.querySelector('.pulse-track').innerHTML = pulseBars(runs);
+    row.dataset.statusSort = ({failure:0, pending:1, unknown:2, success:3})[info.cls] ?? 2;
+    row.dataset.timeSort = latest ? new Date(latest.run_started_at || latest.created_at).getTime() : 0;
+    const btn = row.querySelector('.run-btn');
+    btn.disabled = false;
+    btn.addEventListener('click', () => triggerRun(repo, btn));
+  }catch(e){
+    row.querySelector('.meta').textContent = `unreachable (${e.message})`;
+    const statusCell = row.querySelector('.status-cell');
+    statusCell.className = 'status-pill status-cell unknown';
+    statusCell.textContent = 'no data';
+    row.dataset.statusSort = 2;
+    row.dataset.timeSort = 0;
+  }
+  refreshStats();
+  applySort();
+}
+
+async function triggerRun(repo, btn){
+  const token = localStorage.getItem('gh_pat');
+  if(!token){
+    alert('Paste a token in the sidebar and click "save" first — a fine-grained PAT with Actions read/write (or a classic PAT with repo scope) is needed to trigger runs.');
+    return;
+  }
+  btn.disabled = true; btn.classList.add('busy'); btn.textContent = 'sending…';
+  try{
+    const res = await fetch(`https://api.github.com/repos/${OWNER}/${repo.name}/actions/workflows/${repo.workflow}/dispatches`, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/vnd.github+json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({ ref: 'main' })
+    });
+    if(res.status === 204){
+      btn.textContent = 'triggered ✓';
+      setTimeout(() => loadRepo(repo), 3000);
+    } else if(res.status === 401){
+      btn.textContent = 'bad token';
+      btn.title = '401: the token itself was rejected — check it was pasted in full, with no extra spaces, and hasn\'t expired';
+    } else if(res.status === 403){
+      btn.textContent = 'no permission';
+      btn.title = '403: the token is valid but lacks the Actions: Read and write permission on this repo';
+    } else if(res.status === 404){
+      btn.textContent = 'not found';
+      btn.title = '404: either this repo isn\'t in the token\'s selected-repositories list, or the workflow filename in config.json doesn\'t match what\'s actually in .github/workflows/';
+    } else {
+      btn.textContent = `error ${res.status}`;
+    }
+  }catch(e){
+    btn.textContent = 'error';
+  }
+  setTimeout(() => { btn.disabled = false; btn.classList.remove('busy'); btn.textContent = 'Run now'; }, 2500);
+}
+
+/* ============================================================
+   Last-sent email, read from each repo's own latest.json
+   ============================================================ */
+async function loadLatestEmail(repo){
+  const lineEl  = document.getElementById(`mail-line-${repo.name}`);
+  const panelEl = document.getElementById(`mail-panel-${repo.name}`);
+  try{
+    const res = await fetch(`https://raw.githubusercontent.com/${OWNER}/${repo.name}/main/latest.json?_=${Date.now()}`);
+    if(!res.ok) throw new Error('not found');
+    const data = await res.json();
+    const subject = data.subject || '(no subject)';
+    const body    = data.preview || data.body || '(no preview saved)';
+    const sentAt  = data.sent_at || data.timestamp || null;
+
+    lineEl.classList.remove('empty');
+    lineEl.querySelector('.subj').textContent = subject;
+    lineEl.title = 'click to view what was sent';
+    panelEl.innerHTML = `
+      <div class="subject">${escapeHtml(subject)}</div>
+      <div class="body-text">${escapeHtml(body)}</div>
+      <div class="sent">sent ${sentAt ? timeAgo(sentAt) : '—'}</div>
+    `;
+    const toggle = () => {
+      const isOpen = panelEl.classList.toggle('open');
+      lineEl.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    };
+    lineEl.onclick = toggle;
+    lineEl.onkeydown = (e) => {
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); }
+    };
+  }catch(e){
+    lineEl.classList.add('empty');
+    lineEl.querySelector('.subj').textContent = 'no latest.json yet';
+  }
+}
+
+loadConfig();
+</script>
+</body>
+</html>
