@@ -1,0 +1,242 @@
+{
+ "generated_at": "2026-10-07T12:36:17+00:00",
+ "owner": "tuongphanbase-stack",
+ "gold": {
+  "ok": false,
+  "reason": "no gold price history yet"
+ },
+ "currency": {
+  "ok": false,
+  "reason": "no currency history yet"
+ },
+ "stocks": {
+  "ok": true,
+  "unit": "VND",
+  "items": [
+   {
+    "ticker": "VIC",
+    "latest": 230000.0,
+    "change_pct": null,
+    "points": [
+     [
+      "2026-10-07",
+      230000.0
+     ]
+    ]
+   },
+   {
+    "ticker": "VHM",
+    "latest": 68000.0,
+    "change_pct": null,
+    "points": [
+     [
+      "2026-10-07",
+      68000.0
+     ]
+    ]
+   },
+   {
+    "ticker": "VCB",
+    "latest": 57200.0,
+    "change_pct": null,
+    "points": [
+     [
+      "2026-10-07",
+      57200.0
+     ]
+    ]
+   },
+   {
+    "ticker": "BID",
+    "latest": 34500.0,
+    "change_pct": null,
+    "points": [
+     [
+      "2026-10-07",
+      34500.0
+     ]
+    ]
+   },
+   {
+    "ticker": "TCB",
+    "latest": 32300.0,
+    "change_pct": null,
+    "points": [
+     [
+      "2026-10-07",
+      32300.0
+     ]
+    ]
+   },
+   {
+    "ticker": "CTG",
+    "latest": 29750.0,
+    "change_pct": null,
+    "points": [
+     [
+      "2026-10-07",
+      29750.0
+     ]
+    ]
+   },
+   {
+    "ticker": "VPB",
+    "latest": 23400.0,
+    "change_pct": null,
+    "points": [
+     [
+      "2026-10-07",
+      23400.0
+     ]
+    ]
+   },
+   {
+    "ticker": "GAS",
+    "latest": 78400.0,
+    "change_pct": null,
+    "points": [
+     [
+      "2026-10-07",
+      78400.0
+     ]
+    ]
+   }
+  ],
+  "movers": [],
+  "as_of": "2026-10-07 19:07"
+ },
+ "interest": {
+  "ok": true,
+  "central_banks": [
+   {
+    "name": "European Central Bank",
+    "policy": "2.65%",
+    "deposit": "2.50%"
+   },
+   {
+    "name": "Bank of England",
+    "policy": "3.75%",
+    "deposit": "3.60%"
+   },
+   {
+    "name": "Bank of Japan",
+    "policy": "1.25%",
+    "deposit": "0.43%"
+   },
+   {
+    "name": "People's Bank of China",
+    "policy": "3%",
+    "deposit": "0.35%"
+   },
+   {
+    "name": "State Bank of Vietnam",
+    "policy": "4.50%",
+    "deposit": "4.78%"
+   }
+  ],
+  "banks_12m": [
+   {
+    "bank": "Sacombank",
+    "online": "7.00%",
+    "counter": "5.90%"
+   },
+   {
+    "bank": "Techcombank",
+    "online": "6.75%",
+    "counter": "6.75%"
+   },
+   {
+    "bank": "MB Bank",
+    "online": "6.30%",
+    "counter": "6.30%"
+   },
+   {
+    "bank": "Vietcombank",
+    "online": "5.90%",
+    "counter": "5.90%"
+   },
+   {
+    "bank": "BIDV",
+    "online": "5,9%",
+    "counter": "5,9%"
+   }
+  ]
+ },
+ "tech": {
+  "ok": true,
+  "drops": [
+   {
+    "item": "Nguồn máy tính Cooler Master MWE V3 230V 650 - 650W (80 Plus Bronze/ATX3.1)",
+    "category": "PSU - Nguồn máy tính",
+    "price": "1.139.000",
+    "change_7d": -40.0,
+    "url": "https://hacom.vn/nguon-may-tinh-cooler-master-mwe-v3-230v-650-650w-80-plus-bronze-atx3.1"
+   },
+   {
+    "item": "Nguồn Gigabyte GP- P750GM 750W (80 Plus Gold/Full Modular/Màu Đen)",
+    "category": "PSU - Nguồn máy tính",
+    "price": "1.649.000",
+    "change_7d": -37.8,
+    "url": "https://hacom.vn/nguon-gigabyte-gp-p750gm-750w-80-plus-gold-full-modular-mau-den"
+   },
+   {
+    "item": "Ổ cứng: 512GB SSD M.2 2242 PCIe® 4.0x4 NVMe",
+    "category": "Laptop",
+    "price": "22.990.000",
+    "change_7d": -37.8,
+    "url": ""
+   },
+   {
+    "item": "Laptop Asus Gaming TUF FA506NCG-HN329W (R7 8845HS/16GB RAM/ 512GB SSD/ 15.6 inch FHD 144Hz/ RTX 3050 4GB/ Win11/ Đen)",
+    "category": "Laptop",
+    "price": "25.499.000",
+    "change_7d": -36.3,
+    "url": "https://hacom.vn/laptop-asus-gaming-tuf-fa506ncg-hn329w-ltau1091"
+   },
+   {
+    "item": "Nguồn máy tính Cooler Master MWE V3 230V 750 - 750W (80 Plus Bronze/ATX3.1)",
+    "category": "PSU - Nguồn máy tính",
+    "price": "1.309.000",
+    "change_7d": -34.5,
+    "url": "https://hacom.vn/nguon-may-tinh-cooler-master-mwe-v3-230v-750-750w-80-plus-bronze-atx3.1"
+   }
+  ],
+  "rises": [
+   {
+    "item": "Phân giải điểm ảnh: Full HD (1920x1080)",
+    "category": "Màn hình",
+    "price": "4.999.000",
+    "change_7d": 38.9,
+    "url": ""
+   },
+   {
+    "item": "Ổ cứng SSD Samsung 870 EVO 1TB 2.5\" SATA 3 (MZ-77E1T0BW)",
+    "category": "SSD",
+    "price": "10.289.000",
+    "change_7d": 28.6,
+    "url": "https://www.anphatpc.com.vn/o-cung-ssd-samsung-870-evo-1tb-2.5-quot-sata-3-mz-77e1t0bw_id36411.html"
+   },
+   {
+    "item": "Laptop ASUS Gaming V16 V3607VJ-TK189W (Intel Core 5 210H | RTX 3050 6GB | 16-inch WUXGA | 16GB | 512GB | Windows 11 | Đen)",
+    "category": "Laptop",
+    "price": "32.990.000",
+    "change_7d": 27.9,
+    "url": "https://www.anphatpc.com.vn/laptop-asus-gaming-v16-v3607vj-tk189w.html"
+   },
+   {
+    "item": "Ổ cứng SSD Lexar NM710 2TB M.2 PCIe Gen4 x4 (Đọc 4850MB/s - Ghi 4500MB/s) - TRAY",
+    "category": "SSD",
+    "price": "7.000.000",
+    "change_7d": 27.3,
+    "url": "https://hoanghapc.vn/o-cung-ssd-lexar-nm710-2tb"
+   },
+   {
+    "item": "Ổ cứng WD Caviar Blue 1TB 64MB Cache 5400 RPM (WD10EARZ)",
+    "category": "HDD",
+    "price": "4.999.000",
+    "change_7d": 25.0,
+    "url": "https://www.anphatpc.com.vn/o-cung-wd-caviar-blue-1tb-64mb-cache-5400-rpm-wd10earz.html"
+   }
+  ]
+ }
+}

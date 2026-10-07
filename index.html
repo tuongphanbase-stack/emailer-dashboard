@@ -341,6 +341,69 @@ button.ghost:active{background:var(--surface-alt);}
   .filter-tabs{display:flex;}
   h1{font-size:22px;}
 }
+
+/* ---------- Markets (charts from data/summary.json) ---------- */
+:root{
+  --series-1:#2a78d6; --series-2:#eb6834; --series-3:#1baf7a;
+  --spark:#9DA0A6; --grid:#ECECEE; --axis:#C9CACE;
+}
+html[data-theme="dark"]{
+  --series-1:#3987e5; --series-2:#d95926; --series-3:#199e70;
+  --spark:#6E7178; --grid:#26282B; --axis:#3A3C40;
+}
+.markets{margin-top:44px;}
+.markets-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px;}
+.markets-sub{font-family:var(--font-body);font-size:12.5px;color:var(--text-tertiary);margin:0 0 16px;}
+.range-tabs{display:flex;gap:4px;}
+.range-tabs button{
+  font-family:var(--font-body);font-size:12px;font-weight:500;color:var(--text-secondary);
+  background:transparent;border:1px solid var(--border);border-radius:var(--radius-pill);
+  padding:4px 11px;cursor:pointer;
+}
+.range-tabs button[aria-pressed="true"]{background:var(--text);color:var(--bg);border-color:var(--text);}
+.m-card{
+  background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-card);padding:18px 20px;margin-bottom:16px;
+}
+.m-card h2{font-family:var(--font-display);font-size:15px;font-weight:600;margin:0 0 2px;color:var(--text);}
+.m-card .m-note{font-family:var(--font-body);font-size:12px;color:var(--text-tertiary);margin:0 0 12px;}
+.m-empty{font-family:var(--font-body);font-size:13px;color:var(--text-tertiary);padding:8px 0;}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;}
+.tile{border:1px solid var(--border);border-radius:var(--radius-md);padding:12px 14px 8px;min-width:0;}
+.tile .t-label{font-family:var(--font-body);font-size:12px;color:var(--text-secondary);}
+.tile .t-value{font-family:var(--font-body);font-size:19px;font-weight:600;color:var(--text);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.delta{font-family:var(--font-body);font-size:12px;font-weight:500;white-space:nowrap;}
+.delta.up{color:var(--success);} .delta.down{color:var(--danger);} .delta.flat{color:var(--text-tertiary);}
+.chart{position:relative;width:100%;}
+.chart svg{display:block;width:100%;overflow:visible;}
+.chart:focus-visible{outline:2px solid var(--brand);outline-offset:4px;border-radius:6px;}
+.chart .tick{font-family:var(--font-body);font-size:10.5px;fill:var(--text-tertiary);font-variant-numeric:tabular-nums;}
+.chart .end-label{font-family:var(--font-body);font-size:11.5px;fill:var(--text-secondary);}
+.m-tip{
+  position:absolute;pointer-events:none;z-index:5;min-width:120px;
+  background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);
+  box-shadow:0 4px 14px rgba(16,24,40,.12);padding:8px 10px;
+  font-family:var(--font-body);font-size:12px;color:var(--text-secondary);display:none;
+}
+.m-tip .tip-date{font-size:11px;color:var(--text-tertiary);margin-bottom:4px;}
+.m-tip .tip-row{display:flex;align-items:center;gap:6px;white-space:nowrap;}
+.m-tip .tip-row b{color:var(--text);font-weight:600;font-variant-numeric:tabular-nums;}
+.m-tip .key{display:inline-block;width:12px;height:2px;border-radius:2px;flex-shrink:0;}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;margin:0 0 10px;font-family:var(--font-body);font-size:12px;color:var(--text-secondary);}
+.legend span{display:inline-flex;align-items:center;gap:6px;}
+.legend .key{display:inline-block;width:14px;height:2px;border-radius:2px;}
+.m-table{width:100%;border-collapse:collapse;font-family:var(--font-body);font-size:13px;}
+.m-table th{text-align:left;font-size:10.5px;font-weight:500;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.06em;padding:6px 8px;border-bottom:1px solid var(--border);}
+.m-table td{padding:7px 8px;border-bottom:1px solid var(--border);color:var(--text);}
+.m-table tr:last-child td{border-bottom:none;}
+.m-table .num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;}
+.m-table a{color:var(--text);text-decoration:none;}
+.m-table a:hover{text-decoration:underline;}
+.m-two{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.m-table-wrap{overflow-x:auto;}
+details.m-data{margin-top:10px;font-family:var(--font-body);font-size:12px;color:var(--text-secondary);}
+details.m-data summary{cursor:pointer;}
+@media (max-width:760px){ .m-two{grid-template-columns:1fr;} }
 </style>
 </head>
 <body>
@@ -431,6 +494,49 @@ button.ghost:active{background:var(--surface-alt);}
     <div>no bots match<span class="detail" id="emptyStateDetail"></span></div>
     <button class="clear-btn" id="clearFiltersBtn">clear filters</button>
   </div>
+
+  <section class="markets" id="markets" aria-labelledby="marketsTitle">
+    <div class="markets-head">
+      <h1 id="marketsTitle">Markets</h1>
+      <div class="range-tabs" role="group" aria-label="Time range">
+        <button data-range="7" aria-pressed="false">7D</button>
+        <button data-range="30" aria-pressed="true">30D</button>
+        <button data-range="90" aria-pressed="false">90D</button>
+      </div>
+    </div>
+    <p class="markets-sub" id="marketsUpdated">loading…</p>
+
+    <div class="m-card" id="mGold">
+      <h2>Gold</h2>
+      <p class="m-note">Sell price, VND</p>
+      <div class="m-body"></div>
+    </div>
+
+    <div class="m-card" id="mCurrency">
+      <h2>Exchange rates</h2>
+      <p class="m-note">VND per 1 unit, change over 24 hours</p>
+      <div class="m-body"></div>
+    </div>
+
+    <div class="m-card" id="mStocks">
+      <h2>VN stocks</h2>
+      <p class="m-note">Price in VND, change over 24 hours</p>
+      <div class="m-body"></div>
+    </div>
+
+    <div class="m-two">
+      <div class="m-card" id="mInterest">
+        <h2>Interest rates</h2>
+        <p class="m-note">12-month deposit rates and central bank policy rates</p>
+        <div class="m-body"></div>
+      </div>
+      <div class="m-card" id="mTech">
+        <h2>RAM / SSD / laptop prices</h2>
+        <p class="m-note">Biggest price changes over 7 days</p>
+        <div class="m-body"></div>
+      </div>
+    </div>
+  </section>
 
 </div>
   </main>
@@ -825,6 +931,300 @@ async function loadLatestEmail(repo){
 }
 
 loadConfig();
+</script>
+
+<script>
+/* ============================================================
+   Markets — charts drawn from data/summary.json, which the
+   Daily Summary workflow refreshes every 3 hours.
+   ============================================================ */
+(function(){
+  const SVG_NS = 'http://www.w3.org/2000/svg';
+  const vnd = new Intl.NumberFormat('vi-VN', {maximumFractionDigits: 2});
+  const compact = new Intl.NumberFormat('en', {notation: 'compact', maximumFractionDigits: 1});
+  let SUMMARY = null;
+  let RANGE = 30;
+  try{ RANGE = Number(localStorage.getItem('markets_range')) || 30; }catch(e){}
+
+  function el(tag, cls, text){
+    const n = document.createElement(tag);
+    if(cls) n.className = cls;
+    if(text !== undefined && text !== null) n.textContent = text;
+    return n;
+  }
+  function svg(tag, attrs){
+    const n = document.createElementNS(SVG_NS, tag);
+    for(const k in attrs) n.setAttribute(k, attrs[k]);
+    return n;
+  }
+  const toDate = s => new Date(s.length > 10 ? s.replace(' ', 'T') : s + 'T00:00:00');
+  const shortDate = d => `${String(d.getDate()).padStart(2,'0')}/${String(d.getMonth()+1).padStart(2,'0')}`;
+
+  function inRange(points){
+    if(!points || !points.length) return [];
+    const last = toDate(points[points.length-1][0]);
+    const cutoff = new Date(last.getTime() - RANGE * 86400000);
+    return points.filter(p => toDate(p[0]) >= cutoff);
+  }
+
+  function niceTicks(min, max, count){
+    const span = max - min || Math.abs(max) || 1;
+    const raw = span / count;
+    const mag = Math.pow(10, Math.floor(Math.log10(raw)));
+    const step = [1, 2, 2.5, 5, 10].map(m => m * mag).find(s => s >= raw) || raw;
+    const ticks = [];
+    for(let v = Math.ceil(min / step) * step; v <= max + step * 1e-9; v += step) ticks.push(v);
+    return ticks;
+  }
+
+  function deltaEl(pct, period){
+    if(pct === null || pct === undefined) return el('span', 'delta flat', 'no change data yet');
+    const dir = pct > 0 ? 'up' : pct < 0 ? 'down' : 'flat';
+    const arrow = pct > 0 ? '▲' : pct < 0 ? '▼' : '■';
+    return el('span', `delta ${dir}`, `${arrow} ${pct > 0 ? '+' : ''}${pct.toFixed(2)}%${period ? ' ' + period : ''}`);
+  }
+
+  /* Line chart with crosshair + tooltip. series: [{name, color, points:[[date, value]]}]
+     opts.compact = sparkline (no axes, one muted series, accent end dot). */
+  function lineChart(container, series, opts){
+    opts = opts || {};
+    const isCompact = !!opts.compact;
+    const fmt = opts.fmt || (v => vnd.format(v));
+    const wrap = el('div', 'chart');
+    wrap.tabIndex = 0;
+    wrap.setAttribute('role', 'img');
+    wrap.setAttribute('aria-label', opts.ariaLabel || 'line chart');
+    container.appendChild(wrap);
+
+    const W = Math.max(container.clientWidth || 300, 120);
+    const H = opts.height || (isCompact ? 44 : 220);
+    const endLabels = !isCompact && series.length <= 3 && W > 480;
+    const m = isCompact ? {t: 6, r: 6, b: 4, l: 2} : {t: 10, r: endLabels ? 120 : 14, b: 24, l: 52};
+
+    const dates = [...new Set(series.flatMap(s => s.points.map(p => p[0])))].sort();
+    const all = series.flatMap(s => s.points.map(p => p[1]));
+    if(!dates.length || !all.length){ wrap.appendChild(el('div', 'm-empty', 'no data in this range')); return; }
+    let lo = Math.min(...all), hi = Math.max(...all);
+    const pad = (hi - lo) * 0.08 || Math.abs(hi) * 0.01 || 1;
+    lo -= pad; hi += pad;
+    const t0 = toDate(dates[0]).getTime(), t1 = toDate(dates[dates.length-1]).getTime();
+    const x = d => m.l + (t1 === t0 ? (W - m.l - m.r) / 2 : (toDate(d).getTime() - t0) / (t1 - t0) * (W - m.l - m.r));
+    const y = v => m.t + (hi - v) / (hi - lo) * (H - m.t - m.b);
+
+    const root = svg('svg', {viewBox: `0 0 ${W} ${H}`, height: H, 'aria-hidden': 'true'});
+    if(!isCompact){
+      niceTicks(lo, hi, 3).forEach(v => {
+        root.appendChild(svg('line', {x1: m.l, x2: W - m.r, y1: y(v), y2: y(v), stroke: 'var(--grid)', 'stroke-width': 1}));
+        const t = svg('text', {x: m.l - 8, y: y(v) + 3.5, 'text-anchor': 'end', class: 'tick'});
+        t.textContent = compact.format(v);
+        root.appendChild(t);
+      });
+      root.appendChild(svg('line', {x1: m.l, x2: W - m.r, y1: H - m.b, y2: H - m.b, stroke: 'var(--axis)', 'stroke-width': 1}));
+      const xs = dates.length > 2 ? [dates[0], dates[Math.floor(dates.length/2)], dates[dates.length-1]] : dates;
+      [...new Set(xs)].forEach((d, i, arr) => {
+        const t = svg('text', {x: x(d), y: H - 6, class: 'tick',
+          'text-anchor': arr.length > 1 && i === 0 ? 'start' : (i === arr.length - 1 && arr.length > 1 ? 'end' : 'middle')});
+        t.textContent = shortDate(toDate(d));
+        root.appendChild(t);
+      });
+    }
+
+    const lineColor = s => isCompact ? 'var(--spark)' : s.color;
+    series.forEach(s => {
+      if(s.points.length > 1){
+        const dPath = s.points.map((p, i) => `${i ? 'L' : 'M'}${x(p[0]).toFixed(1)},${y(p[1]).toFixed(1)}`).join('');
+        root.appendChild(svg('path', {d: dPath, fill: 'none', stroke: lineColor(s), 'stroke-width': 2,
+          'stroke-linejoin': 'round', 'stroke-linecap': 'round'}));
+      }
+      const last = s.points[s.points.length - 1];
+      root.appendChild(svg('circle', {cx: x(last[0]), cy: y(last[1]), r: 4,
+        fill: isCompact ? 'var(--series-1)' : s.color, stroke: 'var(--bg)', 'stroke-width': 2}));
+      if(endLabels){
+        const t = svg('text', {x: x(last[0]) + 10, y: y(last[1]) + 4, class: 'end-label'});
+        t.textContent = s.name.length > 18 ? s.name.slice(0, 17) + '…' : s.name;
+        root.appendChild(t);
+      }
+    });
+
+    // Hover layer: crosshair snaps to the nearest date; one tooltip lists every series.
+    const cross = svg('line', {y1: m.t, y2: H - m.b, stroke: 'var(--axis)', 'stroke-width': 1, visibility: 'hidden'});
+    const hoverDots = series.map(s => {
+      const c = svg('circle', {r: 4, fill: isCompact ? 'var(--series-1)' : s.color, stroke: 'var(--bg)', 'stroke-width': 2, visibility: 'hidden'});
+      root.appendChild(c);
+      return c;
+    });
+    root.insertBefore(cross, root.firstChild);
+    wrap.appendChild(root);
+    const tip = el('div', 'm-tip');
+    wrap.appendChild(tip);
+
+    let idx = dates.length - 1;
+    function show(i){
+      idx = Math.max(0, Math.min(dates.length - 1, i));
+      const d = dates[idx], cx = x(d);
+      cross.setAttribute('x1', cx); cross.setAttribute('x2', cx); cross.setAttribute('visibility', 'visible');
+      tip.replaceChildren(el('div', 'tip-date', toDate(d).toLocaleDateString('vi-VN')));
+      series.forEach((s, k) => {
+        const p = s.points.find(p => p[0] === d);
+        if(!p){ hoverDots[k].setAttribute('visibility', 'hidden'); return; }
+        hoverDots[k].setAttribute('cx', cx); hoverDots[k].setAttribute('cy', y(p[1]));
+        hoverDots[k].setAttribute('visibility', 'visible');
+        const row = el('div', 'tip-row');
+        const key = el('span', 'key'); key.style.background = isCompact ? 'var(--series-1)' : s.color;
+        row.append(key, el('b', null, fmt(p[1])), el('span', null, s.name));
+        tip.appendChild(row);
+      });
+      tip.style.display = 'block';
+      const tw = tip.offsetWidth;
+      tip.style.left = Math.min(Math.max(cx - tw / 2, 0), W - tw) + 'px';
+      tip.style.top = (isCompact ? H + 6 : m.t) + 'px';
+    }
+    function hide(){
+      cross.setAttribute('visibility', 'hidden');
+      hoverDots.forEach(c => c.setAttribute('visibility', 'hidden'));
+      tip.style.display = 'none';
+    }
+    function nearest(clientX){
+      const r = root.getBoundingClientRect();
+      const px = (clientX - r.left) * (W / r.width);
+      let best = 0, bestDist = Infinity;
+      dates.forEach((d, i) => { const dist = Math.abs(x(d) - px); if(dist < bestDist){ best = i; bestDist = dist; } });
+      return best;
+    }
+    wrap.addEventListener('pointermove', e => show(nearest(e.clientX)));
+    wrap.addEventListener('pointerleave', hide);
+    wrap.addEventListener('focus', () => show(idx));
+    wrap.addEventListener('blur', hide);
+    wrap.addEventListener('keydown', e => {
+      if(e.key === 'ArrowLeft'){ show(idx - 1); e.preventDefault(); }
+      if(e.key === 'ArrowRight'){ show(idx + 1); e.preventDefault(); }
+      if(e.key === 'Escape') hide();
+    });
+  }
+
+  function emptyMsg(body, section){
+    body.replaceChildren(el('div', 'm-empty', 'No data yet' + (section && section.reason ? ` (${section.reason})` : '') + '.'));
+  }
+
+  function table(headers, rows, numCols){
+    const wrap = el('div', 'm-table-wrap');
+    const t = el('table', 'm-table');
+    const tr = el('tr');
+    headers.forEach((h, i) => { const th = el('th', numCols.includes(i) ? 'num' : null, h); tr.appendChild(th); });
+    const thead = el('thead'); thead.appendChild(tr); t.appendChild(thead);
+    const tbody = el('tbody');
+    rows.forEach(r => {
+      const row = el('tr');
+      r.forEach((c, i) => {
+        const td = el('td', numCols.includes(i) ? 'num' : null);
+        if(c instanceof Node) td.appendChild(c); else td.textContent = c ?? '—';
+        row.appendChild(td);
+      });
+      tbody.appendChild(row);
+    });
+    t.appendChild(tbody); wrap.appendChild(t);
+    return wrap;
+  }
+
+  function tiles(body, items, labelKey, unitFmt){
+    const grid = el('div', 'm-grid');
+    body.replaceChildren(grid);
+    items.forEach(it => {
+      const tile = el('div', 'tile');
+      tile.append(el('div', 't-label', it[labelKey]), el('div', 't-value', unitFmt(it.latest)), deltaEl(it.change_pct, '24h'));
+      grid.appendChild(tile);
+      const pts = inRange(it.points);
+      if(pts.length) lineChart(tile, [{name: it[labelKey], points: pts}],
+        {compact: true, fmt: unitFmt, ariaLabel: `${it[labelKey]} price trend`});
+    });
+  }
+
+  function renderGold(){
+    const card = document.querySelector('#mGold .m-body'), g = SUMMARY.gold || {};
+    if(!g.ok) return emptyMsg(card, g);
+    card.replaceChildren();
+    const colors = ['var(--series-1)', 'var(--series-2)', 'var(--series-3)'];
+    const series = g.series.map((s, i) => ({name: s.name, color: colors[i], points: inRange(s.points)}));
+    if(series.length > 1){
+      const lg = el('div', 'legend');
+      series.forEach(s => { const it = el('span'); const k = el('span', 'key'); k.style.background = s.color; it.append(k, document.createTextNode(s.name)); lg.appendChild(it); });
+      card.appendChild(lg);
+    }
+    lineChart(card, series, {ariaLabel: 'Gold sell price over time'});
+    card.appendChild(table(['Product', 'Sell (VND)', 'vs previous day'],
+      g.series.map(s => [s.name, s.latest != null ? vnd.format(s.latest) : '—', deltaEl(s.change_pct)]), [1, 2]));
+  }
+
+  function renderCurrency(){
+    const body = document.querySelector('#mCurrency .m-body'), c = SUMMARY.currency || {};
+    if(!c.ok) return emptyMsg(body, c);
+    tiles(body, c.items, 'code', v => vnd.format(v));
+  }
+
+  function renderStocks(){
+    const body = document.querySelector('#mStocks .m-body'), s = SUMMARY.stocks || {};
+    if(!s.ok) return emptyMsg(body, s);
+    tiles(body, s.items, 'ticker', v => vnd.format(v));
+    if(s.movers && s.movers.length){
+      const d = el('details', 'm-data');
+      d.appendChild(el('summary', null, 'Biggest movers today'));
+      d.appendChild(table(['Ticker', 'Price (VND)', '24h'], s.movers.map(m => [m.ticker, vnd.format(m.latest), deltaEl(m.change_pct)]), [1, 2]));
+      body.appendChild(d);
+    }
+  }
+
+  function renderInterest(){
+    const body = document.querySelector('#mInterest .m-body'), r = SUMMARY.interest || {};
+    if(!r.ok) return emptyMsg(body, r);
+    body.replaceChildren();
+    if(r.banks_12m && r.banks_12m.length)
+      body.appendChild(table(['Bank', '12M online', '12M counter'], r.banks_12m.map(b => [b.bank, b.online, b.counter]), [1, 2]));
+    if(r.central_banks && r.central_banks.length){
+      body.appendChild(el('div', 'm-note', '')).style.marginTop = '12px';
+      body.appendChild(table(['Central bank', 'Policy rate'], r.central_banks.map(b => [b.name, b.policy]), [1]));
+    }
+  }
+
+  function renderTech(){
+    const body = document.querySelector('#mTech .m-body'), t = SUMMARY.tech || {};
+    if(!t.ok) return emptyMsg(body, t);
+    const rows = [...(t.drops || []), ...(t.rises || [])];
+    if(!rows.length){ body.replaceChildren(el('div', 'm-empty', 'No price changes in the last 7 days.')); return; }
+    body.replaceChildren(table(['Item', 'Price (VND)', '7 days'], rows.map(i => {
+      const a = el('a', null, i.item); a.href = i.url; a.target = '_blank'; a.rel = 'noopener';
+      return [a, i.price, deltaEl(i.change_7d)];
+    }), [1, 2]));
+  }
+
+  function renderAll(){
+    if(!SUMMARY) return;
+    const when = SUMMARY.generated_at ? new Date(SUMMARY.generated_at).toLocaleString('vi-VN') : '—';
+    document.getElementById('marketsUpdated').textContent = `Updated ${when} · refreshed every 3 hours`;
+    [renderGold, renderCurrency, renderStocks, renderInterest, renderTech].forEach(fn => {
+      try{ fn(); }catch(e){ console.error(fn.name, e); }
+    });
+  }
+
+  document.querySelectorAll('.range-tabs button').forEach(b => {
+    b.setAttribute('aria-pressed', String(Number(b.dataset.range) === RANGE));
+    b.addEventListener('click', () => {
+      RANGE = Number(b.dataset.range);
+      try{ localStorage.setItem('markets_range', RANGE); }catch(e){}
+      document.querySelectorAll('.range-tabs button').forEach(o => o.setAttribute('aria-pressed', String(o === b)));
+      renderAll();
+    });
+  });
+  let resizeTimer;
+  window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(renderAll, 150); });
+
+  fetch('./data/summary.json?_=' + Date.now())
+    .then(r => { if(!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(data => { SUMMARY = data; renderAll(); })
+    .catch(e => {
+      document.getElementById('marketsUpdated').textContent =
+        `No market data yet (${e.message}). The Daily Summary workflow creates data/summary.json on its first run.`;
+    });
+})();
 </script>
 </body>
 </html>
