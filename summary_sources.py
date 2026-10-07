@@ -41,22 +41,36 @@ def csv_history(opt):
     return out
 
 
+def _gold_vnd(value):
+    """gold-price-emailer stores gold in thousands of đồng per lượng (143000 =
+    143.000.000 đ); accept full đồng too, in case it is ever stored that way."""
+    if value is None:
+        return None
+    return value * 1000 if value < 10_000_000 else value
+
+
 @source("gold", "Giá vàng", icon="🪙")
 def gold(opt):
-    text = fetch_file("gold-price-emailer", "state/price_history.json", ref="gold-price-state")
+    """Gold sell prices from gold-price-emailer's history. Options: owner (the
+    GitHub account that runs the bot, if not GITHUB_OWNER), limit."""
+    text = fetch_file("gold-price-emailer", "state/price_history.json", ref="gold-price-state",
+                      owner=opt.get("owner"))
     if not text:
         return empty("chưa có lịch sử giá vàng")
-    history = json.loads(text)  # {date: {"gold": {table_i: {label: sell}}, ...}}
+    history = json.loads(text)  # {date: {"gold": {table_i: {label: sell, in nghìn đồng}}, ...}}
     dates = sorted(history)
-    latest = (history[dates[-1]].get("gold") or {}).get("table_0") or {}
+    # The latest day can lack the table if that run failed to parse it; use the
+    # most recent day that has it.
+    latest = next(((history[d].get("gold") or {}).get("table_0") for d in reversed(dates)
+                   if (history[d].get("gold") or {}).get("table_0")), {})
     series, rows = [], []
     for label in list(latest)[: int(opt.get("limit", 3))]:
-        pts = [[d, (history[d].get("gold") or {}).get("table_0", {}).get(label)] for d in dates]
+        pts = [[d, _gold_vnd((history[d].get("gold") or {}).get("table_0", {}).get(label))] for d in dates]
         pts = [p for p in pts if p[1] is not None][-HISTORY_DAYS:]
         change = round((pts[-1][1] - pts[-2][1]) / pts[-2][1] * 100, 2) if len(pts) >= 2 and pts[-2][1] else None
         series.append({"name": label, "points": pts})
         rows.append([label, pts[-1][1] if pts else None, change])
-    return {"ok": bool(series), "as_of": dates[-1], "note": "Giá bán, VND",
+    return {"ok": bool(series), "as_of": dates[-1], "note": "Giá bán, VND/lượng",
             "blocks": [chart(series, "VND"),
                        table([col("Sản phẩm"), col("Giá bán (VND)", "num"), col("So với hôm trước", "change")], rows)],
             "text": [f"{r[0]}: {r[1]:,.0f} VND" for r in rows if r[1]]}

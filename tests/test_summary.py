@@ -22,8 +22,10 @@ d = lambda n: (today - timedelta(days=n)).isoformat()  # noqa: E731
 
 FILES = {
     ("gold-price-emailer", "state/price_history.json"): json.dumps({
-        d(1): {"gold": {"table_0": {"SJC 1L": 120_000_000, "Nhẫn 9999": 115_000_000}}},
-        d(0): {"gold": {"table_0": {"SJC 1L": 121_200_000, "Nhẫn 9999": 114_000_000}}}}),
+        # Stored in thousands of đồng, as gold-price-emailer does.
+        d(2): {"gold": {"table_0": {"SJC 1L": 119_000, "Nhẫn 9999": 114_500}}},
+        d(1): {"gold": {"table_0": {"SJC 1L": 120_000, "Nhẫn 9999": 115_000}}},
+        d(0): {"gold": {}}}),  # the last run of today failed to parse the table
     ("currency-rate-emailer", "rate_history.csv"):
         "timestamp,currency,rate\n"
         f"{d(1)} 08:00,USD,26000\n{d(1)} 08:00,EUR,30000\n{d(0)} 09:00,USD,26260\n{d(0)} 09:00,EUR,29700\n",
@@ -73,7 +75,7 @@ class Sources(unittest.TestCase):
 
     def test_values(self):
         gold = self.run_source("gold")
-        self.assertEqual(gold["blocks"][1]["rows"][0], ["SJC 1L", 121_200_000, 1.0])
+        self.assertEqual(gold["blocks"][1]["rows"][0], ["SJC 1L", 120_000_000, 0.84])
         cur = self.run_source("currency")["blocks"][0]["items"]
         self.assertEqual([(i["label"], i["change_pct"]) for i in cur], [("USD", 1.0), ("EUR", -1.0)])
         rates = self.run_source("interest")["blocks"][0]["rows"]
@@ -123,7 +125,7 @@ class ConfigAndEmail(unittest.TestCase):
         sections.append({"id": "x", "title": "Broken", "ok": False, "reason": "lỗi: boom"})
         subject, html, text = daily_summary.build_email({"sections": sections})
         self.assertIn("Tổng hợp buổi sáng", subject)
-        for needle in ("Giá vàng", "121.200.000", "USD", "https://x.vn/ssd", "Apple iPhone 16 128GB", "lỗi: boom"):
+        for needle in ("Giá vàng", "120.000.000", "USD", "https://x.vn/ssd", "Apple iPhone 16 128GB", "lỗi: boom"):
             self.assertIn(needle, html)
         self.assertIn("GIÁ VÀNG", text)
 
