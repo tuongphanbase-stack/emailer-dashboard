@@ -17,6 +17,11 @@
       "workflow": "send-house-price.yml"
     },
     {
+      "name": "phone-tablet-price-emailer",
+      "category": "price",
+      "workflow": "send-phone-prices.yml"
+    },
+    {
       "name": "vn-stock-price-emailer",
       "category": "finance",
       "workflow": "send-stock-price.yml"
@@ -45,6 +50,136 @@
       "name": "reddit-top-post-emailer",
       "category": "social",
       "workflow": "send-reddit.yml"
+    }
+  ],
+  "summary_sources": [
+    "gold",
+    "currency",
+    "stocks",
+    "interest",
+    "tech",
+    "phones"
+  ],
+  "projects": [
+    {
+      "repo": "su-viet",
+      "title": "Sử Việt",
+      "icon": "史",
+      "kind": "site",
+      "description": "Lịch sử Việt Nam tương tác: dòng thời gian, bản đồ cương vực, nhân vật và trắc nghiệm."
+    },
+    {
+      "repo": "truyenkieu",
+      "title": "Truyện Kiều",
+      "icon": "📜",
+      "kind": "site",
+      "description": "Đọc Truyện Kiều của Nguyễn Du, có chú thích, đánh dấu và đọc to."
+    },
+    {
+      "repo": "chinhphungam",
+      "title": "Chinh Phụ Ngâm",
+      "icon": "🌙",
+      "kind": "site",
+      "description": "Đọc Chinh Phụ Ngâm (bản dịch Đoàn Thị Điểm), có đánh dấu, đọc to và chia sẻ câu thơ."
+    },
+    {
+      "repo": "study-lab",
+      "title": "Study Lab",
+      "icon": "🧪",
+      "kind": "site",
+      "description": "Bài học có theo dõi tiến độ và trắc nghiệm."
+    },
+    {
+      "repo": "win7",
+      "title": "Windows 7 trên web",
+      "icon": "🪟",
+      "kind": "site",
+      "description": "Màn hình Windows 7 chạy trong trình duyệt: Explorer, Command Prompt, Thùng rác, Control Panel."
+    },
+    {
+      "repo": "emailer-dashboard",
+      "title": "Bảng điều khiển bot",
+      "icon": "📊",
+      "kind": "site",
+      "description": "Theo dõi các bot gửi email, biểu đồ thị trường và email tổng hợp buổi sáng.",
+      "links": [
+        [
+          "Giá hôm nay",
+          "prices.html"
+        ]
+      ]
+    },
+    {
+      "repo": "phone-tablet-price-emailer",
+      "title": "Giá điện thoại & máy tính bảng",
+      "icon": "📱",
+      "kind": "bot",
+      "pages": true,
+      "description": "So sánh giá điện thoại, máy tính bảng ở 18 cửa hàng, báo khi giảm giá."
+    },
+    {
+      "repo": "tech-price-mailer",
+      "title": "Giá RAM / SSD / Laptop",
+      "icon": "💻",
+      "kind": "bot",
+      "pages": true,
+      "description": "Giá linh kiện và laptop từ nhiều cửa hàng, có lịch sử giá."
+    },
+    {
+      "repo": "gold-price-emailer",
+      "title": "Giá vàng",
+      "icon": "🪙",
+      "kind": "bot",
+      "description": "Giá vàng và bạc mỗi ngày qua email."
+    },
+    {
+      "repo": "currency-rate-emailer",
+      "title": "Tỷ giá",
+      "icon": "💱",
+      "kind": "bot",
+      "description": "Tỷ giá ngoại tệ so với VND."
+    },
+    {
+      "repo": "vn-stock-price-emailer",
+      "title": "Chứng khoán Việt Nam",
+      "icon": "📈",
+      "kind": "bot",
+      "description": "Giá cổ phiếu trong danh sách theo dõi."
+    },
+    {
+      "repo": "interest-rate-emailer",
+      "title": "Lãi suất",
+      "icon": "🏦",
+      "kind": "bot",
+      "description": "Lãi suất tiết kiệm các ngân hàng và lãi suất điều hành."
+    },
+    {
+      "repo": "house-price-emailer",
+      "title": "Giá nhà đất",
+      "icon": "🏠",
+      "kind": "bot",
+      "description": "Tin rao bán nhà đất mới và giá."
+    },
+    {
+      "repo": "apps-gone-free-emailer",
+      "title": "Ứng dụng miễn phí",
+      "icon": "🎁",
+      "kind": "bot",
+      "description": "Ứng dụng trả phí đang được tặng miễn phí."
+    },
+    {
+      "repo": "9gag-meme-emailer",
+      "title": "Meme 9GAG",
+      "icon": "😂",
+      "kind": "bot",
+      "description": "Meme hot nhất trên 9GAG: ảnh, video và GIF."
+    },
+    {
+      "repo": "reddit-top-post-emailer",
+      "title": "Reddit nổi bật",
+      "icon": "👽",
+      "kind": "bot",
+      "description": "Bài nổi bật nhất trong các subreddit bạn chọn."
     }
   ]
 }

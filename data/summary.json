@@ -1,242 +1,386 @@
 {
- "generated_at": "2026-10-07T12:36:17+00:00",
+ "generated_at": "2026-10-07T15:26:25+00:00",
  "owner": "tuongphanbase-stack",
- "gold": {
-  "ok": false,
-  "reason": "no gold price history yet"
- },
- "currency": {
-  "ok": false,
-  "reason": "no currency history yet"
- },
- "stocks": {
-  "ok": true,
-  "unit": "VND",
-  "items": [
-   {
-    "ticker": "VIC",
-    "latest": 230000.0,
-    "change_pct": null,
-    "points": [
-     [
-      "2026-10-07",
-      230000.0
+ "sections": [
+  {
+   "id": "gold",
+   "title": "Giá vàng",
+   "icon": "🪙",
+   "ok": false,
+   "reason": "chưa có lịch sử giá vàng"
+  },
+  {
+   "id": "currency",
+   "title": "Tỷ giá",
+   "icon": "💱",
+   "ok": false,
+   "reason": "chưa có rate_history.csv"
+  },
+  {
+   "id": "stocks",
+   "title": "Chứng khoán",
+   "icon": "📈",
+   "ok": true,
+   "as_of": "2026-10-07 21:41",
+   "blocks": [
+    {
+     "type": "tiles",
+     "unit": "VND",
+     "items": [
+      {
+       "label": "VIC",
+       "value": 230000.0,
+       "change_pct": null,
+       "period": "24h",
+       "points": [
+        [
+         "2026-10-07",
+         230000.0
+        ]
+       ]
+      },
+      {
+       "label": "VHM",
+       "value": 68000.0,
+       "change_pct": null,
+       "period": "24h",
+       "points": [
+        [
+         "2026-10-07",
+         68000.0
+        ]
+       ]
+      },
+      {
+       "label": "VCB",
+       "value": 57200.0,
+       "change_pct": null,
+       "period": "24h",
+       "points": [
+        [
+         "2026-10-07",
+         57200.0
+        ]
+       ]
+      },
+      {
+       "label": "BID",
+       "value": 34500.0,
+       "change_pct": null,
+       "period": "24h",
+       "points": [
+        [
+         "2026-10-07",
+         34500.0
+        ]
+       ]
+      },
+      {
+       "label": "TCB",
+       "value": 32300.0,
+       "change_pct": null,
+       "period": "24h",
+       "points": [
+        [
+         "2026-10-07",
+         32300.0
+        ]
+       ]
+      },
+      {
+       "label": "CTG",
+       "value": 29750.0,
+       "change_pct": null,
+       "period": "24h",
+       "points": [
+        [
+         "2026-10-07",
+         29750.0
+        ]
+       ]
+      },
+      {
+       "label": "VPB",
+       "value": 23400.0,
+       "change_pct": null,
+       "period": "24h",
+       "points": [
+        [
+         "2026-10-07",
+         23400.0
+        ]
+       ]
+      },
+      {
+       "label": "GAS",
+       "value": 78400.0,
+       "change_pct": null,
+       "period": "24h",
+       "points": [
+        [
+         "2026-10-07",
+         78400.0
+        ]
+       ]
+      }
      ]
-    ]
-   },
-   {
-    "ticker": "VHM",
-    "latest": 68000.0,
-    "change_pct": null,
-    "points": [
-     [
-      "2026-10-07",
-      68000.0
+    }
+   ],
+   "text": [
+    "VIC: 230,000.0 (None%)",
+    "VHM: 68,000.0 (None%)",
+    "VCB: 57,200.0 (None%)",
+    "BID: 34,500.0 (None%)",
+    "TCB: 32,300.0 (None%)",
+    "CTG: 29,750.0 (None%)",
+    "VPB: 23,400.0 (None%)",
+    "GAS: 78,400.0 (None%)"
+   ]
+  },
+  {
+   "id": "interest",
+   "title": "Lãi suất",
+   "icon": "🏦",
+   "ok": true,
+   "blocks": [
+    {
+     "type": "table",
+     "caption": "Lãi suất tiết kiệm 12 tháng",
+     "columns": [
+      {
+       "label": "Ngân hàng",
+       "kind": "text"
+      },
+      {
+       "label": "12 tháng online (%)",
+       "kind": "num"
+      },
+      {
+       "label": "Tại quầy (%)",
+       "kind": "num"
+      }
+     ],
+     "rows": [
+      [
+       "Sacombank",
+       7.0,
+       5.9
+      ],
+      [
+       "Techcombank",
+       6.75,
+       6.75
+      ],
+      [
+       "MB Bank",
+       6.3,
+       6.3
+      ],
+      [
+       "Vietcombank",
+       5.9,
+       5.9
+      ],
+      [
+       "BIDV",
+       5.9,
+       5.9
+      ]
      ]
-    ]
-   },
-   {
-    "ticker": "VCB",
-    "latest": 57200.0,
-    "change_pct": null,
-    "points": [
-     [
-      "2026-10-07",
-      57200.0
+    },
+    {
+     "type": "table",
+     "caption": null,
+     "columns": [
+      {
+       "label": "Ngân hàng trung ương",
+       "kind": "text"
+      },
+      {
+       "label": "Lãi suất điều hành",
+       "kind": "text"
+      }
+     ],
+     "rows": [
+      [
+       "European Central Bank",
+       "2.65%"
+      ],
+      [
+       "Bank of England",
+       "3.75%"
+      ],
+      [
+       "Bank of Japan",
+       "1.25%"
+      ],
+      [
+       "People's Bank of China",
+       "3%"
+      ],
+      [
+       "State Bank of Vietnam",
+       "4.50%"
+      ]
      ]
-    ]
-   },
-   {
-    "ticker": "BID",
-    "latest": 34500.0,
-    "change_pct": null,
-    "points": [
-     [
-      "2026-10-07",
-      34500.0
+    }
+   ],
+   "text": [
+    "Sacombank: 7.0%",
+    "Techcombank: 6.75%",
+    "MB Bank: 6.3%",
+    "Vietcombank: 5.9%",
+    "BIDV: 5.9%"
+   ]
+  },
+  {
+   "id": "tech",
+   "title": "Giá RAM / SSD / Laptop",
+   "icon": "💻",
+   "ok": true,
+   "note": "Thay đổi giá trong 7 ngày",
+   "blocks": [
+    {
+     "type": "table",
+     "caption": "Giảm giá nhiều nhất",
+     "columns": [
+      {
+       "label": "Sản phẩm",
+       "kind": "link"
+      },
+      {
+       "label": "Giá (VND)",
+       "kind": "num"
+      },
+      {
+       "label": "7 ngày",
+       "kind": "change"
+      }
+     ],
+     "rows": [
+      [
+       [
+        "Phân giải điểm ảnh: 2K (2560x1440)",
+        ""
+       ],
+       "4.999.000",
+       -80.8
+      ],
+      [
+       [
+        "Ổ cứng Western Digital Caviar Blue 2TB 64MB Cache 5400rpm ( WD20EARZ)",
+        "https://www.anphatpc.com.vn/o-cung-western-digital-caviar-blue-2tb-64mb-cache-5400rpm-wd20earz.html"
+       ],
+       "5.999.000",
+       -53.1
+      ],
+      [
+       [
+        "Phân giải điểm ảnh: FHD (1920 x 1080)",
+        ""
+       ],
+       "2.999.000",
+       -50.0
+      ],
+      [
+       [
+        "Ổ cứng: 512GB PCIe® 4.0 NVMe™ M.2 SSD",
+        ""
+       ],
+       "33.990.000",
+       -20.9
+      ],
+      [
+       [
+        "Màn hình LG UltraGear 34GX90SA-W (34 inch/WQHD/OLED/240Hz/0.03ms/webOS/cong)",
+        "https://hacom.vn/man-hinh-ultragear-34gx90sa-w"
+       ],
+       "26.990.000",
+       -20.6
+      ]
      ]
-    ]
-   },
-   {
-    "ticker": "TCB",
-    "latest": 32300.0,
-    "change_pct": null,
-    "points": [
-     [
-      "2026-10-07",
-      32300.0
+    },
+    {
+     "type": "table",
+     "caption": "Tăng giá nhiều nhất",
+     "columns": [
+      {
+       "label": "Sản phẩm",
+       "kind": "link"
+      },
+      {
+       "label": "Giá (VND)",
+       "kind": "num"
+      },
+      {
+       "label": "7 ngày",
+       "kind": "change"
+      }
+     ],
+     "rows": [
+      [
+       [
+        "Card màn hình Leadtek NVIDIA RTX PRO 4000 Blackwell 24GB GDDR7",
+        "https://gearvn.com/products/card-man-hinh-leadtek-nvidia-rtx-pro-4000-blackwell-24gb-gddr7"
+       ],
+       "106.090.000",
+       73.9
+      ],
+      [
+       [
+        "Nguồn Gigabyte GP- P850GM 850W (80 Plus Gold/Full Modular/Màu Đen)",
+        "https://hacom.vn/nguon-gigabyte-gp-p850gm-850w-80-plus-gold-full-modular-mau-den"
+       ],
+       "3.299.000",
+       72.8
+      ],
+      [
+       [
+        "Nguồn máy tính Cooler Master MWE V3 230V 650 - 650W (80 Plus Bronze/ATX3.1)",
+        "https://hacom.vn/nguon-may-tinh-cooler-master-mwe-v3-230v-650-650w-80-plus-bronze-atx3.1"
+       ],
+       "1.899.000",
+       66.7
+      ],
+      [
+       [
+        "VGA GIGABYTE GEFORCE RTX 5060 GAMING OC 8G (GDDR7, 128-bit, HDMI+DP, 1x8-pin) - 3 FAN",
+        "https://hoanghapc.vn/vga-gigabyte-rtx-5060-gaming-oc-8g"
+       ],
+       "17.000.000",
+       61.1
+      ],
+      [
+       [
+        "Nguồn Gigabyte GP- P750GM 750W (80 Plus Gold/Full Modular/Màu Đen)",
+        "https://hacom.vn/nguon-gigabyte-gp-p750gm-750w-80-plus-gold-full-modular-mau-den"
+       ],
+       "2.649.000",
+       60.6
+      ]
      ]
-    ]
-   },
-   {
-    "ticker": "CTG",
-    "latest": 29750.0,
-    "change_pct": null,
-    "points": [
-     [
-      "2026-10-07",
-      29750.0
-     ]
-    ]
-   },
-   {
-    "ticker": "VPB",
-    "latest": 23400.0,
-    "change_pct": null,
-    "points": [
-     [
-      "2026-10-07",
-      23400.0
-     ]
-    ]
-   },
-   {
-    "ticker": "GAS",
-    "latest": 78400.0,
-    "change_pct": null,
-    "points": [
-     [
-      "2026-10-07",
-      78400.0
-     ]
-    ]
-   }
-  ],
-  "movers": [],
-  "as_of": "2026-10-07 19:07"
- },
- "interest": {
-  "ok": true,
-  "central_banks": [
-   {
-    "name": "European Central Bank",
-    "policy": "2.65%",
-    "deposit": "2.50%"
-   },
-   {
-    "name": "Bank of England",
-    "policy": "3.75%",
-    "deposit": "3.60%"
-   },
-   {
-    "name": "Bank of Japan",
-    "policy": "1.25%",
-    "deposit": "0.43%"
-   },
-   {
-    "name": "People's Bank of China",
-    "policy": "3%",
-    "deposit": "0.35%"
-   },
-   {
-    "name": "State Bank of Vietnam",
-    "policy": "4.50%",
-    "deposit": "4.78%"
-   }
-  ],
-  "banks_12m": [
-   {
-    "bank": "Sacombank",
-    "online": "7.00%",
-    "counter": "5.90%"
-   },
-   {
-    "bank": "Techcombank",
-    "online": "6.75%",
-    "counter": "6.75%"
-   },
-   {
-    "bank": "MB Bank",
-    "online": "6.30%",
-    "counter": "6.30%"
-   },
-   {
-    "bank": "Vietcombank",
-    "online": "5.90%",
-    "counter": "5.90%"
-   },
-   {
-    "bank": "BIDV",
-    "online": "5,9%",
-    "counter": "5,9%"
-   }
-  ]
- },
- "tech": {
-  "ok": true,
-  "drops": [
-   {
-    "item": "Nguồn máy tính Cooler Master MWE V3 230V 650 - 650W (80 Plus Bronze/ATX3.1)",
-    "category": "PSU - Nguồn máy tính",
-    "price": "1.139.000",
-    "change_7d": -40.0,
-    "url": "https://hacom.vn/nguon-may-tinh-cooler-master-mwe-v3-230v-650-650w-80-plus-bronze-atx3.1"
-   },
-   {
-    "item": "Nguồn Gigabyte GP- P750GM 750W (80 Plus Gold/Full Modular/Màu Đen)",
-    "category": "PSU - Nguồn máy tính",
-    "price": "1.649.000",
-    "change_7d": -37.8,
-    "url": "https://hacom.vn/nguon-gigabyte-gp-p750gm-750w-80-plus-gold-full-modular-mau-den"
-   },
-   {
-    "item": "Ổ cứng: 512GB SSD M.2 2242 PCIe® 4.0x4 NVMe",
-    "category": "Laptop",
-    "price": "22.990.000",
-    "change_7d": -37.8,
-    "url": ""
-   },
-   {
-    "item": "Laptop Asus Gaming TUF FA506NCG-HN329W (R7 8845HS/16GB RAM/ 512GB SSD/ 15.6 inch FHD 144Hz/ RTX 3050 4GB/ Win11/ Đen)",
-    "category": "Laptop",
-    "price": "25.499.000",
-    "change_7d": -36.3,
-    "url": "https://hacom.vn/laptop-asus-gaming-tuf-fa506ncg-hn329w-ltau1091"
-   },
-   {
-    "item": "Nguồn máy tính Cooler Master MWE V3 230V 750 - 750W (80 Plus Bronze/ATX3.1)",
-    "category": "PSU - Nguồn máy tính",
-    "price": "1.309.000",
-    "change_7d": -34.5,
-    "url": "https://hacom.vn/nguon-may-tinh-cooler-master-mwe-v3-230v-750-750w-80-plus-bronze-atx3.1"
-   }
-  ],
-  "rises": [
-   {
-    "item": "Phân giải điểm ảnh: Full HD (1920x1080)",
-    "category": "Màn hình",
-    "price": "4.999.000",
-    "change_7d": 38.9,
-    "url": ""
-   },
-   {
-    "item": "Ổ cứng SSD Samsung 870 EVO 1TB 2.5\" SATA 3 (MZ-77E1T0BW)",
-    "category": "SSD",
-    "price": "10.289.000",
-    "change_7d": 28.6,
-    "url": "https://www.anphatpc.com.vn/o-cung-ssd-samsung-870-evo-1tb-2.5-quot-sata-3-mz-77e1t0bw_id36411.html"
-   },
-   {
-    "item": "Laptop ASUS Gaming V16 V3607VJ-TK189W (Intel Core 5 210H | RTX 3050 6GB | 16-inch WUXGA | 16GB | 512GB | Windows 11 | Đen)",
-    "category": "Laptop",
-    "price": "32.990.000",
-    "change_7d": 27.9,
-    "url": "https://www.anphatpc.com.vn/laptop-asus-gaming-v16-v3607vj-tk189w.html"
-   },
-   {
-    "item": "Ổ cứng SSD Lexar NM710 2TB M.2 PCIe Gen4 x4 (Đọc 4850MB/s - Ghi 4500MB/s) - TRAY",
-    "category": "SSD",
-    "price": "7.000.000",
-    "change_7d": 27.3,
-    "url": "https://hoanghapc.vn/o-cung-ssd-lexar-nm710-2tb"
-   },
-   {
-    "item": "Ổ cứng WD Caviar Blue 1TB 64MB Cache 5400 RPM (WD10EARZ)",
-    "category": "HDD",
-    "price": "4.999.000",
-    "change_7d": 25.0,
-    "url": "https://www.anphatpc.com.vn/o-cung-wd-caviar-blue-1tb-64mb-cache-5400-rpm-wd10earz.html"
-   }
-  ]
- }
+    }
+   ],
+   "empty_text": null,
+   "text": [
+    "Phân giải điểm ảnh: 2K (2560x1440): 4.999.000 (-80.8%)",
+    "Ổ cứng Western Digital Caviar Blue 2TB 64MB Cache 5400rpm ( WD20EARZ): 5.999.000 (-53.1%)",
+    "Phân giải điểm ảnh: FHD (1920 x 1080): 2.999.000 (-50.0%)",
+    "Ổ cứng: 512GB PCIe® 4.0 NVMe™ M.2 SSD: 33.990.000 (-20.9%)",
+    "Màn hình LG UltraGear 34GX90SA-W (34 inch/WQHD/OLED/240Hz/0.03ms/webOS/cong): 26.990.000 (-20.6%)",
+    "Card màn hình Leadtek NVIDIA RTX PRO 4000 Blackwell 24GB GDDR7: 106.090.000 (+73.9%)",
+    "Nguồn Gigabyte GP- P850GM 850W (80 Plus Gold/Full Modular/Màu Đen): 3.299.000 (+72.8%)",
+    "Nguồn máy tính Cooler Master MWE V3 230V 650 - 650W (80 Plus Bronze/ATX3.1): 1.899.000 (+66.7%)",
+    "VGA GIGABYTE GEFORCE RTX 5060 GAMING OC 8G (GDDR7, 128-bit, HDMI+DP, 1x8-pin) - 3 FAN: 17.000.000 (+61.1%)",
+    "Nguồn Gigabyte GP- P750GM 750W (80 Plus Gold/Full Modular/Màu Đen): 2.649.000 (+60.6%)"
+   ]
+  },
+  {
+   "id": "phones",
+   "title": "Giá điện thoại & máy tính bảng",
+   "icon": "📱",
+   "ok": false,
+   "reason": "chưa có dữ liệu giá điện thoại"
+  }
+ ]
 }

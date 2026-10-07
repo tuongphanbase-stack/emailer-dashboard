@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dự án</title>
+<meta name="description" content="Tất cả trang web và bot của tuongphanbase-stack.">
+<script>
+  (function(){
+    let t = null; try{ t = localStorage.getItem('fleet_theme'); }catch(e){}
+    document.documentElement.setAttribute('data-theme', t || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="theme.css">
+<style>
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--canvas);color:var(--text);font-family:var(--font-body);}
+  main{max-width:1100px;margin:0 auto;padding:36px 16px 56px;}
+  h1{font-family:var(--font-display);font-size:34px;letter-spacing:-.03em;margin:0 0 6px;}
+  .lead{color:var(--text-secondary);margin:0 0 28px;font-size:15px;}
+  h2{font-family:var(--font-display);font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-tertiary);margin:30px 0 12px;}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:12px;}
+  .card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px 18px;display:flex;flex-direction:column;gap:8px;box-shadow:var(--shadow-card);}
+  .card-top{display:flex;gap:12px;align-items:center;}
+  .icon{width:40px;height:40px;flex:none;border-radius:10px;display:grid;place-items:center;font-size:20px;background:var(--surface-alt);}
+  .card h3{margin:0;font-size:16px;}
+  .card p{margin:0;font-size:13.5px;line-height:1.5;color:var(--text-secondary);flex:1;}
+  .links{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;}
+  .links a{font-size:13px;text-decoration:none;border-radius:var(--radius-pill);padding:5px 12px;border:1px solid var(--border);color:var(--text);}
+  .links a.primary{background:var(--text);color:var(--bg);border-color:var(--text);}
+  .links a:hover{border-color:var(--text-tertiary);}
+  nav.top{display:flex;gap:8px;margin-bottom:22px;}
+  nav.top a{font-size:13px;color:var(--text-secondary);text-decoration:none;border:1px solid var(--border);border-radius:var(--radius-pill);padding:5px 11px;background:var(--bg);}
+  .error{color:var(--danger);}
+</style>
+</head>
+<body>
+<main>
+  <nav class="top" aria-label="Trang khác">
+    <a href="./">Bảng điều khiển</a>
+    <a href="prices.html">Giá hôm nay</a>
+  </nav>
+  <h1>Dự án</h1>
+  <p class="lead">Các trang web và bot tự động gửi email. Danh sách lấy từ <code>config.json</code> → <code>projects</code>.</p>
+  <h2>Trang web</h2>
+  <div class="grid" id="sites"></div>
+  <h2>Bot gửi email</h2>
+  <div class="grid" id="bots"></div>
+</main>
+<script>
+  const el = (tag, cls, text) => { const n = document.createElement(tag); if(cls) n.className = cls; if(text != null) n.textContent = text; return n; };
+  function link(text, href, primary){ const a = el('a', primary ? 'primary' : null, text); a.href = href; return a; }
+
+  function card(p, owner){
+    const pages = `https://${owner}.github.io/${p.repo}/`;
+    const repo = `https://github.com/${owner}/${p.repo}`;
+    const c = el('article', 'card');
+    const top = el('div', 'card-top');
+    top.append(el('div', 'icon', p.icon || '•'), el('h3', null, p.title || p.repo));
+    const links = el('div', 'links');
+    if(p.kind === 'site') links.append(link('Mở', p.repo === 'emailer-dashboard' ? './' : pages, true));
+    else if(p.pages) links.append(link('Bảng giá', pages, true));
+    (p.links || []).forEach(([text, href]) => links.append(link(text, href)));
+    links.append(link('Mã nguồn', repo));
+    c.append(top, el('p', null, p.description || ''), links);
+    return c;
+  }
+
+  fetch('config.json?_=' + Date.now()).then(r => r.json()).then(cfg => {
+    const owner = cfg.owner;
+    (cfg.projects || []).forEach(p => document.getElementById(p.kind === 'site' ? 'sites' : 'bots').appendChild(card(p, owner)));
+  }).catch(e => {
+    document.getElementById('sites').appendChild(el('p', 'error', `Không đọc được config.json (${e.message}).`));
+  });
+</script>
+</body>
+</html>

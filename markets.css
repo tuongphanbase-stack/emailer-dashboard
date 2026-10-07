@@ -1,0 +1,90 @@
+/* ---------- Markets (charts from data/summary.json) ---------- */
+:root{
+  --series-1:#2a78d6; --series-2:#eb6834; --series-3:#1baf7a;
+  --spark:#9DA0A6; --grid:#ECECEE; --axis:#C9CACE;
+}
+html[data-theme="dark"]{
+  --series-1:#3987e5; --series-2:#d95926; --series-3:#199e70;
+  --spark:#6E7178; --grid:#26282B; --axis:#3A3C40;
+}
+.markets{margin-top:44px;}
+.markets-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px;}
+.markets-sub{font-family:var(--font-body);font-size:12.5px;color:var(--text-tertiary);margin:0 0 16px;}
+.range-tabs{display:flex;gap:4px;}
+.range-tabs button{
+  font-family:var(--font-body);font-size:12px;font-weight:500;color:var(--text-secondary);
+  background:transparent;border:1px solid var(--border);border-radius:var(--radius-pill);
+  padding:4px 11px;cursor:pointer;
+}
+.range-tabs button[aria-pressed="true"]{background:var(--text);color:var(--bg);border-color:var(--text);}
+.m-card{
+  background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-card);padding:18px 20px;margin-bottom:16px;
+}
+.m-card h2{font-family:var(--font-display);font-size:15px;font-weight:600;margin:0 0 2px;color:var(--text);}
+.m-card .m-note{font-family:var(--font-body);font-size:12px;color:var(--text-tertiary);margin:0 0 12px;}
+.m-empty{font-family:var(--font-body);font-size:13px;color:var(--text-tertiary);padding:8px 0;}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;}
+.tile{border:1px solid var(--border);border-radius:var(--radius-md);padding:12px 14px 8px;min-width:0;}
+.tile .t-label{font-family:var(--font-body);font-size:12px;color:var(--text-secondary);}
+.tile .t-value{font-family:var(--font-body);font-size:19px;font-weight:600;color:var(--text);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.delta{font-family:var(--font-body);font-size:12px;font-weight:500;white-space:nowrap;}
+.delta.up{color:var(--success);} .delta.down{color:var(--danger);} .delta.flat{color:var(--text-tertiary);}
+.chart{position:relative;width:100%;}
+.chart svg{display:block;width:100%;overflow:visible;}
+.chart:focus-visible{outline:2px solid var(--brand);outline-offset:4px;border-radius:6px;}
+.chart .tick{font-family:var(--font-body);font-size:10.5px;fill:var(--text-tertiary);font-variant-numeric:tabular-nums;}
+.chart .end-label{font-family:var(--font-body);font-size:11.5px;fill:var(--text-secondary);}
+.m-tip{
+  position:absolute;pointer-events:none;z-index:5;min-width:120px;
+  background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);
+  box-shadow:0 4px 14px rgba(16,24,40,.12);padding:8px 10px;
+  font-family:var(--font-body);font-size:12px;color:var(--text-secondary);display:none;
+}
+.m-tip .tip-date{font-size:11px;color:var(--text-tertiary);margin-bottom:4px;}
+.m-tip .tip-row{display:flex;align-items:center;gap:6px;white-space:nowrap;}
+.m-tip .tip-row b{color:var(--text);font-weight:600;font-variant-numeric:tabular-nums;}
+.m-tip .key{display:inline-block;width:12px;height:2px;border-radius:2px;flex-shrink:0;}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;margin:0 0 10px;font-family:var(--font-body);font-size:12px;color:var(--text-secondary);}
+.legend span{display:inline-flex;align-items:center;gap:6px;}
+.legend .key{display:inline-block;width:14px;height:2px;border-radius:2px;}
+.m-table{width:100%;border-collapse:collapse;font-family:var(--font-body);font-size:13px;}
+.m-table th{text-align:left;font-size:10.5px;font-weight:500;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.06em;padding:6px 8px;border-bottom:1px solid var(--border);}
+.m-table td{padding:7px 8px;border-bottom:1px solid var(--border);color:var(--text);}
+.m-table tr:last-child td{border-bottom:none;}
+.m-table .num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;}
+.m-table a{color:var(--text);text-decoration:none;}
+.m-table a:hover{text-decoration:underline;}
+.m-two{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.m-table-wrap{overflow-x:auto;}
+details.m-data{margin-top:10px;font-family:var(--font-body);font-size:12px;color:var(--text-secondary);}
+details.m-data summary{cursor:pointer;}
+@media (max-width:760px){ .m-two{grid-template-columns:1fr;} }
+:root{--series-4:#8e5cd9; --series-5:#d4a017;}
+html[data-theme="dark"]{--series-4:#a37ef0; --series-5:#e0b43a;}
+#mSections{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:0 16px;align-items:start;}
+.m-block{position:relative;margin-top:6px;}
+.m-block + .m-block{margin-top:14px;}
+.m-tools{display:flex;justify-content:flex-end;gap:6px;margin:-4px 0 6px;}
+.m-tool{
+  font-family:var(--font-body);font-size:11.5px;font-weight:500;color:var(--text-secondary);
+  background:transparent;border:1px solid var(--border);border-radius:var(--radius-pill);
+  padding:3px 10px;cursor:pointer;line-height:1.4;
+}
+.m-tool:hover{color:var(--text);border-color:var(--text-tertiary);}
+.m-block > .m-tool{margin-top:8px;}
+.m-caption{font-family:var(--font-body);font-size:12.5px;font-weight:600;color:var(--text-secondary);margin:4px 0 2px;}
+.m-sub{font-family:var(--font-body);font-size:12.5px;font-weight:600;color:var(--text-secondary);margin:14px 0 2px;}
+.m-dialog{
+  width:min(1100px,calc(100vw - 24px));max-height:calc(100vh - 24px);padding:0;
+  border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--bg);color:var(--text);
+}
+.m-dialog::backdrop{background:rgba(0,0,0,.45);}
+.m-dialog-head{display:flex;align-items:center;gap:8px;padding:14px 18px;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--bg);z-index:2;}
+.m-dialog-head h2{font-family:var(--font-display);font-size:16px;margin:0;flex:1;}
+.m-dialog-body{padding:16px 18px 20px;overflow:auto;}
+.m-table td{overflow-wrap:anywhere;}
+.m-table td.num{overflow-wrap:normal;}
+.markets-title{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.markets-title h1{margin-right:6px;}
+a.m-tool{text-decoration:none;}

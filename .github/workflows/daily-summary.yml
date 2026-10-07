@@ -38,6 +38,9 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Run the tests
+        run: python -m unittest discover tests
+
       - name: Collect data from the emailer repos
         env:
           # Only needed once the emailer repos are private: a fine-grained

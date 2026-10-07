@@ -1,0 +1,155 @@
+"""The summary's data sources. Each one reads an emailer repo's saved data
+and returns a section made of generic blocks (see summary_core.py).
+
+To add a source: write a function here with @source(...), then list its id
+in config.json -> "summary_sources". A plain CSV history (time, key, value)
+needs no code at all: use the "csv_history" source with options.
+"""
+import csv
+import io
+import json
+import re
+from datetime import date, timedelta
+
+from summary_core import (HISTORY_DAYS, chart, col, daily_last, empty, fetch_file,
+                          parse_history_csv, pct_change, source, table, tiles)
+
+
+@source("csv_history", "Lịch sử", icon="📈")
+def csv_history(opt):
+    """Any CSV of time,key,value rows -> tiles with sparklines.
+    Options: repo, path, ref, key_col, value_col, time_col, time_format, limit, unit, keys."""
+    text = fetch_file(opt["repo"], opt["path"], ref=opt.get("ref", "main"))
+    if not text:
+        return empty(f"chưa có {opt['path']}")
+    series = parse_history_csv(text, opt["key_col"], opt["value_col"], opt.get("time_col", "timestamp"),
+                               opt.get("time_format", "%Y-%m-%d %H:%M"))
+    keys = opt.get("keys") or list(series)
+    keys = [k for k in keys if k in series][: int(opt.get("limit", 8))]
+    digits = int(opt.get("decimals", 2))
+    items = [{"label": k, "value": round(series[k][-1][1], digits), "change_pct": pct_change(series[k]),
+              "period": "24h", "points": [[d, round(v, digits)] for d, v in daily_last(series[k])]} for k in keys]
+    as_of = max((series[k][-1][0] for k in keys), default=None)
+    out = {"ok": bool(items), "as_of": as_of.strftime("%Y-%m-%d %H:%M") if as_of else None,
+           "blocks": [tiles(items, opt.get("unit", ""))],
+           "text": [f"{i['label']}: {i['value']:,} ({i['change_pct']}%)" for i in items]}
+    movers = sorted(((k, pct_change(p), p[-1][1]) for k, p in series.items() if pct_change(p) is not None),
+                    key=lambda m: -abs(m[1]))[: int(opt.get("movers", 0))]
+    if movers:
+        out["blocks"].append(table([col("Mã"), col("Giá", "num"), col("24 giờ", "change")],
+                                   [[k, v, c] for k, c, v in movers], caption="Biến động mạnh nhất"))
+    return out
+
+
+@source("gold", "Giá vàng", icon="🪙")
+def gold(opt):
+    text = fetch_file("gold-price-emailer", "state/price_history.json", ref="gold-price-state")
+    if not text:
+        return empty("chưa có lịch sử giá vàng")
+    history = json.loads(text)  # {date: {"gold": {table_i: {label: sell}}, ...}}
+    dates = sorted(history)
+    latest = (history[dates[-1]].get("gold") or {}).get("table_0") or {}
+    series, rows = [], []
+    for label in list(latest)[: int(opt.get("limit", 3))]:
+        pts = [[d, (history[d].get("gold") or {}).get("table_0", {}).get(label)] for d in dates]
+        pts = [p for p in pts if p[1] is not None][-HISTORY_DAYS:]
+        change = round((pts[-1][1] - pts[-2][1]) / pts[-2][1] * 100, 2) if len(pts) >= 2 and pts[-2][1] else None
+        series.append({"name": label, "points": pts})
+        rows.append([label, pts[-1][1] if pts else None, change])
+    return {"ok": bool(series), "as_of": dates[-1], "note": "Giá bán, VND",
+            "blocks": [chart(series, "VND"),
+                       table([col("Sản phẩm"), col("Giá bán (VND)", "num"), col("So với hôm trước", "change")], rows)],
+            "text": [f"{r[0]}: {r[1]:,.0f} VND" for r in rows if r[1]]}
+
+
+@source("currency", "Tỷ giá", icon="💱")
+def currency(opt):
+    return csv_history({"repo": "currency-rate-emailer", "path": "rate_history.csv", "key_col": "currency",
+                        "value_col": "rate", "unit": "VND", "limit": opt.get("limit", 8), **opt})
+
+
+@source("stocks", "Chứng khoán", icon="📈")
+def stocks(opt):
+    return csv_history({"repo": "vn-stock-price-emailer", "path": "price_history.csv", "key_col": "ticker",
+                        "value_col": "close", "unit": "VND", "decimals": 0, "limit": opt.get("limit", 8),
+                        "movers": 5, **opt})
+
+
+# "12 months", "12M", "12 Tháng", "012 tháng"... - each bank labels it differently
+TWELVE_MONTHS = re.compile(r"^0*12\s*(m|months?|th[aá]ng)$", re.IGNORECASE)
+
+
+def _rate(s):
+    try:
+        return float(str(s).strip().rstrip("%").replace(",", "."))
+    except ValueError:
+        return None
+
+
+@source("interest", "Lãi suất", icon="🏦")
+def interest(opt):
+    text = fetch_file("interest-rate-emailer", "last_rates.json", ref="interest-rate-state")
+    if not text:
+        return empty("chưa có dữ liệu lãi suất")
+    data = json.loads(text)
+    banks = []
+    for bank, terms in (data.get("commercial_banks") or {}).items():
+        t = next((t for t in terms or [] if TWELVE_MONTHS.match(str(t.get("term", "")).strip())), None)
+        if t:
+            banks.append([bank, _rate(t.get("online")), _rate(t.get("counter"))])
+    banks.sort(key=lambda b: b[1] if b[1] is not None else -1, reverse=True)
+    central = [[name, v.get("policy")] for name, v in (data.get("central_banks") or {}).items()]
+    blocks = []
+    if banks:
+        blocks.append(table([col("Ngân hàng"), col("12 tháng online (%)", "num"), col("Tại quầy (%)", "num")],
+                            banks[: int(opt.get("limit", 8))], caption="Lãi suất tiết kiệm 12 tháng"))
+    if central:
+        blocks.append(table([col("Ngân hàng trung ương"), col("Lãi suất điều hành")], central))
+    return {"ok": bool(blocks), "blocks": blocks, "text": [f"{b[0]}: {b[1]}%" for b in banks[:6]]}
+
+
+@source("tech", "Giá RAM / SSD / Laptop", icon="💻")
+def tech(opt):
+    text = fetch_file("tech-price-mailer", "docs/price_history_latest.csv")
+    if not text:
+        return empty("chưa có dữ liệu giá linh kiện")
+    rows = []
+    for r in csv.DictReader(io.StringIO(text)):
+        try:
+            change = float((r.get("7 ngày change") or "").strip().rstrip("%").replace("+", ""))
+        except ValueError:
+            continue
+        if change:
+            rows.append([[r.get("Item", ""), r.get("Product URL", "")], r.get("Price (VND)", ""), change])
+    n = int(opt.get("limit", 5))
+    drops = sorted([r for r in rows if r[2] < 0], key=lambda r: r[2])[:n]
+    rises = sorted([r for r in rows if r[2] > 0], key=lambda r: -r[2])[:n]
+    cols = [col("Sản phẩm", "link"), col("Giá (VND)", "num"), col("7 ngày", "change")]
+    blocks = [table(cols, x, caption=c) for x, c in ((drops, "Giảm giá nhiều nhất"), (rises, "Tăng giá nhiều nhất")) if x]
+    return {"ok": True, "note": "Thay đổi giá trong 7 ngày", "blocks": blocks,
+            "empty_text": None if blocks else "Không có thay đổi giá trong 7 ngày qua.",
+            "text": [f"{r[0][0]}: {r[1]} ({r[2]:+}%)" for r in drops + rises]}
+
+
+@source("phones", "Giá điện thoại & máy tính bảng", icon="📱")
+def phones(opt):
+    text = fetch_file("phone-tablet-price-emailer", "docs/models.json")
+    if not text:
+        return empty("chưa có dữ liệu giá điện thoại")
+    data = json.loads(text)
+    week_ago = (date.today() - timedelta(days=7)).isoformat()
+    rows = []
+    for m in data.get("models", []):
+        offers = m.get("offers") or []
+        if len(offers) < 2:
+            continue
+        best = offers[0]
+        before = [p for d, p, *_ in m.get("history", []) if d <= week_ago]
+        change = round((best["price"] - before[-1]) * 100 / before[-1], 2) if before else None
+        rows.append((len(offers), [[m["model"], best.get("url") or ""], best["price"], best["shop_name"], len(offers), change]))
+    rows = [r for _, r in sorted(rows, key=lambda x: -x[0])][: int(opt.get("limit", 10))]
+    return {"ok": bool(rows), "as_of": data.get("updated_at", "")[:16].replace("T", " "),
+            "note": "Model bán ở nhiều cửa hàng nhất, giá rẻ nhất hiện tại",
+            "blocks": [table([col("Model", "link"), col("Rẻ nhất (VND)", "num"), col("Cửa hàng"),
+                              col("Số shop", "num"), col("7 ngày", "change")], rows)],
+            "text": [f"{r[0][0]}: {r[1]:,} ({r[2]})" for r in rows]}

@@ -1,0 +1,55 @@
+/* Shared colours, fonts and sizes for every page of the dashboard. */
+/* ---------- Design tokens ---------- */
+:root{
+  --bg:            #FFFFFF;  /* card / surface */
+  --canvas:        #F6F6F7;  /* page background */
+  --surface-alt:   #EDEDEF;  /* recessed fill, e.g. inputs, disabled */
+  --border:        #E1E1E4;
+
+  --text:          #17181A;
+  --text-secondary:#6E7178;
+  --text-tertiary: #7B7E85;
+
+  --brand:         #2563EB;
+  --brand-dark:    #1D4ED8;
+  --success:       #1E8A4C;
+  --danger:        #C13C30;
+
+  --cat-price:    #1D4ED8;
+  --cat-finance:  #7C3AED;
+  --cat-social:   #DB2777;
+
+  --radius-sm: 9px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  --shadow-card: 0 1px 2px rgba(16,24,40,.04);
+  --focus-ring: rgba(37,99,235,.15);
+
+  --font-display: 'Inter', sans-serif;
+  --font-body:    'Inter', sans-serif;
+}
+
+html[data-theme="dark"]{
+  --bg:            #1C1D1F;
+  --canvas:        #101112;
+  --surface-alt:   #26282B;
+  --border:        #2E3033;
+
+  --text:          #EDEEEF;
+  --text-secondary:#9DA0A6;
+  --text-tertiary: #84878E;
+
+  --brand:         #5B8DEF;
+  --brand-dark:    #82AAF5;
+  --success:       #34C77B;
+  --danger:        #E0574A;
+
+  --cat-price:    #5B8DEF;
+  --cat-finance:  #A78BFA;
+  --cat-social:   #F472B6;
+
+  --shadow-card: 0 1px 3px rgba(0,0,0,.4);
+  --focus-ring: rgba(91,141,239,.25);
+}
