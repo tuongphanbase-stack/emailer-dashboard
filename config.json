@@ -1,12 +1,50 @@
 {
   "owner": "tuongphanbase-stack",
   "repos": [
-    { "name": "gold-price-emailer",        "category": "price",   "workflow": "send-gold-price.yml" },
-    { "name": "tech-price-mailer",         "category": "price",   "workflow": "send-tech-price.yml" },
-    { "name": "house-price-emailer",       "category": "price",   "workflow": "send-house-price.yml" },
-    { "name": "vn-stock-price-emailer",    "category": "finance", "workflow": "send-stock-price.yml" },
-    { "name": "interest-rate-emailer",     "category": "finance", "workflow": "send-interest-rate.yml" },
-    { "name": "apps-gone-free-emailer",    "category": "price",   "workflow": "send-apps-gone-free.yml" },
-    { "name": "9gag-meme-emailer",         "category": "social",  "workflow": "send-meme.yml" }
+    {
+      "name": "gold-price-emailer",
+      "category": "price",
+      "workflow": "send-gold-price.yml"
+    },
+    {
+      "name": "tech-price-mailer",
+      "category": "price",
+      "workflow": "send-tech-price.yml"
+    },
+    {
+      "name": "house-price-emailer",
+      "category": "price",
+      "workflow": "send-house-price.yml"
+    },
+    {
+      "name": "vn-stock-price-emailer",
+      "category": "finance",
+      "workflow": "send-stock-price.yml"
+    },
+    {
+      "name": "interest-rate-emailer",
+      "category": "finance",
+      "workflow": "send-interest-rate.yml"
+    },
+    {
+      "name": "currency-rate-emailer",
+      "category": "finance",
+      "workflow": "send-currency-rate.yml"
+    },
+    {
+      "name": "apps-gone-free-emailer",
+      "category": "price",
+      "workflow": "send-apps-gone-free.yml"
+    },
+    {
+      "name": "9gag-meme-emailer",
+      "category": "social",
+      "workflow": "send-meme.yml"
+    },
+    {
+      "name": "reddit-top-post-emailer",
+      "category": "social",
+      "workflow": "send-reddit.yml"
+    }
   ]
 }
