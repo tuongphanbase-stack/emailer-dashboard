@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-08T03:35:42+00:00",
+ "generated_at": "2026-10-08T06:42:53+00:00",
  "owner": "tuongphanbase-stack",
  "sections": [
   {
@@ -21,7 +21,7 @@
    "title": "Chứng khoán",
    "icon": "📈",
    "ok": true,
-   "as_of": "2026-10-08 10:05",
+   "as_of": "2026-10-08 13:07",
    "blocks": [
     {
      "type": "tiles",
@@ -29,8 +29,8 @@
      "items": [
       {
        "label": "VIC",
-       "value": 230100.0,
-       "change_pct": null,
+       "value": 230600.0,
+       "change_pct": 1.54,
        "period": "24h",
        "points": [
         [
@@ -39,14 +39,14 @@
         ],
         [
          "2026-10-08",
-         230100.0
+         230600.0
         ]
        ]
       },
       {
        "label": "VHM",
-       "value": 68100.0,
-       "change_pct": null,
+       "value": 67500.0,
+       "change_pct": -0.88,
        "period": "24h",
        "points": [
         [
@@ -55,14 +55,14 @@
         ],
         [
          "2026-10-08",
-         68100.0
+         67500.0
         ]
        ]
       },
       {
        "label": "VCB",
-       "value": 57100.0,
-       "change_pct": null,
+       "value": 57000.0,
+       "change_pct": 0.0,
        "period": "24h",
        "points": [
         [
@@ -71,14 +71,14 @@
         ],
         [
          "2026-10-08",
-         57100.0
+         57000.0
         ]
        ]
       },
       {
        "label": "BID",
-       "value": 34450.0,
-       "change_pct": null,
+       "value": 34300.0,
+       "change_pct": -0.15,
        "period": "24h",
        "points": [
         [
@@ -87,14 +87,14 @@
         ],
         [
          "2026-10-08",
-         34450.0
+         34300.0
         ]
        ]
       },
       {
        "label": "TCB",
-       "value": 32050.0,
-       "change_pct": null,
+       "value": 32350.0,
+       "change_pct": 1.41,
        "period": "24h",
        "points": [
         [
@@ -103,14 +103,14 @@
         ],
         [
          "2026-10-08",
-         32050.0
+         32350.0
         ]
        ]
       },
       {
        "label": "CTG",
-       "value": 29650.0,
-       "change_pct": null,
+       "value": 29500.0,
+       "change_pct": 0.17,
        "period": "24h",
        "points": [
         [
@@ -119,14 +119,14 @@
         ],
         [
          "2026-10-08",
-         29650.0
+         29500.0
         ]
        ]
       },
       {
        "label": "VPB",
-       "value": 23100.0,
-       "change_pct": null,
+       "value": 23500.0,
+       "change_pct": 2.17,
        "period": "24h",
        "points": [
         [
@@ -135,14 +135,14 @@
         ],
         [
          "2026-10-08",
-         23100.0
+         23500.0
         ]
        ]
       },
       {
        "label": "GAS",
-       "value": 79300.0,
-       "change_pct": null,
+       "value": 80700.0,
+       "change_pct": 2.28,
        "period": "24h",
        "points": [
         [
@@ -151,22 +151,67 @@
         ],
         [
          "2026-10-08",
-         79300.0
+         80700.0
         ]
        ]
       }
      ]
+    },
+    {
+     "type": "table",
+     "caption": "Biến động mạnh nhất",
+     "columns": [
+      {
+       "label": "Mã",
+       "kind": "text"
+      },
+      {
+       "label": "Giá",
+       "kind": "num"
+      },
+      {
+       "label": "24 giờ",
+       "kind": "change"
+      }
+     ],
+     "rows": [
+      [
+       "THD",
+       80000.0,
+       -14.44
+      ],
+      [
+       "KSV",
+       133100.0,
+       10.0
+      ],
+      [
+       "DNP",
+       18500.0,
+       -9.31
+      ],
+      [
+       "ANV",
+       18650.0,
+       8.75
+      ],
+      [
+       "DTK",
+       11300.0,
+       7.62
+      ]
+     ]
     }
    ],
    "text": [
-    "VIC: 230,100.0 (None%)",
-    "VHM: 68,100.0 (None%)",
-    "VCB: 57,100.0 (None%)",
-    "BID: 34,450.0 (None%)",
-    "TCB: 32,050.0 (None%)",
-    "CTG: 29,650.0 (None%)",
-    "VPB: 23,100.0 (None%)",
-    "GAS: 79,300.0 (None%)"
+    "VIC: 230,600.0 (1.54%)",
+    "VHM: 67,500.0 (-0.88%)",
+    "VCB: 57,000.0 (0.0%)",
+    "BID: 34,300.0 (-0.15%)",
+    "TCB: 32,350.0 (1.41%)",
+    "CTG: 29,500.0 (0.17%)",
+    "VPB: 23,500.0 (2.17%)",
+    "GAS: 80,700.0 (2.28%)"
    ]
   },
   {
