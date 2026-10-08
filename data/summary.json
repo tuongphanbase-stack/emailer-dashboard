@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-08T09:36:23+00:00",
+ "generated_at": "2026-10-08T12:43:59+00:00",
  "owner": "tuongphanbase-stack",
  "sections": [
   {
@@ -21,7 +21,7 @@
    "title": "Chứng khoán",
    "icon": "📈",
    "ok": true,
-   "as_of": "2026-10-08 16:07",
+   "as_of": "2026-10-08 19:07",
    "blocks": [
     {
      "type": "tiles",
@@ -337,14 +337,6 @@
      "rows": [
       [
        [
-        "Phân giải điểm ảnh: 2K (2560x1440)",
-        ""
-       ],
-       "4.999.000",
-       -80.8
-      ],
-      [
-       [
         "Ổ cứng Western Digital Caviar Blue 2TB 64MB Cache 5400rpm ( WD20EARZ)",
         "https://www.anphatpc.com.vn/o-cung-western-digital-caviar-blue-2tb-64mb-cache-5400rpm-wd20earz.html"
        ],
@@ -374,6 +366,14 @@
        ],
        "26.990.000",
        -20.6
+      ],
+      [
+       [
+        "Mainboard ASUS TUF GAMING X870-PLUS WIFI",
+        "https://hacom.vn/mainboard-asus-tuf-gaming-x870-plus-wifi"
+       ],
+       "8.599.000",
+       -19.6
       ]
      ]
     },
@@ -440,11 +440,11 @@
    ],
    "empty_text": null,
    "text": [
-    "Phân giải điểm ảnh: 2K (2560x1440): 4.999.000 (-80.8%)",
     "Ổ cứng Western Digital Caviar Blue 2TB 64MB Cache 5400rpm ( WD20EARZ): 5.999.000 (-53.1%)",
     "Phân giải điểm ảnh: FHD (1920 x 1080): 2.999.000 (-50.0%)",
     "Ổ cứng: 512GB PCIe® 4.0 NVMe™ M.2 SSD: 33.990.000 (-20.9%)",
     "Màn hình LG UltraGear 34GX90SA-W (34 inch/WQHD/OLED/240Hz/0.03ms/webOS/cong): 26.990.000 (-20.6%)",
+    "Mainboard ASUS TUF GAMING X870-PLUS WIFI: 8.599.000 (-19.6%)",
     "Card màn hình Leadtek NVIDIA RTX PRO 4000 Blackwell 24GB GDDR7: 106.090.000 (+73.9%)",
     "Nguồn Gigabyte GP- P850GM 850W (80 Plus Gold/Full Modular/Màu Đen): 3.299.000 (+72.8%)",
     "Nguồn máy tính Cooler Master MWE V3 230V 650 - 650W (80 Plus Bronze/ATX3.1): 1.899.000 (+66.7%)",
