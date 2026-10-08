@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-08T01:01:15+00:00",
+ "generated_at": "2026-10-08T03:35:42+00:00",
  "owner": "tuongphanbase-stack",
  "sections": [
   {
@@ -21,7 +21,7 @@
    "title": "Chứng khoán",
    "icon": "📈",
    "ok": true,
-   "as_of": "2026-10-08 07:49",
+   "as_of": "2026-10-08 10:05",
    "blocks": [
     {
      "type": "tiles",
@@ -29,7 +29,7 @@
      "items": [
       {
        "label": "VIC",
-       "value": 230000.0,
+       "value": 230100.0,
        "change_pct": null,
        "period": "24h",
        "points": [
@@ -39,13 +39,13 @@
         ],
         [
          "2026-10-08",
-         230000.0
+         230100.0
         ]
        ]
       },
       {
        "label": "VHM",
-       "value": 68000.0,
+       "value": 68100.0,
        "change_pct": null,
        "period": "24h",
        "points": [
@@ -55,13 +55,13 @@
         ],
         [
          "2026-10-08",
-         68000.0
+         68100.0
         ]
        ]
       },
       {
        "label": "VCB",
-       "value": 57200.0,
+       "value": 57100.0,
        "change_pct": null,
        "period": "24h",
        "points": [
@@ -71,13 +71,13 @@
         ],
         [
          "2026-10-08",
-         57200.0
+         57100.0
         ]
        ]
       },
       {
        "label": "BID",
-       "value": 34500.0,
+       "value": 34450.0,
        "change_pct": null,
        "period": "24h",
        "points": [
@@ -87,13 +87,13 @@
         ],
         [
          "2026-10-08",
-         34500.0
+         34450.0
         ]
        ]
       },
       {
        "label": "TCB",
-       "value": 32300.0,
+       "value": 32050.0,
        "change_pct": null,
        "period": "24h",
        "points": [
@@ -103,13 +103,13 @@
         ],
         [
          "2026-10-08",
-         32300.0
+         32050.0
         ]
        ]
       },
       {
        "label": "CTG",
-       "value": 29750.0,
+       "value": 29650.0,
        "change_pct": null,
        "period": "24h",
        "points": [
@@ -119,13 +119,13 @@
         ],
         [
          "2026-10-08",
-         29750.0
+         29650.0
         ]
        ]
       },
       {
        "label": "VPB",
-       "value": 23400.0,
+       "value": 23100.0,
        "change_pct": null,
        "period": "24h",
        "points": [
@@ -135,13 +135,13 @@
         ],
         [
          "2026-10-08",
-         23400.0
+         23100.0
         ]
        ]
       },
       {
        "label": "GAS",
-       "value": 78400.0,
+       "value": 79300.0,
        "change_pct": null,
        "period": "24h",
        "points": [
@@ -151,7 +151,7 @@
         ],
         [
          "2026-10-08",
-         78400.0
+         79300.0
         ]
        ]
       }
@@ -159,14 +159,14 @@
     }
    ],
    "text": [
-    "VIC: 230,000.0 (None%)",
-    "VHM: 68,000.0 (None%)",
-    "VCB: 57,200.0 (None%)",
-    "BID: 34,500.0 (None%)",
-    "TCB: 32,300.0 (None%)",
-    "CTG: 29,750.0 (None%)",
-    "VPB: 23,400.0 (None%)",
-    "GAS: 78,400.0 (None%)"
+    "VIC: 230,100.0 (None%)",
+    "VHM: 68,100.0 (None%)",
+    "VCB: 57,100.0 (None%)",
+    "BID: 34,450.0 (None%)",
+    "TCB: 32,050.0 (None%)",
+    "CTG: 29,650.0 (None%)",
+    "VPB: 23,100.0 (None%)",
+    "GAS: 79,300.0 (None%)"
    ]
   },
   {
@@ -210,6 +210,11 @@
       ],
       [
        "Vietcombank",
+       5.9,
+       5.9
+      ],
+      [
+       "BIDV",
        5.9,
        5.9
       ]
@@ -256,7 +261,8 @@
     "Sacombank: 7.0%",
     "Techcombank: 6.75%",
     "MB Bank: 6.3%",
-    "Vietcombank: 5.9%"
+    "Vietcombank: 5.9%",
+    "BIDV: 5.9%"
    ]
   },
   {
@@ -405,8 +411,151 @@
    "id": "phones",
    "title": "Giá điện thoại & máy tính bảng",
    "icon": "📱",
-   "ok": false,
-   "reason": "chưa có dữ liệu giá điện thoại"
+   "ok": true,
+   "as_of": "2026-10-08 01:08",
+   "note": "Model bán ở nhiều cửa hàng nhất, giá rẻ nhất hiện tại",
+   "blocks": [
+    {
+     "type": "table",
+     "caption": null,
+     "columns": [
+      {
+       "label": "Model",
+       "kind": "link"
+      },
+      {
+       "label": "Rẻ nhất (VND)",
+       "kind": "num"
+      },
+      {
+       "label": "Cửa hàng",
+       "kind": "text"
+      },
+      {
+       "label": "Số shop",
+       "kind": "num"
+      },
+      {
+       "label": "7 ngày",
+       "kind": "change"
+      }
+     ],
+     "rows": [
+      [
+       [
+        "Apple iPhone 17 256GB",
+        "https://mediamart.vn/smartphones#28207"
+       ],
+       24990000,
+       "MediaMart",
+       3,
+       null
+      ],
+      [
+       [
+        "Apple iPhone 17 Pro Max 256GB",
+        "https://mediamart.vn/smartphones#28216"
+       ],
+       33490000,
+       "MediaMart",
+       3,
+       null
+      ],
+      [
+       [
+        "Apple iPhone 18 Pro 256GB",
+        "https://clickbuy.com.vn/iphone-18-pro.html"
+       ],
+       36750000,
+       "Clickbuy",
+       3,
+       null
+      ],
+      [
+       [
+        "Apple iPhone 18 Pro Max 256GB",
+        "https://24hstore.vn/iphone-18-pro-max/iphone-18-pro-max-256gb-p12566"
+       ],
+       39490000,
+       "24hStore",
+       3,
+       null
+      ],
+      [
+       [
+        "Apple iPad Air 11 M4 2026 256GB",
+        "https://cellphones.com.vn/apple-ipad-air-m4-11-inch-256gb-wifi.html"
+       ],
+       21990000,
+       "CellphoneS",
+       2,
+       null
+      ],
+      [
+       [
+        "Apple iPad Air M4 2026 11 128GB",
+        "https://minhtuanmobile.com/ipad-air-m4/"
+       ],
+       19190000,
+       "Minh Tuấn Mobile",
+       2,
+       null
+      ],
+      [
+       [
+        "Apple iPad Mini 7 2024 128GB",
+        "https://minhtuanmobile.com/ipad-mini-7/"
+       ],
+       15790000,
+       "Minh Tuấn Mobile",
+       2,
+       null
+      ],
+      [
+       [
+        "Apple iPad Pro M5 11 256GB",
+        "https://minhtuanmobile.com/ipad-pro-m5/"
+       ],
+       33790000,
+       "Minh Tuấn Mobile",
+       2,
+       null
+      ],
+      [
+       [
+        "Apple iPhone 16E 128GB",
+        "https://hoanghamobile.com/dien-thoai/iphone-16e-128gb"
+       ],
+       13328000,
+       "Hoàng Hà Mobile",
+       2,
+       null
+      ],
+      [
+       [
+        "Apple iPhone 17 Pro 1TB",
+        "https://24hstore.vn/iphone-17-pro/iphone-17-pro-1tb-p11590"
+       ],
+       41490000,
+       "24hStore",
+       2,
+       null
+      ]
+     ]
+    }
+   ],
+   "text": [
+    "Apple iPhone 17 256GB: 24,990,000 (MediaMart)",
+    "Apple iPhone 17 Pro Max 256GB: 33,490,000 (MediaMart)",
+    "Apple iPhone 18 Pro 256GB: 36,750,000 (Clickbuy)",
+    "Apple iPhone 18 Pro Max 256GB: 39,490,000 (24hStore)",
+    "Apple iPad Air 11 M4 2026 256GB: 21,990,000 (CellphoneS)",
+    "Apple iPad Air M4 2026 11 128GB: 19,190,000 (Minh Tuấn Mobile)",
+    "Apple iPad Mini 7 2024 128GB: 15,790,000 (Minh Tuấn Mobile)",
+    "Apple iPad Pro M5 11 256GB: 33,790,000 (Minh Tuấn Mobile)",
+    "Apple iPhone 16E 128GB: 13,328,000 (Hoàng Hà Mobile)",
+    "Apple iPhone 17 Pro 1TB: 41,490,000 (24hStore)"
+   ]
   }
  ]
 }
