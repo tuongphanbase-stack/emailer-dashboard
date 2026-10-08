@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-07T21:34:19+00:00",
+ "generated_at": "2026-10-08T00:45:33+00:00",
  "owner": "tuongphanbase-stack",
  "sections": [
   {
@@ -21,7 +21,7 @@
    "title": "Chứng khoán",
    "icon": "📈",
    "ok": true,
-   "as_of": "2026-10-08 04:05",
+   "as_of": "2026-10-08 07:05",
    "blocks": [
     {
      "type": "tiles",
@@ -212,11 +212,6 @@
        "Vietcombank",
        5.9,
        5.9
-      ],
-      [
-       "BIDV",
-       5.9,
-       5.9
       ]
      ]
     },
@@ -261,8 +256,7 @@
     "Sacombank: 7.0%",
     "Techcombank: 6.75%",
     "MB Bank: 6.3%",
-    "Vietcombank: 5.9%",
-    "BIDV: 5.9%"
+    "Vietcombank: 5.9%"
    ]
   },
   {
