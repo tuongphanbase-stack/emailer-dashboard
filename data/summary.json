@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-09T09:37:04+00:00",
+ "generated_at": "2026-10-09T12:41:08+00:00",
  "owner": "tuongphanbase",
  "sections": [
   {
@@ -46,7 +46,7 @@
         "https://github.com/tuongphanbase/currency-rate-emailer/actions/runs/37897391905"
        ],
        50,
-       44,
+       38,
        "❌ Send Currency Rate Summary lỗi lúc 14:09 09/10"
       ],
       [
@@ -61,34 +61,34 @@
       [
        [
         "gold-price-emailer",
-        "https://github.com/tuongphanbase/gold-price-emailer/actions/runs/37909451277"
+        "https://github.com/tuongphanbase/gold-price-emailer/actions/runs/37928212407"
        ],
-       4,
+       10,
        0,
        "✅ bình thường"
       ],
       [
        [
         "tech-price-mailer",
-        "https://github.com/tuongphanbase/tech-price-mailer/actions/runs/37900360667"
+        "https://github.com/tuongphanbase/tech-price-mailer/actions/runs/37912779322"
        ],
-       46,
+       41,
        0,
        "✅ bình thường"
       ],
       [
        [
         "house-price-emailer",
-        "https://github.com/tuongphanbase/house-price-emailer/actions/runs/37910742944"
+        "https://github.com/tuongphanbase/house-price-emailer/actions/runs/37929761891"
        ],
-       47,
+       43,
        0,
        "✅ bình thường"
       ],
       [
        [
         "vn-stock-price-emailer",
-        "https://github.com/tuongphanbase/vn-stock-price-emailer/actions/runs/37909230575"
+        "https://github.com/tuongphanbase/vn-stock-price-emailer/actions/runs/37927922590"
        ],
        50,
        0,
@@ -97,7 +97,7 @@
       [
        [
         "interest-rate-emailer",
-        "https://github.com/tuongphanbase/interest-rate-emailer/actions/runs/37910476145"
+        "https://github.com/tuongphanbase/interest-rate-emailer/actions/runs/37929430399"
        ],
        49,
        0,
@@ -106,7 +106,7 @@
       [
        [
         "apps-gone-free-emailer",
-        "https://github.com/tuongphanbase/apps-gone-free-emailer/actions/runs/37909725253"
+        "https://github.com/tuongphanbase/apps-gone-free-emailer/actions/runs/37928519754"
        ],
        49,
        0,
@@ -115,7 +115,7 @@
       [
        [
         "9gag-meme-emailer",
-        "https://github.com/tuongphanbase/9gag-meme-emailer/actions/runs/37891817644"
+        "https://github.com/tuongphanbase/9gag-meme-emailer/actions/runs/37927799689"
        ],
        10,
        0,
@@ -126,11 +126,11 @@
    ],
    "text": [
     "phone-tablet-price-emailer: ❌ Deploy Pages lỗi lúc 08:10 09/10 (2/8 lỗi)",
-    "currency-rate-emailer: ❌ Send Currency Rate Summary lỗi lúc 14:09 09/10 (44/50 lỗi)",
+    "currency-rate-emailer: ❌ Send Currency Rate Summary lỗi lúc 14:09 09/10 (38/50 lỗi)",
     "reddit-top-post-emailer: ❌ Send Reddit Top Posts lỗi lúc 08:18 09/10 (1/7 lỗi)",
-    "gold-price-emailer: ✅ bình thường (0/4 lỗi)",
-    "tech-price-mailer: ✅ bình thường (0/46 lỗi)",
-    "house-price-emailer: ✅ bình thường (0/47 lỗi)",
+    "gold-price-emailer: ✅ bình thường (0/10 lỗi)",
+    "tech-price-mailer: ✅ bình thường (0/41 lỗi)",
+    "house-price-emailer: ✅ bình thường (0/43 lỗi)",
     "vn-stock-price-emailer: ✅ bình thường (0/50 lỗi)",
     "interest-rate-emailer: ✅ bình thường (0/49 lỗi)",
     "apps-gone-free-emailer: ✅ bình thường (0/49 lỗi)",
@@ -225,7 +225,7 @@
    "title": "Tỷ giá",
    "icon": "💱",
    "ok": true,
-   "as_of": "2026-10-09 16:07",
+   "as_of": "2026-10-09 19:07",
    "blocks": [
     {
      "type": "tiles",
@@ -614,6 +614,11 @@
        "Vietcombank",
        5.9,
        5.9
+      ],
+      [
+       "BIDV",
+       5.9,
+       5.9
       ]
      ]
     },
@@ -658,7 +663,8 @@
     "Sacombank: 7.0%",
     "Techcombank: 6.75%",
     "MB Bank: 6.3%",
-    "Vietcombank: 5.9%"
+    "Vietcombank: 5.9%",
+    "BIDV: 5.9%"
    ]
   },
   {
@@ -696,14 +702,6 @@
       ],
       [
        [
-        "Phân giải điểm ảnh: FHD (1920 x 1080)",
-        ""
-       ],
-       "2.999.000",
-       -50.0
-      ],
-      [
-       [
         "Ổ cứng: 512GB PCIe® 4.0 NVMe™ M.2 SSD",
         ""
        ],
@@ -725,6 +723,14 @@
        ],
        "8.599.000",
        -19.6
+      ],
+      [
+       [
+        "SSD Lexar Play X 512GB M.2 PCIe Gen4 x4 NVMe LNMPLYX512G-RNNNG",
+        "https://memoryzone.com.vn/ssd-lexar-play-x-512gb-m-2-pcie-gen4-x4-nvme-lnmplyx512g-rnnng"
+       ],
+       "3.300.000",
+       -15.4
       ]
      ]
     },
@@ -792,10 +798,10 @@
    "empty_text": null,
    "text": [
     "Ổ cứng Western Digital Caviar Blue 2TB 64MB Cache 5400rpm ( WD20EARZ): 5.999.000 (-53.1%)",
-    "Phân giải điểm ảnh: FHD (1920 x 1080): 2.999.000 (-50.0%)",
     "Ổ cứng: 512GB PCIe® 4.0 NVMe™ M.2 SSD: 33.990.000 (-20.9%)",
     "Màn hình LG UltraGear 34GX90SA-W (34 inch/WQHD/OLED/240Hz/0.03ms/webOS/cong): 26.990.000 (-20.6%)",
     "Mainboard ASUS TUF GAMING X870-PLUS WIFI: 8.599.000 (-19.6%)",
+    "SSD Lexar Play X 512GB M.2 PCIe Gen4 x4 NVMe LNMPLYX512G-RNNNG: 3.300.000 (-15.4%)",
     "Card màn hình Leadtek NVIDIA RTX PRO 4000 Blackwell 24GB GDDR7: 106.090.000 (+73.9%)",
     "Nguồn Gigabyte GP- P850GM 850W (80 Plus Gold/Full Modular/Màu Đen): 3.299.000 (+72.8%)",
     "Nguồn máy tính Cooler Master MWE V3 230V 650 - 650W (80 Plus Bronze/ATX3.1): 1.899.000 (+66.7%)",
