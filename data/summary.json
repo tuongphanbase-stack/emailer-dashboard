@@ -1,27 +1,352 @@
 {
- "generated_at": "2026-10-09T06:43:00+00:00",
+ "generated_at": "2026-10-09T08:10:17+00:00",
  "owner": "tuongphanbase-stack",
  "sections": [
+  {
+   "id": "health",
+   "title": "Tình trạng các bot",
+   "icon": "🩺",
+   "ok": true,
+   "note": "3 bot cần xem lại · 24 giờ qua",
+   "blocks": [
+    {
+     "type": "table",
+     "caption": null,
+     "columns": [
+      {
+       "label": "Bot",
+       "kind": "link"
+      },
+      {
+       "label": "Lượt chạy",
+       "kind": "num"
+      },
+      {
+       "label": "Lỗi",
+       "kind": "num"
+      },
+      {
+       "label": "Tình trạng",
+       "kind": "text"
+      }
+     ],
+     "rows": [
+      [
+       [
+        "phone-tablet-price-emailer",
+        "https://github.com/tuongphanbase-stack/phone-tablet-price-emailer/actions/runs/37868501680"
+       ],
+       6,
+       2,
+       "❌ Deploy Pages lỗi lúc 01:10 UTC"
+      ],
+      [
+       [
+        "currency-rate-emailer",
+        "https://github.com/tuongphanbase-stack/currency-rate-emailer/actions/runs/37897391905"
+       ],
+       49,
+       46,
+       "❌ Send Currency Rate Summary lỗi lúc 07:09 UTC"
+      ],
+      [
+       [
+        "reddit-top-post-emailer",
+        "https://github.com/tuongphanbase-stack/reddit-top-post-emailer/actions/runs/37869159073"
+       ],
+       4,
+       1,
+       "❌ Send Reddit Top Posts lỗi lúc 01:18 UTC"
+      ],
+      [
+       [
+        "gold-price-emailer",
+        "https://github.com/tuongphanbase-stack/gold-price-emailer/actions/runs/37903220570"
+       ],
+       1,
+       0,
+       "✅ bình thường"
+      ],
+      [
+       [
+        "tech-price-mailer",
+        "https://github.com/tuongphanbase-stack/tech-price-mailer/actions/runs/37900360667"
+       ],
+       47,
+       0,
+       "✅ bình thường"
+      ],
+      [
+       [
+        "house-price-emailer",
+        "https://github.com/tuongphanbase-stack/house-price-emailer/actions/runs/37900498360"
+       ],
+       47,
+       0,
+       "✅ bình thường"
+      ],
+      [
+       [
+        "vn-stock-price-emailer",
+        "https://github.com/tuongphanbase-stack/vn-stock-price-emailer/actions/runs/37902966567"
+       ],
+       49,
+       0,
+       "✅ bình thường"
+      ],
+      [
+       [
+        "interest-rate-emailer",
+        "https://github.com/tuongphanbase-stack/interest-rate-emailer/actions/runs/37901182249"
+       ],
+       48,
+       0,
+       "✅ bình thường"
+      ],
+      [
+       [
+        "apps-gone-free-emailer",
+        "https://github.com/tuongphanbase-stack/apps-gone-free-emailer/actions/runs/37900738567"
+       ],
+       48,
+       0,
+       "✅ bình thường"
+      ],
+      [
+       [
+        "9gag-meme-emailer",
+        "https://github.com/tuongphanbase-stack/9gag-meme-emailer/actions/runs/37891817644"
+       ],
+       6,
+       0,
+       "✅ bình thường"
+      ]
+     ]
+    }
+   ],
+   "text": [
+    "phone-tablet-price-emailer: ❌ Deploy Pages lỗi lúc 01:10 UTC (2/6 lỗi)",
+    "currency-rate-emailer: ❌ Send Currency Rate Summary lỗi lúc 07:09 UTC (46/49 lỗi)",
+    "reddit-top-post-emailer: ❌ Send Reddit Top Posts lỗi lúc 01:18 UTC (1/4 lỗi)",
+    "gold-price-emailer: ✅ bình thường (0/1 lỗi)",
+    "tech-price-mailer: ✅ bình thường (0/47 lỗi)",
+    "house-price-emailer: ✅ bình thường (0/47 lỗi)",
+    "vn-stock-price-emailer: ✅ bình thường (0/49 lỗi)",
+    "interest-rate-emailer: ✅ bình thường (0/48 lỗi)",
+    "apps-gone-free-emailer: ✅ bình thường (0/48 lỗi)",
+    "9gag-meme-emailer: ✅ bình thường (0/6 lỗi)"
+   ]
+  },
   {
    "id": "gold",
    "title": "Giá vàng",
    "icon": "🪙",
-   "ok": false,
-   "reason": "chưa có lịch sử giá vàng"
+   "ok": true,
+   "as_of": "2026-10-09",
+   "note": "Giá bán, VND/lượng",
+   "blocks": [
+    {
+     "type": "chart",
+     "unit": "VND",
+     "series": [
+      {
+       "name": "SJC",
+       "points": [
+        [
+         "2026-10-09",
+         144800000
+        ]
+       ]
+      },
+      {
+       "name": "PNJ",
+       "points": [
+        [
+         "2026-10-09",
+         144800000
+        ]
+       ]
+      },
+      {
+       "name": "DOJI",
+       "points": [
+        [
+         "2026-10-09",
+         144800000
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": "table",
+     "caption": null,
+     "columns": [
+      {
+       "label": "Sản phẩm",
+       "kind": "text"
+      },
+      {
+       "label": "Giá bán (VND)",
+       "kind": "num"
+      },
+      {
+       "label": "So với hôm trước",
+       "kind": "change"
+      }
+     ],
+     "rows": [
+      [
+       "SJC",
+       144800000,
+       null
+      ],
+      [
+       "PNJ",
+       144800000,
+       null
+      ],
+      [
+       "DOJI",
+       144800000,
+       null
+      ]
+     ]
+    }
+   ],
+   "text": [
+    "SJC: 144,800,000 VND",
+    "PNJ: 144,800,000 VND",
+    "DOJI: 144,800,000 VND"
+   ]
   },
   {
    "id": "currency",
    "title": "Tỷ giá",
    "icon": "💱",
-   "ok": false,
-   "reason": "chưa có rate_history.csv"
+   "ok": true,
+   "as_of": "2026-10-09 15:07",
+   "blocks": [
+    {
+     "type": "tiles",
+     "unit": "VND",
+     "items": [
+      {
+       "label": "USD",
+       "value": 25641.03,
+       "change_pct": null,
+       "period": "24h",
+       "points": [
+        [
+         "2026-10-09",
+         25641.03
+        ]
+       ]
+      },
+      {
+       "label": "EUR",
+       "value": 29411.76,
+       "change_pct": null,
+       "period": "24h",
+       "points": [
+        [
+         "2026-10-09",
+         29411.76
+        ]
+       ]
+      },
+      {
+       "label": "JPY",
+       "value": 163.69,
+       "change_pct": null,
+       "period": "24h",
+       "points": [
+        [
+         "2026-10-09",
+         163.69
+        ]
+       ]
+      },
+      {
+       "label": "CNY",
+       "value": 3875.97,
+       "change_pct": null,
+       "period": "24h",
+       "points": [
+        [
+         "2026-10-09",
+         3875.97
+        ]
+       ]
+      },
+      {
+       "label": "KRW",
+       "value": 19.26,
+       "change_pct": null,
+       "period": "24h",
+       "points": [
+        [
+         "2026-10-09",
+         19.26
+        ]
+       ]
+      },
+      {
+       "label": "GBP",
+       "value": 34482.76,
+       "change_pct": null,
+       "period": "24h",
+       "points": [
+        [
+         "2026-10-09",
+         34482.76
+        ]
+       ]
+      },
+      {
+       "label": "SGD",
+       "value": 20000.0,
+       "change_pct": null,
+       "period": "24h",
+       "points": [
+        [
+         "2026-10-09",
+         20000.0
+        ]
+       ]
+      },
+      {
+       "label": "AUD",
+       "value": 17857.14,
+       "change_pct": null,
+       "period": "24h",
+       "points": [
+        [
+         "2026-10-09",
+         17857.14
+        ]
+       ]
+      }
+     ]
+    }
+   ],
+   "text": [
+    "USD: 25,641.03 (None%)",
+    "EUR: 29,411.76 (None%)",
+    "JPY: 163.69 (None%)",
+    "CNY: 3,875.97 (None%)",
+    "KRW: 19.26 (None%)",
+    "GBP: 34,482.76 (None%)",
+    "SGD: 20,000.0 (None%)",
+    "AUD: 17,857.14 (None%)"
+   ]
   },
   {
    "id": "stocks",
    "title": "Chứng khoán",
    "icon": "📈",
    "ok": true,
-   "as_of": "2026-10-09 13:07",
+   "as_of": "2026-10-09 15:06",
    "blocks": [
     {
      "type": "tiles",
@@ -29,8 +354,8 @@
      "items": [
       {
        "label": "VIC",
-       "value": 228000.0,
-       "change_pct": -1.13,
+       "value": 225500.0,
+       "change_pct": -1.1,
        "period": "24h",
        "points": [
         [
@@ -43,14 +368,14 @@
         ],
         [
          "2026-10-09",
-         228000.0
+         225500.0
         ]
        ]
       },
       {
        "label": "VHM",
-       "value": 64700.0,
-       "change_pct": -4.15,
+       "value": 66000.0,
+       "change_pct": 0.46,
        "period": "24h",
        "points": [
         [
@@ -63,14 +388,14 @@
         ],
         [
          "2026-10-09",
-         64700.0
+         66000.0
         ]
        ]
       },
       {
        "label": "VCB",
-       "value": 56400.0,
-       "change_pct": -1.05,
+       "value": 56700.0,
+       "change_pct": -0.18,
        "period": "24h",
        "points": [
         [
@@ -83,14 +408,14 @@
         ],
         [
          "2026-10-09",
-         56400.0
+         56700.0
         ]
        ]
       },
       {
        "label": "BID",
-       "value": 33550.0,
-       "change_pct": -2.19,
+       "value": 33900.0,
+       "change_pct": -0.29,
        "period": "24h",
        "points": [
         [
@@ -103,14 +428,14 @@
         ],
         [
          "2026-10-09",
-         33550.0
+         33900.0
         ]
        ]
       },
       {
        "label": "TCB",
-       "value": 31950.0,
-       "change_pct": -1.24,
+       "value": 32350.0,
+       "change_pct": 1.41,
        "period": "24h",
        "points": [
         [
@@ -123,14 +448,14 @@
         ],
         [
          "2026-10-09",
-         31950.0
+         32350.0
         ]
        ]
       },
       {
        "label": "CTG",
-       "value": 29000.0,
-       "change_pct": -1.69,
+       "value": 29500.0,
+       "change_pct": 1.03,
        "period": "24h",
        "points": [
         [
@@ -143,14 +468,14 @@
         ],
         [
          "2026-10-09",
-         29000.0
+         29500.0
         ]
        ]
       },
       {
        "label": "VPB",
-       "value": 23450.0,
-       "change_pct": -0.21,
+       "value": 23800.0,
+       "change_pct": 1.49,
        "period": "24h",
        "points": [
         [
@@ -163,14 +488,14 @@
         ],
         [
          "2026-10-09",
-         23450.0
+         23800.0
         ]
        ]
       },
       {
        "label": "GAS",
-       "value": 82100.0,
-       "change_pct": 1.73,
+       "value": 80700.0,
+       "change_pct": -1.59,
        "period": "24h",
        "points": [
         [
@@ -183,7 +508,7 @@
         ],
         [
          "2026-10-09",
-         82100.0
+         80700.0
         ]
        ]
       }
@@ -209,41 +534,41 @@
      "rows": [
       [
        "HDB",
-       22000.0,
-       -21.01
+       22400.0,
+       -19.86
+      ],
+      [
+       "THD",
+       89100.0,
+       11.38
       ],
       [
        "SAS",
-       37500.0,
-       10.95
+       36900.0,
+       8.85
       ],
       [
-       "AGR",
-       10600.0,
-       -8.23
+       "NVL",
+       10950.0,
+       7.88
       ],
       [
-       "MVN",
-       68000.0,
-       -8.11
-      ],
-      [
-       "STG",
-       37850.0,
-       6.92
+       "KSV",
+       123000.0,
+       -7.59
       ]
      ]
     }
    ],
    "text": [
-    "VIC: 228,000.0 (-1.13%)",
-    "VHM: 64,700.0 (-4.15%)",
-    "VCB: 56,400.0 (-1.05%)",
-    "BID: 33,550.0 (-2.19%)",
-    "TCB: 31,950.0 (-1.24%)",
-    "CTG: 29,000.0 (-1.69%)",
-    "VPB: 23,450.0 (-0.21%)",
-    "GAS: 82,100.0 (1.73%)"
+    "VIC: 225,500.0 (-1.1%)",
+    "VHM: 66,000.0 (0.46%)",
+    "VCB: 56,700.0 (-0.18%)",
+    "BID: 33,900.0 (-0.29%)",
+    "TCB: 32,350.0 (1.41%)",
+    "CTG: 29,500.0 (1.03%)",
+    "VPB: 23,800.0 (1.49%)",
+    "GAS: 80,700.0 (-1.59%)"
    ]
   },
   {
