@@ -22,7 +22,7 @@ source without any change. Each section degrades gracefully if its data
 isn't there yet.
 
 Environment:
-  GITHUB_OWNER        owner of the emailer repos (default: tuongphanbase-stack)
+  GITHUB_OWNER        owner of the emailer repos (default: tuongphanbase)
   GH_READ_TOKEN       optional; a token that can read the emailer repos. Needed
                       once those repos are private (public repos need none).
   GMAIL_ADDRESS, GMAIL_APP_PASSWORD, SUMMARY_RECIPIENT   for `send`

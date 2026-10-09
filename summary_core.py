@@ -25,7 +25,7 @@ from datetime import datetime, timedelta
 
 import requests
 
-OWNER = os.environ.get("GITHUB_OWNER") or "tuongphanbase-stack"
+OWNER = os.environ.get("GITHUB_OWNER") or "tuongphanbase"
 TOKEN = os.environ.get("GH_READ_TOKEN") or ""
 HISTORY_DAYS = 90  # how much history the charts get
 

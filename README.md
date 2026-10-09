@@ -12,7 +12,7 @@ its status, the last email it sent, and a button to run it now.
    - `workflow`: the workflow file name in that repo's `.github/workflows/`
 2. Publish with GitHub Pages: Settings -> Pages -> Source: `main` branch,
    `/` root. The page will be at
-   https://tuongphanbase-stack.github.io/emailer-dashboard/
+   https://tuongphanbase.github.io/emailer-dashboard/
 3. Optional: paste a GitHub token into the **TOKEN** box on the page. It's
    needed for the "run now" button and for higher API rate limits. The token
    is saved only in your own browser.

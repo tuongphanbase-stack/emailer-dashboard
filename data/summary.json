@@ -1,6 +1,6 @@
 {
  "generated_at": "2026-10-09T09:37:04+00:00",
- "owner": "tuongphanbase-stack",
+ "owner": "tuongphanbase",
  "sections": [
   {
    "id": "health",
@@ -34,7 +34,7 @@
       [
        [
         "phone-tablet-price-emailer",
-        "https://github.com/tuongphanbase-stack/phone-tablet-price-emailer/actions/runs/37868501680"
+        "https://github.com/tuongphanbase/phone-tablet-price-emailer/actions/runs/37868501680"
        ],
        8,
        2,
@@ -43,7 +43,7 @@
       [
        [
         "currency-rate-emailer",
-        "https://github.com/tuongphanbase-stack/currency-rate-emailer/actions/runs/37897391905"
+        "https://github.com/tuongphanbase/currency-rate-emailer/actions/runs/37897391905"
        ],
        50,
        44,
@@ -52,7 +52,7 @@
       [
        [
         "reddit-top-post-emailer",
-        "https://github.com/tuongphanbase-stack/reddit-top-post-emailer/actions/runs/37869159073"
+        "https://github.com/tuongphanbase/reddit-top-post-emailer/actions/runs/37869159073"
        ],
        7,
        1,
@@ -61,7 +61,7 @@
       [
        [
         "gold-price-emailer",
-        "https://github.com/tuongphanbase-stack/gold-price-emailer/actions/runs/37909451277"
+        "https://github.com/tuongphanbase/gold-price-emailer/actions/runs/37909451277"
        ],
        4,
        0,
@@ -70,7 +70,7 @@
       [
        [
         "tech-price-mailer",
-        "https://github.com/tuongphanbase-stack/tech-price-mailer/actions/runs/37900360667"
+        "https://github.com/tuongphanbase/tech-price-mailer/actions/runs/37900360667"
        ],
        46,
        0,
@@ -79,7 +79,7 @@
       [
        [
         "house-price-emailer",
-        "https://github.com/tuongphanbase-stack/house-price-emailer/actions/runs/37910742944"
+        "https://github.com/tuongphanbase/house-price-emailer/actions/runs/37910742944"
        ],
        47,
        0,
@@ -88,7 +88,7 @@
       [
        [
         "vn-stock-price-emailer",
-        "https://github.com/tuongphanbase-stack/vn-stock-price-emailer/actions/runs/37909230575"
+        "https://github.com/tuongphanbase/vn-stock-price-emailer/actions/runs/37909230575"
        ],
        50,
        0,
@@ -97,7 +97,7 @@
       [
        [
         "interest-rate-emailer",
-        "https://github.com/tuongphanbase-stack/interest-rate-emailer/actions/runs/37910476145"
+        "https://github.com/tuongphanbase/interest-rate-emailer/actions/runs/37910476145"
        ],
        49,
        0,
@@ -106,7 +106,7 @@
       [
        [
         "apps-gone-free-emailer",
-        "https://github.com/tuongphanbase-stack/apps-gone-free-emailer/actions/runs/37909725253"
+        "https://github.com/tuongphanbase/apps-gone-free-emailer/actions/runs/37909725253"
        ],
        49,
        0,
@@ -115,7 +115,7 @@
       [
        [
         "9gag-meme-emailer",
-        "https://github.com/tuongphanbase-stack/9gag-meme-emailer/actions/runs/37891817644"
+        "https://github.com/tuongphanbase/9gag-meme-emailer/actions/runs/37891817644"
        ],
        10,
        0,
