@@ -128,7 +128,7 @@ class Sources(unittest.TestCase):
         self.assertEqual(names[:3], ["phone-tablet-price-emailer", "currency-rate-emailer", "gold-price-emailer"])
         cur = rows[names.index("currency-rate-emailer")]
         self.assertEqual(cur[1:3], [2, 2])
-        self.assertIn("07:09", cur[3])
+        self.assertIn("14:09 09/10", cur[3])  # 07:09 UTC in Vietnam time
         self.assertTrue(cur[0][1].startswith("https://github.com/"))
         self.assertIn("Deploy Pages", rows[names.index("phone-tablet-price-emailer")][3])  # side workflows count too
         self.assertIn("không chạy", rows[names.index("gold-price-emailer")][3])

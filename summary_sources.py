@@ -11,11 +11,21 @@ import json
 import os
 import re
 from datetime import date, datetime, timedelta, timezone
+from zoneinfo import ZoneInfo
 
 from summary_core import (HISTORY_DAYS, chart, col, daily_last, empty, fetch_file, fetch_runs,
                           parse_history_csv, pct_change, source, table, tiles)
 
 CONFIG_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "config.json")
+LOCAL_TZ = ZoneInfo(os.environ.get("TIMEZONE") or "Asia/Ho_Chi_Minh")
+
+
+def _local_time(iso):
+    """GitHub's "2026-10-09T07:09:07Z" -> "14:09 09/10" in the email's timezone."""
+    try:
+        return datetime.fromisoformat(iso.replace("Z", "+00:00")).astimezone(LOCAL_TZ).strftime("%H:%M %d/%m")
+    except (AttributeError, ValueError):
+        return "?"
 
 
 @source("health", "Tình trạng các bot", icon="🩺")
@@ -42,7 +52,7 @@ def health(opt):
         main_runs = [r for r in runs if r.get("path", "").endswith("/" + repo.get("workflow", ""))]
         if failed:
             latest = failed[0]
-            status = f"❌ {latest.get('name', '')} lỗi lúc {latest.get('created_at', '')[11:16]} UTC"
+            status = f"❌ {latest.get('name', '')} lỗi lúc {_local_time(latest.get('created_at'))}"
             link = latest.get("html_url") or f"https://github.com/{owner}/{name}/actions"
             rank = 0
             bad += 1
