@@ -23,6 +23,7 @@ concurrency:
 jobs:
   summary:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     env:
       HAS_GMAIL: ${{ secrets.GMAIL_ADDRESS != '' && secrets.GMAIL_APP_PASSWORD != '' }}
       SEND: ${{ github.event.schedule == '45 0 * * *' || (github.event_name == 'workflow_dispatch' && inputs.send_email) }}
