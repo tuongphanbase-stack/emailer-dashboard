@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-09T01:03:18+00:00",
+ "generated_at": "2026-10-09T03:35:58+00:00",
  "owner": "tuongphanbase-stack",
  "sections": [
   {
@@ -21,7 +21,7 @@
    "title": "Chứng khoán",
    "icon": "📈",
    "ok": true,
-   "as_of": "2026-10-09 07:53",
+   "as_of": "2026-10-09 10:05",
    "blocks": [
     {
      "type": "tiles",
@@ -30,7 +30,7 @@
       {
        "label": "VIC",
        "value": 228000.0,
-       "change_pct": -0.87,
+       "change_pct": -0.91,
        "period": "24h",
        "points": [
         [
@@ -49,8 +49,8 @@
       },
       {
        "label": "VHM",
-       "value": 65700.0,
-       "change_pct": -3.38,
+       "value": 65600.0,
+       "change_pct": -3.67,
        "period": "24h",
        "points": [
         [
@@ -63,14 +63,14 @@
         ],
         [
          "2026-10-09",
-         65700.0
+         65600.0
         ]
        ]
       },
       {
        "label": "VCB",
-       "value": 56600.0,
-       "change_pct": -1.05,
+       "value": 56400.0,
+       "change_pct": -1.23,
        "period": "24h",
        "points": [
         [
@@ -83,14 +83,14 @@
         ],
         [
          "2026-10-09",
-         56600.0
+         56400.0
         ]
        ]
       },
       {
        "label": "BID",
-       "value": 33900.0,
-       "change_pct": -1.74,
+       "value": 33650.0,
+       "change_pct": -2.32,
        "period": "24h",
        "points": [
         [
@@ -103,14 +103,14 @@
         ],
         [
          "2026-10-09",
-         33900.0
+         33650.0
         ]
        ]
       },
       {
        "label": "TCB",
-       "value": 31900.0,
-       "change_pct": -1.24,
+       "value": 31950.0,
+       "change_pct": -0.31,
        "period": "24h",
        "points": [
         [
@@ -123,13 +123,13 @@
         ],
         [
          "2026-10-09",
-         31900.0
+         31950.0
         ]
        ]
       },
       {
        "label": "CTG",
-       "value": 29200.0,
+       "value": 29100.0,
        "change_pct": -1.85,
        "period": "24h",
        "points": [
@@ -143,14 +143,14 @@
         ],
         [
          "2026-10-09",
-         29200.0
+         29100.0
         ]
        ]
       },
       {
        "label": "VPB",
-       "value": 23450.0,
-       "change_pct": 0.21,
+       "value": 23500.0,
+       "change_pct": 1.73,
        "period": "24h",
        "points": [
         [
@@ -163,14 +163,14 @@
         ],
         [
          "2026-10-09",
-         23450.0
+         23500.0
         ]
        ]
       },
       {
        "label": "GAS",
-       "value": 82000.0,
-       "change_pct": 4.59,
+       "value": 83000.0,
+       "change_pct": 4.67,
        "period": "24h",
        "points": [
         [
@@ -183,7 +183,7 @@
         ],
         [
          "2026-10-09",
-         82000.0
+         83000.0
         ]
        ]
       }
@@ -209,41 +209,41 @@
      "rows": [
       [
        "HDB",
-       21538.46156,
-       -23.35
+       21650.0,
+       -22.12
       ],
       [
-       "KSV",
-       133100.0,
-       10.0
+       "MVN",
+       68000.0,
+       -10.53
       ],
       [
-       "VIF",
-       13900.0,
-       -8.55
+       "CSV",
+       22150.0,
+       9.93
       ],
       [
-       "AGR",
-       10613.2075875,
-       -8.51
+       "SHB",
+       9800.0,
+       -8.41
       ],
       [
-       "THD",
-       81000.0,
-       -8.16
+       "SHS",
+       11200.0,
+       -8.2
       ]
      ]
     }
    ],
    "text": [
-    "VIC: 228,000.0 (-0.87%)",
-    "VHM: 65,700.0 (-3.38%)",
-    "VCB: 56,600.0 (-1.05%)",
-    "BID: 33,900.0 (-1.74%)",
-    "TCB: 31,900.0 (-1.24%)",
-    "CTG: 29,200.0 (-1.85%)",
-    "VPB: 23,450.0 (0.21%)",
-    "GAS: 82,000.0 (4.59%)"
+    "VIC: 228,000.0 (-0.91%)",
+    "VHM: 65,600.0 (-3.67%)",
+    "VCB: 56,400.0 (-1.23%)",
+    "BID: 33,650.0 (-2.32%)",
+    "TCB: 31,950.0 (-0.31%)",
+    "CTG: 29,100.0 (-1.85%)",
+    "VPB: 23,500.0 (1.73%)",
+    "GAS: 83,000.0 (4.67%)"
    ]
   },
   {
@@ -287,11 +287,6 @@
       ],
       [
        "Vietcombank",
-       5.9,
-       5.9
-      ],
-      [
-       "BIDV",
        5.9,
        5.9
       ]
@@ -338,8 +333,7 @@
     "Sacombank: 7.0%",
     "Techcombank: 6.75%",
     "MB Bank: 6.3%",
-    "Vietcombank: 5.9%",
-    "BIDV: 5.9%"
+    "Vietcombank: 5.9%"
    ]
   },
   {
@@ -489,7 +483,7 @@
    "title": "Giá điện thoại & máy tính bảng",
    "icon": "📱",
    "ok": true,
-   "as_of": "2026-10-08 13:07",
+   "as_of": "2026-10-09 01:10",
    "note": "Model bán ở nhiều cửa hàng nhất, giá rẻ nhất hiện tại",
    "blocks": [
     {
@@ -518,16 +512,6 @@
       }
      ],
      "rows": [
-      [
-       [
-        "Apple iPhone 17 256GB",
-        "https://mediamart.vn/smartphones#28207"
-       ],
-       24990000,
-       "MediaMart",
-       3,
-       null
-      ],
       [
        [
         "Apple iPhone 17 Pro Max 256GB",
@@ -610,6 +594,16 @@
       ],
       [
        [
+        "Apple iPhone 17 256GB",
+        "https://mediamart.vn/smartphones#28207"
+       ],
+       24990000,
+       "MediaMart",
+       2,
+       null
+      ],
+      [
+       [
         "Apple iPhone 17 Pro 1TB",
         "https://24hstore.vn/iphone-17-pro/iphone-17-pro-1tb-p11590"
        ],
@@ -622,7 +616,6 @@
     }
    ],
    "text": [
-    "Apple iPhone 17 256GB: 24,990,000 (MediaMart)",
     "Apple iPhone 17 Pro Max 256GB: 33,490,000 (MediaMart)",
     "Apple iPhone 18 Pro 256GB: 36,750,000 (Clickbuy)",
     "Apple iPhone 18 Pro Max 256GB: 39,490,000 (24hStore)",
@@ -631,6 +624,7 @@
     "Apple iPad Mini 7 2024 128GB: 15,790,000 (Minh Tuấn Mobile)",
     "Apple iPad Pro M5 11 256GB: 33,790,000 (Minh Tuấn Mobile)",
     "Apple iPhone 16E 128GB: 13,328,000 (Hoàng Hà Mobile)",
+    "Apple iPhone 17 256GB: 24,990,000 (MediaMart)",
     "Apple iPhone 17 Pro 1TB: 41,490,000 (24hStore)"
    ]
   }
