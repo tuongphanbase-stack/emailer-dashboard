@@ -57,6 +57,21 @@ def fetch_file(repo, path, ref="main", owner=None):
     return resp.text
 
 
+def fetch_runs(repo, since, owner=None):
+    """Workflow runs of a repo created at or after `since` (UTC datetime),
+    newest first. Public repos need no token, but one raises the rate limit."""
+    owner = owner or OWNER
+    token = TOKEN or os.environ.get("GITHUB_TOKEN") or ""
+    headers = {"Accept": "application/vnd.github+json"}
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
+    resp = requests.get(f"https://api.github.com/repos/{owner}/{repo}/actions/runs", headers=headers,
+                        params={"created": f">={since.strftime('%Y-%m-%dT%H:%M:%SZ')}", "per_page": 100},
+                        timeout=30)
+    resp.raise_for_status()
+    return resp.json().get("workflow_runs", [])
+
+
 # --- Series helpers ---------------------------------------------------------
 
 def daily_last(points, days=HISTORY_DAYS):

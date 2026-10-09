@@ -15,6 +15,7 @@ on:
 
 permissions:
   contents: write   # commit data/summary.json
+  actions: read     # bot-health section: workflow runs
 
 concurrency:
   group: daily-summary
@@ -47,6 +48,8 @@ jobs:
           # Only needed once the emailer repos are private: a fine-grained
           # token with read access to their contents.
           GH_READ_TOKEN: ${{ secrets.GH_READ_TOKEN }}
+          # Raises the API rate limit for the bot-health section.
+          GITHUB_TOKEN: ${{ github.token }}
           GITHUB_OWNER: ${{ github.repository_owner }}
         run: python daily_summary.py collect
 

@@ -68,7 +68,7 @@
     compact: true,
   }).then(data => {
     const jump = document.getElementById('jump');
-    ((data && data.sections) || []).filter(s => s.ok).forEach(s => {
+    ((data && data.sections) || []).filter(s => s.ok && s.id !== 'health').forEach(s => {
       const a = document.createElement('a');
       a.href = `#m-${s.id}`; a.textContent = `${s.icon || ''} ${s.title}`.trim();
       jump.appendChild(a);

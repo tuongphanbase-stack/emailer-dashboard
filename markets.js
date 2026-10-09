@@ -355,7 +355,8 @@
     if(OPTS.updated) OPTS.updated.textContent = `Cập nhật ${when} · làm mới mỗi 3 giờ`;
     const container = OPTS.sections;
     container.replaceChildren();
-    const sections = SUMMARY.sections || [];
+    // Bot health is for the morning email; the home page shows run status itself.
+    const sections = (SUMMARY.sections || []).filter(s => s.id !== 'health');
     const only = OPTS.only ? sections.filter(s => OPTS.only.includes(s.id)) : sections;
     only.map(s => renderSection(container, s)).forEach(fill => fill());
   }

@@ -52,6 +52,30 @@ def fake_fetch(repo, path, ref="main", owner=None):
     return FILES.get((repo, path))
 
 
+def _run(name, path, conclusion, at="2026-10-09T01:00:00Z"):
+    return {"name": name, "path": f".github/workflows/{path}", "status": "completed", "conclusion": conclusion,
+            "created_at": at, "html_url": f"https://github.com/o/r/actions/runs/{abs(hash((name, at)))}"}
+
+
+RUNS = {
+    "currency-rate-emailer": [_run("Send Currency Rate Summary", "send-currency-rate.yml", "failure", "2026-10-09T07:09:07Z"),
+                              _run("Send Currency Rate Summary", "send-currency-rate.yml", "failure")],
+    "phone-tablet-price-emailer": [_run("Deploy Pages", "pages.yml", "failure"),
+                                   _run("Send phone & tablet prices", "send-phone-prices.yml", "success")],
+    "gold-price-emailer": [],  # Actions not enabled: never runs
+}
+
+
+with open(os.path.join(ROOT, "config.json"), encoding="utf-8") as _f:
+    WORKFLOWS = {r["name"]: r["workflow"] for r in json.load(_f)["repos"]}
+
+
+def fake_runs(repo, since, owner=None):
+    if repo == "broken-repo":
+        raise RuntimeError("HTTP 403")
+    return RUNS.get(repo, [_run("Main", WORKFLOWS[repo], "success")])
+
+
 class Sources(unittest.TestCase):
     def setUp(self):
         self._orig = summary_sources.fetch_file
@@ -91,6 +115,36 @@ class Sources(unittest.TestCase):
         for name in daily_summary.DEFAULT_SOURCES:
             self.assertFalse(self.run_source(name)["ok"], name)
 
+    def test_health_lists_failing_bots_first(self):
+        orig = summary_sources.fetch_runs
+        summary_sources.fetch_runs = fake_runs
+        try:
+            s = self.run_source("health")
+        finally:
+            summary_sources.fetch_runs = orig
+        rows = s["blocks"][0]["rows"]
+        names = [r[0][0] for r in rows]
+        # failures first (in config order), then bots that never ran, then healthy ones
+        self.assertEqual(names[:3], ["phone-tablet-price-emailer", "currency-rate-emailer", "gold-price-emailer"])
+        cur = rows[names.index("currency-rate-emailer")]
+        self.assertEqual(cur[1:3], [2, 2])
+        self.assertIn("07:09", cur[3])
+        self.assertTrue(cur[0][1].startswith("https://github.com/"))
+        self.assertIn("Deploy Pages", rows[names.index("phone-tablet-price-emailer")][3])  # side workflows count too
+        self.assertIn("không chạy", rows[names.index("gold-price-emailer")][3])
+        self.assertTrue(all("bình thường" in r[3] for r in rows[3:]))
+        self.assertTrue(s["note"].startswith("3 bot"))
+
+    def test_health_survives_an_unreadable_repo(self):
+        orig = summary_sources.fetch_runs
+        summary_sources.fetch_runs = lambda repo, since, owner=None: fake_runs("broken-repo", since)
+        try:
+            s = self.run_source("health")
+        finally:
+            summary_sources.fetch_runs = orig
+        self.assertFalse(s["ok"])  # nothing readable at all
+        self.assertIn("không đọc được", s["blocks"][0]["rows"][0][3])
+
     def test_csv_history_needs_no_code(self):
         s = self.run_source("csv_history", repo="vn-stock-price-emailer", path="price_history.csv",
                             key_col="ticker", value_col="close", keys=["FPT"])
@@ -112,20 +166,20 @@ class ConfigAndEmail(unittest.TestCase):
 
     def test_repo_config_is_valid(self):
         entries = daily_summary.load_source_config(os.path.join(ROOT, "config.json"))
-        self.assertEqual([e["id"] for e in entries], daily_summary.DEFAULT_SOURCES)
+        self.assertEqual([e["id"] for e in entries], ["health"] + daily_summary.DEFAULT_SOURCES)
 
     def test_email_renders_every_block(self):
-        orig = summary_sources.fetch_file
-        summary_sources.fetch_file = fake_fetch
+        orig, orig_runs = summary_sources.fetch_file, summary_sources.fetch_runs
+        summary_sources.fetch_file, summary_sources.fetch_runs = fake_fetch, fake_runs
         try:
             sections = [daily_summary.run_source({**e, "fn": summary_core.SOURCES[e["source"]]["fn"]})
                         for e in daily_summary.load_source_config(os.path.join(ROOT, "config.json"))]
         finally:
-            summary_sources.fetch_file = orig
+            summary_sources.fetch_file, summary_sources.fetch_runs = orig, orig_runs
         sections.append({"id": "x", "title": "Broken", "ok": False, "reason": "lỗi: boom"})
         subject, html, text = daily_summary.build_email({"sections": sections})
         self.assertIn("Tổng hợp buổi sáng", subject)
-        for needle in ("Giá vàng", "120.000.000", "USD", "https://x.vn/ssd", "Apple iPhone 16 128GB", "lỗi: boom"):
+        for needle in ("Tình trạng các bot", "currency-rate-emailer", "Giá vàng", "120.000.000", "USD", "https://x.vn/ssd", "Apple iPhone 16 128GB", "lỗi: boom"):
             self.assertIn(needle, html)
         self.assertIn("GIÁ VÀNG", text)
 

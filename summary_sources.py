@@ -8,11 +8,55 @@ needs no code at all: use the "csv_history" source with options.
 import csv
 import io
 import json
+import os
 import re
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta, timezone
 
-from summary_core import (HISTORY_DAYS, chart, col, daily_last, empty, fetch_file,
+from summary_core import (HISTORY_DAYS, chart, col, daily_last, empty, fetch_file, fetch_runs,
                           parse_history_csv, pct_change, source, table, tiles)
+
+CONFIG_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "config.json")
+
+
+@source("health", "Tình trạng các bot", icon="🩺")
+def health(opt):
+    """Every workflow run of the bots in config.json -> "repos" over the last
+    `hours` (default 24): one row per repo, failing repos first. This replaces
+    GitHub's one-email-per-failed-run notices with one line a day.
+    Options: hours."""
+    hours = int(opt.get("hours", 24))
+    with open(CONFIG_FILE, encoding="utf-8") as f:
+        cfg = json.load(f)
+    owner = cfg.get("owner")
+    since = datetime.now(timezone.utc) - timedelta(hours=hours)
+    rows, bad, errors = [], 0, []
+    for repo in cfg.get("repos", []):
+        name = repo["name"]
+        try:
+            runs = [r for r in fetch_runs(name, since, owner=owner) if r.get("status") == "completed"]
+        except Exception as e:  # one repo the API refuses must not hide the rest
+            errors.append(name)
+            rows.append((2, [[name, f"https://github.com/{owner}/{name}/actions"], None, None, f"⚠️ không đọc được ({e})"]))
+            continue
+        failed = [r for r in runs if r.get("conclusion") in ("failure", "timed_out", "startup_failure")]
+        main_runs = [r for r in runs if r.get("path", "").endswith("/" + repo.get("workflow", ""))]
+        if failed:
+            latest = failed[0]
+            status = f"❌ {latest.get('name', '')} lỗi lúc {latest.get('created_at', '')[11:16]} UTC"
+            link = latest.get("html_url") or f"https://github.com/{owner}/{name}/actions"
+            rank = 0
+            bad += 1
+        elif not main_runs:
+            status, link, rank = "⏸️ không chạy lần nào", f"https://github.com/{owner}/{name}/actions", 1
+            bad += 1
+        else:
+            status, link, rank = "✅ bình thường", main_runs[0].get("html_url") or "", 3
+        rows.append((rank, [[name, link], len(runs), len(failed), status]))
+    rows = [r for _, r in sorted(rows, key=lambda x: x[0])]
+    note = (f"{bad} bot cần xem lại" if bad else "Tất cả bot chạy bình thường") + f" · {hours} giờ qua"
+    return {"ok": bool(rows) and len(errors) < len(rows), "note": note,
+            "blocks": [table([col("Bot", "link"), col("Lượt chạy", "num"), col("Lỗi", "num"), col("Tình trạng")], rows)],
+            "text": [f"{r[0][0]}: {r[3]} ({r[2] or 0}/{r[1] or 0} lỗi)" for r in rows]}
 
 
 @source("csv_history", "Lịch sử", icon="📈")

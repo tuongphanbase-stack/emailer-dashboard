@@ -53,6 +53,7 @@
     }
   ],
   "summary_sources": [
+    "health",
     "gold",
     "currency",
     "stocks",
