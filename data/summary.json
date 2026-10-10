@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-10T00:46:24+00:00",
+ "generated_at": "2026-10-10T01:01:41+00:00",
  "owner": "tuongphanbase",
  "sections": [
   {
@@ -46,7 +46,7 @@
         "https://github.com/tuongphanbase/currency-rate-emailer/actions/runs/37897391905"
        ],
        50,
-       14,
+       13,
        "❌ Send Currency Rate Summary lỗi lúc 14:09 09/10"
       ],
       [
@@ -61,16 +61,16 @@
       [
        [
         "gold-price-emailer",
-        "https://github.com/tuongphanbase/gold-price-emailer/actions/runs/38007891025"
+        "https://github.com/tuongphanbase/gold-price-emailer/actions/runs/38010835727"
        ],
-       34,
+       35,
        0,
        "✅ bình thường"
       ],
       [
        [
         "tech-price-mailer",
-        "https://github.com/tuongphanbase/tech-price-mailer/actions/runs/37994636195"
+        "https://github.com/tuongphanbase/tech-price-mailer/actions/runs/38010683529"
        ],
        21,
        0,
@@ -81,14 +81,14 @@
         "house-price-emailer",
         "https://github.com/tuongphanbase/house-price-emailer/actions/runs/38009295606"
        ],
-       23,
+       22,
        0,
        "✅ bình thường"
       ],
       [
        [
         "vn-stock-price-emailer",
-        "https://github.com/tuongphanbase/vn-stock-price-emailer/actions/runs/38007592431"
+        "https://github.com/tuongphanbase/vn-stock-price-emailer/actions/runs/38010760574"
        ],
        50,
        0,
@@ -99,14 +99,14 @@
         "interest-rate-emailer",
         "https://github.com/tuongphanbase/interest-rate-emailer/actions/runs/38009069996"
        ],
-       49,
+       48,
        0,
        "✅ bình thường"
       ],
       [
        [
         "apps-gone-free-emailer",
-        "https://github.com/tuongphanbase/apps-gone-free-emailer/actions/runs/38008201658"
+        "https://github.com/tuongphanbase/apps-gone-free-emailer/actions/runs/38010891520"
        ],
        49,
        0,
@@ -126,13 +126,13 @@
    ],
    "text": [
     "phone-tablet-price-emailer: ❌ Deploy Pages lỗi lúc 08:10 09/10 (1/8 lỗi)",
-    "currency-rate-emailer: ❌ Send Currency Rate Summary lỗi lúc 14:09 09/10 (14/50 lỗi)",
+    "currency-rate-emailer: ❌ Send Currency Rate Summary lỗi lúc 14:09 09/10 (13/50 lỗi)",
     "reddit-top-post-emailer: ❌ Send Reddit Top Posts lỗi lúc 08:18 09/10 (1/7 lỗi)",
-    "gold-price-emailer: ✅ bình thường (0/34 lỗi)",
+    "gold-price-emailer: ✅ bình thường (0/35 lỗi)",
     "tech-price-mailer: ✅ bình thường (0/21 lỗi)",
-    "house-price-emailer: ✅ bình thường (0/23 lỗi)",
+    "house-price-emailer: ✅ bình thường (0/22 lỗi)",
     "vn-stock-price-emailer: ✅ bình thường (0/50 lỗi)",
-    "interest-rate-emailer: ✅ bình thường (0/49 lỗi)",
+    "interest-rate-emailer: ✅ bình thường (0/48 lỗi)",
     "apps-gone-free-emailer: ✅ bình thường (0/49 lỗi)",
     "9gag-meme-emailer: ✅ bình thường (0/10 lỗi)"
    ]
@@ -237,7 +237,7 @@
    "title": "Tỷ giá",
    "icon": "💱",
    "ok": true,
-   "as_of": "2026-10-10 07:06",
+   "as_of": "2026-10-10 07:50",
    "blocks": [
     {
      "type": "tiles",
@@ -277,7 +277,7 @@
       },
       {
        "label": "JPY",
-       "value": 163.69,
+       "value": 163.43,
        "change_pct": null,
        "period": "24h",
        "points": [
@@ -287,13 +287,13 @@
         ],
         [
          "2026-10-10",
-         163.69
+         163.43
         ]
        ]
       },
       {
        "label": "CNY",
-       "value": 3875.97,
+       "value": 3861.0,
        "change_pct": null,
        "period": "24h",
        "points": [
@@ -303,13 +303,13 @@
         ],
         [
          "2026-10-10",
-         3875.97
+         3861.0
         ]
        ]
       },
       {
        "label": "KRW",
-       "value": 19.26,
+       "value": 19.27,
        "change_pct": null,
        "period": "24h",
        "points": [
@@ -319,7 +319,7 @@
         ],
         [
          "2026-10-10",
-         19.26
+         19.27
         ]
        ]
       },
@@ -357,7 +357,7 @@
       },
       {
        "label": "AUD",
-       "value": 17857.14,
+       "value": 18181.82,
        "change_pct": null,
        "period": "24h",
        "points": [
@@ -367,7 +367,7 @@
         ],
         [
          "2026-10-10",
-         17857.14
+         18181.82
         ]
        ]
       }
@@ -377,12 +377,12 @@
    "text": [
     "USD: 25,641.03 (None%)",
     "EUR: 29,411.76 (None%)",
-    "JPY: 163.69 (None%)",
-    "CNY: 3,875.97 (None%)",
-    "KRW: 19.26 (None%)",
+    "JPY: 163.43 (None%)",
+    "CNY: 3,861.0 (None%)",
+    "KRW: 19.27 (None%)",
     "GBP: 34,482.76 (None%)",
     "SGD: 20,000.0 (None%)",
-    "AUD: 17,857.14 (None%)"
+    "AUD: 18,181.82 (None%)"
    ]
   },
   {
@@ -762,19 +762,19 @@
       ],
       [
        [
-        "Mainboard ASUS TUF GAMING X870-PLUS WIFI",
-        "https://hacom.vn/mainboard-asus-tuf-gaming-x870-plus-wifi"
-       ],
-       "8.599.000",
-       -19.6
-      ],
-      [
-       [
         "SSD Lexar Play X 512GB M.2 PCIe Gen4 x4 NVMe LNMPLYX512G-RNNNG",
         "https://memoryzone.com.vn/ssd-lexar-play-x-512gb-m-2-pcie-gen4-x4-nvme-lnmplyx512g-rnnng"
        ],
        "3.300.000",
        -15.4
+      ],
+      [
+       [
+        "Ổ cứng Seagate Barracuda 4TB ST4000DM004",
+        "https://www.anphatpc.com.vn/seagate-barracuda-4tb-7200rpm-64mb-cache-sata-60gbs-st4000dm000.html"
+       ],
+       "5.049.000",
+       -11.4
       ]
      ]
     },
@@ -844,8 +844,8 @@
     "Ổ cứng Western Digital Caviar Blue 2TB 64MB Cache 5400rpm ( WD20EARZ): 5.999.000 (-53.1%)",
     "Ổ cứng: 512GB PCIe® 4.0 NVMe™ M.2 SSD: 33.990.000 (-20.9%)",
     "Màn hình LG UltraGear 34GX90SA-W (34 inch/WQHD/OLED/240Hz/0.03ms/webOS/cong): 26.990.000 (-20.6%)",
-    "Mainboard ASUS TUF GAMING X870-PLUS WIFI: 8.599.000 (-19.6%)",
     "SSD Lexar Play X 512GB M.2 PCIe Gen4 x4 NVMe LNMPLYX512G-RNNNG: 3.300.000 (-15.4%)",
+    "Ổ cứng Seagate Barracuda 4TB ST4000DM004: 5.049.000 (-11.4%)",
     "Card màn hình Leadtek NVIDIA RTX PRO 4000 Blackwell 24GB GDDR7: 106.090.000 (+73.9%)",
     "Nguồn Gigabyte GP- P850GM 850W (80 Plus Gold/Full Modular/Màu Đen): 3.299.000 (+72.8%)",
     "Nguồn máy tính Cooler Master MWE V3 230V 650 - 650W (80 Plus Bronze/ATX3.1): 1.899.000 (+66.7%)",
