@@ -9,7 +9,8 @@ Blocks are generic, so the email and the dashboard can draw any section
 without knowing where it came from:
 
     chart(series)          a line chart; series = [{"name", "points": [[date, value]]}]
-    tiles(items)           small cards; item = {"label", "value", "change_pct", "period", "points"}
+    tiles(items)           small cards; item = {"label", "value", "change_pct", "period", "points"},
+                           plus "note" shown in place of a missing change_pct
     table(columns, rows)   a table; column = {"label", "kind"} with kind
                            "text" | "num" | "change" | "link" (cell = [text, url])
 

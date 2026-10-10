@@ -69,10 +69,16 @@ def health(opt):
             "text": [f"{r[0][0]}: {r[3]} ({r[2] or 0}/{r[1] or 0} lỗi)" for r in rows]}
 
 
+def _pct_text(pct, note=None):
+    """A change for the plain-text email: "+1.5%", or the note / "—" when there is none."""
+    return f"{pct:+}%" if pct is not None else (note or "—")
+
+
 @source("csv_history", "Lịch sử", icon="📈")
 def csv_history(opt):
     """Any CSV of time,key,value rows -> tiles with sparklines.
-    Options: repo, path, ref, key_col, value_col, time_col, time_format, limit, unit, keys."""
+    Options: repo, path, ref, key_col, value_col, time_col, time_format, limit, unit, keys,
+    movers, max_move_pct (a bigger 24h change is a price adjustment, not a real move)."""
     text = fetch_file(opt["repo"], opt["path"], ref=opt.get("ref", "main"))
     if not text:
         return empty(f"chưa có {opt['path']}")
@@ -81,13 +87,25 @@ def csv_history(opt):
     keys = opt.get("keys") or list(series)
     keys = [k for k in keys if k in series][: int(opt.get("limit", 8))]
     digits = int(opt.get("decimals", 2))
-    items = [{"label": k, "value": round(series[k][-1][1], digits), "change_pct": pct_change(series[k]),
+    changes = {k: pct_change(p) for k, p in series.items()}
+    # A change no trading day allows means the history holds a price adjustment
+    # (bonus shares, split: 28000 -> 28000/1.3), so it is not shown as a move.
+    max_move = opt.get("max_move_pct")
+    adjusted = [k for k, c in changes.items() if c is not None and max_move is not None and abs(c) > float(max_move)]
+    for k in adjusted:
+        changes[k] = None
+    items = [{"label": k, "value": round(series[k][-1][1], digits), "change_pct": changes[k],
               "period": "24h", "points": [[d, round(v, digits)] for d, v in daily_last(series[k])]} for k in keys]
+    for i in items:
+        if i["label"] in adjusted:
+            i["note"] = "điều chỉnh giá"
     as_of = max((series[k][-1][0] for k in keys), default=None)
     out = {"ok": bool(items), "as_of": as_of.strftime("%Y-%m-%d %H:%M") if as_of else None,
            "blocks": [tiles(items, opt.get("unit", ""))],
-           "text": [f"{i['label']}: {i['value']:,} ({i['change_pct']}%)" for i in items]}
-    movers = sorted(((k, pct_change(p), p[-1][1]) for k, p in series.items() if pct_change(p) is not None),
+           "text": [f"{i['label']}: {i['value']:,} ({_pct_text(i['change_pct'], i.get('note'))})" for i in items]}
+    if adjusted:
+        out["note"] = f"Giá đã điều chỉnh (chia, thưởng cổ phiếu), không tính biến động: {', '.join(adjusted)}"
+    movers = sorted(((k, c, series[k][-1][1]) for k, c in changes.items() if c is not None),
                     key=lambda m: -abs(m[1]))[: int(opt.get("movers", 0))]
     if movers:
         out["blocks"].append(table([col("Mã"), col("Giá", "num"), col("24 giờ", "change")],
@@ -140,7 +158,7 @@ def currency(opt):
 def stocks(opt):
     return csv_history({"repo": "vn-stock-price-emailer", "path": "price_history.csv", "key_col": "ticker",
                         "value_col": "close", "unit": "VND", "decimals": 0, "limit": opt.get("limit", 8),
-                        "movers": 5, **opt})
+                        "movers": 5, "max_move_pct": 15, **opt})  # widest daily band: UPCoM ±15% (HNX ±10%, HOSE ±7%)
 
 
 # "12 months", "12M", "12 Tháng", "012 tháng"... - each bank labels it differently

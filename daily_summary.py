@@ -103,9 +103,9 @@ def fmt_num(v, decimals=0):
     return s.replace(",", "_").replace(".", ",").replace("_", ".")  # Vietnamese style 1.234.567,89
 
 
-def fmt_change(pct):
+def fmt_change(pct, note=None):
     if pct is None:
-        return '<span style="color:#888;">—</span>'
+        return f'<span style="color:#888;">{escape(note or "—")}</span>'
     if pct > 0:
         return f'<span style="color:#1E8A4C;">&#9650; {pct:+.2f}%</span>'
     if pct < 0:
@@ -162,7 +162,7 @@ def block_html(block):
                                  [[fmt_cell(v, c["kind"]) for v, c in zip(r, cols)] for r in block["rows"]], right)
     if kind == "tiles":
         return email_table(["", block.get("unit") or "Giá trị", "Thay đổi"],
-                           [[escape(i["label"]), fmt_cell(i["value"], "num"), fmt_change(i.get("change_pct"))]
+                           [[escape(i["label"]), fmt_cell(i["value"], "num"), fmt_change(i.get("change_pct"), i.get("note"))]
                             for i in block["items"]], (1, 2))
     return ""  # charts: shown on the dashboard only
 

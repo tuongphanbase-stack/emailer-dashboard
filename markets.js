@@ -3,7 +3,7 @@
    Every section is a list of generic blocks, so a new data source
    needs no change here:
      chart  {series:[{name, points:[[date, value]]}], unit}
-     tiles  {items:[{label, value, change_pct, period, points}], unit}
+     tiles  {items:[{label, value, change_pct, period, points, note?}], unit}
      table  {columns:[{label, kind}], rows:[[...]], caption}
             kind: text | num | change | link (cell = [text, url])
    Used by index.html and prices.html:
@@ -48,8 +48,8 @@
     return ticks;
   }
 
-  function deltaEl(pct, period){
-    if(pct === null || pct === undefined) return el('span', 'delta flat', 'chưa đủ dữ liệu');
+  function deltaEl(pct, period, note){
+    if(pct === null || pct === undefined) return el('span', 'delta flat', note || 'chưa đủ dữ liệu');
     const dir = pct > 0 ? 'up' : pct < 0 ? 'down' : 'flat';
     const arrow = pct > 0 ? '▲' : pct < 0 ? '▼' : '■';
     return el('span', `delta ${dir}`, `${arrow} ${pct > 0 ? '+' : ''}${pct.toFixed(2)}%${period ? ' ' + period : ''}`);
@@ -300,7 +300,7 @@
       body.appendChild(grid);
       block.items.forEach(it => {
         const tile = el('div', 'tile');
-        tile.append(el('div', 't-label', it.label), el('div', 't-value', fmtNum(it.value)), deltaEl(it.change_pct, it.period || ''));
+        tile.append(el('div', 't-label', it.label), el('div', 't-value', fmtNum(it.value)), deltaEl(it.change_pct, it.period || '', it.note));
         grid.appendChild(tile);
         const pts = inRange(it.points);
         if(pts.length) lineChart(tile, [{name: it.label, points: pts}], {compact: true, ariaLabel: `${it.label} trend`});

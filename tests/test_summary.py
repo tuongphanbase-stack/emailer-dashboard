@@ -150,6 +150,34 @@ class Sources(unittest.TestCase):
                             key_col="ticker", value_col="close", keys=["FPT"])
         self.assertEqual([i["label"] for i in s["blocks"][0]["items"]], ["FPT"])
 
+    def test_price_adjustment_is_not_a_mover(self):
+        # HDB's bonus shares: the bot stored 28000 then 28000/1.3 overnight, a -20%
+        # "move" that no exchange allows in a day (UPCoM, the widest band, is ±15%).
+        stocks = ("timestamp,ticker,close\n"
+                  f"{d(1)} 09:00,HDB,27950\n{d(1)} 09:00,VIC,100\n{d(1)} 09:00,FPT,90\n"
+                  f"{d(1)} 15:06,HDB,28000\n{d(0)} 07:53,HDB,21538.46156\n"
+                  f"{d(0)} 15:00,HDB,22400\n{d(0)} 15:00,VIC,105\n{d(0)} 15:00,FPT,99\n")
+        summary_sources.fetch_file = lambda repo, path, **k: stocks
+        s = self.run_source("stocks")
+        movers = s["blocks"][1]["rows"]
+        self.assertEqual([m[0] for m in movers], ["FPT", "VIC"])
+        hdb = s["blocks"][0]["items"][0]
+        self.assertEqual((hdb["label"], hdb["change_pct"], hdb["note"]), ("HDB", None, "điều chỉnh giá"))
+        self.assertIn("HDB", s["note"])
+        self.assertEqual(s["text"][0], "HDB: 22,400.0 (điều chỉnh giá)")
+        _, html, text = daily_summary.build_email({"sections": [{"id": "stocks", "title": "Chứng khoán", **s}]})
+        self.assertNotIn("-19.", html + text)
+        self.assertIn("điều chỉnh giá", html)
+
+    def test_text_shows_a_dash_when_there_is_no_change_yet(self):
+        summary_sources.fetch_file = lambda repo, path, **k: "timestamp,currency,rate\n" f"{d(0)} 09:00,USD,25641.03\n"
+        s = self.run_source("currency")
+        self.assertEqual(s["text"], ["USD: 25,641.03 (—)"])
+        _, _, text = daily_summary.build_email({"sections": [{"id": "currency", "title": "Tỷ giá", **s}]})
+        self.assertNotIn("None", text)
+        summary_sources.fetch_file = fake_fetch
+        self.assertEqual(self.run_source("currency")["text"][0], "USD: 26,260.0 (+1.0%)")
+
 
 class ConfigAndEmail(unittest.TestCase):
     def test_config_entries(self):
