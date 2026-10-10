@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-10T03:35:13+00:00",
+ "generated_at": "2026-10-10T05:02:44+00:00",
  "owner": "tuongphanbase",
  "sections": [
   {
@@ -36,23 +36,23 @@
         "currency-rate-emailer",
         "https://github.com/tuongphanbase/currency-rate-emailer/actions/runs/37897391905"
        ],
-       50,
-       8,
+       52,
+       5,
        "❌ Send Currency Rate Summary lỗi lúc 14:09 09/10"
       ],
       [
        [
         "gold-price-emailer",
-        "https://github.com/tuongphanbase/gold-price-emailer/actions/runs/38019449215"
+        "https://github.com/tuongphanbase/gold-price-emailer/actions/runs/38025075835"
        ],
-       40,
+       43,
        0,
        "✅ bình thường"
       ],
       [
        [
         "tech-price-mailer",
-        "https://github.com/tuongphanbase/tech-price-mailer/actions/runs/38010683529"
+        "https://github.com/tuongphanbase/tech-price-mailer/actions/runs/38021325488"
        ],
        16,
        0,
@@ -63,7 +63,7 @@
         "house-price-emailer",
         "https://github.com/tuongphanbase/house-price-emailer/actions/runs/38020117020"
        ],
-       18,
+       17,
        0,
        "✅ bình thường"
       ],
@@ -72,14 +72,14 @@
         "phone-tablet-price-emailer",
         "https://github.com/tuongphanbase/phone-tablet-price-emailer/actions/runs/38011670587"
        ],
-       8,
+       11,
        0,
        "✅ bình thường"
       ],
       [
        [
         "vn-stock-price-emailer",
-        "https://github.com/tuongphanbase/vn-stock-price-emailer/actions/runs/38019322770"
+        "https://github.com/tuongphanbase/vn-stock-price-emailer/actions/runs/38024999586"
        ],
        50,
        0,
@@ -88,16 +88,16 @@
       [
        [
         "interest-rate-emailer",
-        "https://github.com/tuongphanbase/interest-rate-emailer/actions/runs/38019998415"
+        "https://github.com/tuongphanbase/interest-rate-emailer/actions/runs/38025380060"
        ],
-       49,
+       50,
        0,
        "✅ bình thường"
       ],
       [
        [
         "apps-gone-free-emailer",
-        "https://github.com/tuongphanbase/apps-gone-free-emailer/actions/runs/38019579303"
+        "https://github.com/tuongphanbase/apps-gone-free-emailer/actions/runs/38025136942"
        ],
        49,
        0,
@@ -108,7 +108,7 @@
         "9gag-meme-emailer",
         "https://github.com/tuongphanbase/9gag-meme-emailer/actions/runs/38007458667"
        ],
-       10,
+       12,
        0,
        "✅ bình thường"
       ],
@@ -117,7 +117,7 @@
         "reddit-top-post-emailer",
         "https://github.com/tuongphanbase/reddit-top-post-emailer/actions/runs/38012587000"
        ],
-       7,
+       9,
        0,
        "✅ bình thường"
       ]
@@ -125,16 +125,16 @@
     }
    ],
    "text": [
-    "currency-rate-emailer: ❌ Send Currency Rate Summary lỗi lúc 14:09 09/10 (8/50 lỗi)",
-    "gold-price-emailer: ✅ bình thường (0/40 lỗi)",
+    "currency-rate-emailer: ❌ Send Currency Rate Summary lỗi lúc 14:09 09/10 (5/52 lỗi)",
+    "gold-price-emailer: ✅ bình thường (0/43 lỗi)",
     "tech-price-mailer: ✅ bình thường (0/16 lỗi)",
-    "house-price-emailer: ✅ bình thường (0/18 lỗi)",
-    "phone-tablet-price-emailer: ✅ bình thường (0/8 lỗi)",
+    "house-price-emailer: ✅ bình thường (0/17 lỗi)",
+    "phone-tablet-price-emailer: ✅ bình thường (0/11 lỗi)",
     "vn-stock-price-emailer: ✅ bình thường (0/50 lỗi)",
-    "interest-rate-emailer: ✅ bình thường (0/49 lỗi)",
+    "interest-rate-emailer: ✅ bình thường (0/50 lỗi)",
     "apps-gone-free-emailer: ✅ bình thường (0/49 lỗi)",
-    "9gag-meme-emailer: ✅ bình thường (0/10 lỗi)",
-    "reddit-top-post-emailer: ✅ bình thường (0/7 lỗi)"
+    "9gag-meme-emailer: ✅ bình thường (0/12 lỗi)",
+    "reddit-top-post-emailer: ✅ bình thường (0/9 lỗi)"
    ]
   },
   {
@@ -237,7 +237,7 @@
    "title": "Tỷ giá",
    "icon": "💱",
    "ok": true,
-   "as_of": "2026-10-10 10:05",
+   "as_of": "2026-10-10 12:02",
    "blocks": [
     {
      "type": "tiles",
@@ -245,129 +245,97 @@
      "items": [
       {
        "label": "USD",
-       "value": 25641.03,
+       "value": 25862.65,
        "change_pct": null,
        "period": "24h",
        "points": [
         [
-         "2026-10-09",
-         25641.03
-        ],
-        [
          "2026-10-10",
-         25641.03
+         25862.65
         ]
        ]
       },
       {
        "label": "EUR",
-       "value": 29411.76,
+       "value": 28981.56,
        "change_pct": null,
        "period": "24h",
        "points": [
         [
-         "2026-10-09",
-         29411.76
-        ],
-        [
          "2026-10-10",
-         29411.76
+         28981.56
         ]
        ]
       },
       {
        "label": "JPY",
-       "value": 163.43,
+       "value": 163.39,
        "change_pct": null,
        "period": "24h",
        "points": [
         [
-         "2026-10-09",
-         163.69
-        ],
-        [
          "2026-10-10",
-         163.43
+         163.39
         ]
        ]
       },
       {
        "label": "CNY",
-       "value": 3861.0,
+       "value": 3856.38,
        "change_pct": null,
        "period": "24h",
        "points": [
         [
-         "2026-10-09",
-         3875.97
-        ],
-        [
          "2026-10-10",
-         3861.0
+         3856.38
         ]
        ]
       },
       {
        "label": "KRW",
-       "value": 19.27,
+       "value": 19.28,
        "change_pct": null,
        "period": "24h",
        "points": [
         [
-         "2026-10-09",
-         19.26
-        ],
-        [
          "2026-10-10",
-         19.27
+         19.28
         ]
        ]
       },
       {
        "label": "GBP",
-       "value": 34482.76,
+       "value": 34216.78,
        "change_pct": null,
        "period": "24h",
        "points": [
         [
-         "2026-10-09",
-         34482.76
-        ],
-        [
          "2026-10-10",
-         34482.76
+         34216.78
         ]
        ]
       },
       {
        "label": "SGD",
-       "value": 20000.0,
+       "value": 20193.39,
        "change_pct": null,
        "period": "24h",
        "points": [
         [
-         "2026-10-09",
-         20000.0
-        ],
-        [
          "2026-10-10",
-         20000.0
+         20193.39
         ]
        ]
       },
       {
        "label": "AUD",
-       "value": 18181.82,
+       "value": 18047.59,
        "change_pct": null,
        "period": "24h",
        "points": [
         [
-         "2026-10-09",
-         17857.14
-        ],
-        [
          "2026-10-10",
-         18181.82
+         18047.59
         ]
        ]
       }
@@ -375,14 +343,14 @@
     }
    ],
    "text": [
-    "USD: 25,641.03 (None%)",
-    "EUR: 29,411.76 (None%)",
-    "JPY: 163.43 (None%)",
-    "CNY: 3,861.0 (None%)",
-    "KRW: 19.27 (None%)",
-    "GBP: 34,482.76 (None%)",
-    "SGD: 20,000.0 (None%)",
-    "AUD: 18,181.82 (None%)"
+    "USD: 25,862.65 (—)",
+    "EUR: 28,981.56 (—)",
+    "JPY: 163.39 (—)",
+    "CNY: 3,856.38 (—)",
+    "KRW: 19.28 (—)",
+    "GBP: 34,216.78 (—)",
+    "SGD: 20,193.39 (—)",
+    "AUD: 18,047.59 (—)"
    ]
   },
   {
@@ -577,11 +545,6 @@
      ],
      "rows": [
       [
-       "HDB",
-       22400.0,
-       -19.86
-      ],
-      [
        "THD",
        89100.0,
        11.38
@@ -600,20 +563,26 @@
        "KSV",
        123000.0,
        -7.59
+      ],
+      [
+       "DHC",
+       36500.0,
+       -6.89
       ]
      ]
     }
    ],
    "text": [
     "VIC: 225,500.0 (-1.1%)",
-    "VHM: 66,000.0 (0.46%)",
+    "VHM: 66,000.0 (+0.46%)",
     "VCB: 56,700.0 (-0.18%)",
     "BID: 33,900.0 (-0.29%)",
-    "TCB: 32,350.0 (1.41%)",
-    "CTG: 29,500.0 (1.03%)",
-    "VPB: 23,800.0 (1.49%)",
+    "TCB: 32,350.0 (+1.41%)",
+    "CTG: 29,500.0 (+1.03%)",
+    "VPB: 23,800.0 (+1.49%)",
     "GAS: 80,700.0 (-1.59%)"
-   ]
+   ],
+   "note": "Giá đã điều chỉnh (chia, thưởng cổ phiếu), không tính biến động: HDB"
   },
   {
    "id": "interest",
@@ -738,6 +707,14 @@
      "rows": [
       [
        [
+        "Phân giải điểm ảnh: 2K (2560x1440)",
+        ""
+       ],
+       "4.999.000",
+       -80.8
+      ],
+      [
+       [
         "Ổ cứng Western Digital Caviar Blue 2TB 64MB Cache 5400rpm ( WD20EARZ)",
         "https://www.anphatpc.com.vn/o-cung-western-digital-caviar-blue-2tb-64mb-cache-5400rpm-wd20earz.html"
        ],
@@ -746,11 +723,11 @@
       ],
       [
        [
-        "Ổ cứng: 512GB PCIe® 4.0 NVMe™ M.2 SSD",
+        "Phân giải điểm ảnh: FHD (1920 x 1080)",
         ""
        ],
-       "33.990.000",
-       -20.9
+       "2.999.000",
+       -50.0
       ],
       [
        [
@@ -762,19 +739,11 @@
       ],
       [
        [
-        "SSD Lexar Play X 512GB M.2 PCIe Gen4 x4 NVMe LNMPLYX512G-RNNNG",
-        "https://memoryzone.com.vn/ssd-lexar-play-x-512gb-m-2-pcie-gen4-x4-nvme-lnmplyx512g-rnnng"
+        "Mainboard ASUS TUF GAMING X870-PLUS WIFI",
+        "https://hacom.vn/mainboard-asus-tuf-gaming-x870-plus-wifi"
        ],
-       "3.300.000",
-       -15.4
-      ],
-      [
-       [
-        "Ổ cứng Seagate Barracuda 4TB ST4000DM004",
-        "https://www.anphatpc.com.vn/seagate-barracuda-4tb-7200rpm-64mb-cache-sata-60gbs-st4000dm000.html"
-       ],
-       "5.049.000",
-       -11.4
+       "8.599.000",
+       -19.6
       ]
      ]
     },
@@ -796,6 +765,14 @@
       }
      ],
      "rows": [
+      [
+       [
+        "Ổ cứng: 512GB PCIe® 4.0 NVMe™ M.2 SSD",
+        ""
+       ],
+       "83.990.000",
+       95.4
+      ],
       [
        [
         "Card màn hình Leadtek NVIDIA RTX PRO 4000 Blackwell 24GB GDDR7",
@@ -827,30 +804,22 @@
        ],
        "17.000.000",
        61.1
-      ],
-      [
-       [
-        "Nguồn Gigabyte GP- P750GM 750W (80 Plus Gold/Full Modular/Màu Đen)",
-        "https://hacom.vn/nguon-gigabyte-gp-p750gm-750w-80-plus-gold-full-modular-mau-den"
-       ],
-       "2.649.000",
-       60.6
       ]
      ]
     }
    ],
    "empty_text": null,
    "text": [
+    "Phân giải điểm ảnh: 2K (2560x1440): 4.999.000 (-80.8%)",
     "Ổ cứng Western Digital Caviar Blue 2TB 64MB Cache 5400rpm ( WD20EARZ): 5.999.000 (-53.1%)",
-    "Ổ cứng: 512GB PCIe® 4.0 NVMe™ M.2 SSD: 33.990.000 (-20.9%)",
+    "Phân giải điểm ảnh: FHD (1920 x 1080): 2.999.000 (-50.0%)",
     "Màn hình LG UltraGear 34GX90SA-W (34 inch/WQHD/OLED/240Hz/0.03ms/webOS/cong): 26.990.000 (-20.6%)",
-    "SSD Lexar Play X 512GB M.2 PCIe Gen4 x4 NVMe LNMPLYX512G-RNNNG: 3.300.000 (-15.4%)",
-    "Ổ cứng Seagate Barracuda 4TB ST4000DM004: 5.049.000 (-11.4%)",
+    "Mainboard ASUS TUF GAMING X870-PLUS WIFI: 8.599.000 (-19.6%)",
+    "Ổ cứng: 512GB PCIe® 4.0 NVMe™ M.2 SSD: 83.990.000 (+95.4%)",
     "Card màn hình Leadtek NVIDIA RTX PRO 4000 Blackwell 24GB GDDR7: 106.090.000 (+73.9%)",
     "Nguồn Gigabyte GP- P850GM 850W (80 Plus Gold/Full Modular/Màu Đen): 3.299.000 (+72.8%)",
     "Nguồn máy tính Cooler Master MWE V3 230V 650 - 650W (80 Plus Bronze/ATX3.1): 1.899.000 (+66.7%)",
-    "VGA GIGABYTE GEFORCE RTX 5060 GAMING OC 8G (GDDR7, 128-bit, HDMI+DP, 1x8-pin) - 3 FAN: 17.000.000 (+61.1%)",
-    "Nguồn Gigabyte GP- P750GM 750W (80 Plus Gold/Full Modular/Màu Đen): 2.649.000 (+60.6%)"
+    "VGA GIGABYTE GEFORCE RTX 5060 GAMING OC 8G (GDDR7, 128-bit, HDMI+DP, 1x8-pin) - 3 FAN: 17.000.000 (+61.1%)"
    ]
   },
   {
