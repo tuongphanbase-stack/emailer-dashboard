@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-10T18:36:59+00:00",
+ "generated_at": "2026-10-10T21:32:58+00:00",
  "owner": "tuongphanbase",
  "sections": [
   {
@@ -34,7 +34,7 @@
       [
        [
         "gold-price-emailer",
-        "https://github.com/tuongphanbase/gold-price-emailer/actions/runs/38074461877"
+        "https://github.com/tuongphanbase/gold-price-emailer/actions/runs/38086317711"
        ],
        48,
        0,
@@ -43,18 +43,18 @@
       [
        [
         "tech-price-mailer",
-        "https://github.com/tuongphanbase/tech-price-mailer/actions/runs/38064351152"
+        "https://github.com/tuongphanbase/tech-price-mailer/actions/runs/38076793331"
        ],
-       17,
+       18,
        0,
        "✅ bình thường"
       ],
       [
        [
         "house-price-emailer",
-        "https://github.com/tuongphanbase/house-price-emailer/actions/runs/38075389463"
+        "https://github.com/tuongphanbase/house-price-emailer/actions/runs/38087037802"
        ],
-       18,
+       19,
        0,
        "✅ bình thường"
       ],
@@ -70,7 +70,7 @@
       [
        [
         "vn-stock-price-emailer",
-        "https://github.com/tuongphanbase/vn-stock-price-emailer/actions/runs/38074292061"
+        "https://github.com/tuongphanbase/vn-stock-price-emailer/actions/runs/38086170058"
        ],
        48,
        0,
@@ -79,7 +79,7 @@
       [
        [
         "interest-rate-emailer",
-        "https://github.com/tuongphanbase/interest-rate-emailer/actions/runs/38075220554"
+        "https://github.com/tuongphanbase/interest-rate-emailer/actions/runs/38086885634"
        ],
        50,
        0,
@@ -88,7 +88,7 @@
       [
        [
         "currency-rate-emailer",
-        "https://github.com/tuongphanbase/currency-rate-emailer/actions/runs/38074297626"
+        "https://github.com/tuongphanbase/currency-rate-emailer/actions/runs/38086174063"
        ],
        50,
        0,
@@ -97,7 +97,7 @@
       [
        [
         "apps-gone-free-emailer",
-        "https://github.com/tuongphanbase/apps-gone-free-emailer/actions/runs/38074672666"
+        "https://github.com/tuongphanbase/apps-gone-free-emailer/actions/runs/38086458236"
        ],
        48,
        0,
@@ -126,8 +126,8 @@
    ],
    "text": [
     "gold-price-emailer: ✅ bình thường (0/48 lỗi)",
-    "tech-price-mailer: ✅ bình thường (0/17 lỗi)",
-    "house-price-emailer: ✅ bình thường (0/18 lỗi)",
+    "tech-price-mailer: ✅ bình thường (0/18 lỗi)",
+    "house-price-emailer: ✅ bình thường (0/19 lỗi)",
     "phone-tablet-price-emailer: ✅ bình thường (0/7 lỗi)",
     "vn-stock-price-emailer: ✅ bình thường (0/48 lỗi)",
     "interest-rate-emailer: ✅ bình thường (0/50 lỗi)",
@@ -249,7 +249,7 @@
    "title": "Tỷ giá",
    "icon": "💱",
    "ok": true,
-   "as_of": "2026-10-11 01:04",
+   "as_of": "2026-10-11 04:03",
    "blocks": [
     {
      "type": "tiles",
@@ -730,9 +730,123 @@
    "icon": "💻",
    "ok": true,
    "note": "Thay đổi giá trong 7 ngày",
-   "blocks": [],
-   "empty_text": "Không có thay đổi giá trong 7 ngày qua.",
-   "text": []
+   "blocks": [
+    {
+     "type": "table",
+     "caption": "Giảm giá nhiều nhất",
+     "columns": [
+      {
+       "label": "Sản phẩm",
+       "kind": "link"
+      },
+      {
+       "label": "Giá (VND)",
+       "kind": "num"
+      },
+      {
+       "label": "7 ngày",
+       "kind": "change"
+      }
+     ],
+     "rows": [
+      [
+       [
+        "Laptop ASUS Vivobook Go 14 E1404FA-EB935W (AMD Mendocino R5 | AMD Radeon Graphics | 14.0-inch FHD | 16GB | 512GB | Windows 11 | Bạc)",
+        "https://www.anphatpc.com.vn/laptop-asus-vivobook-go-14-e1404fa-eb935w.html"
+       ],
+       "18.990.000",
+       -25.5
+      ],
+      [
+       [
+        "Màn hình đồ họa AOC U32U3CV/74 (32 inch/ 4K/ IPS/ 60Hz/ USB-C 96W/ Loa)",
+        "https://hoanghapc.vn/man-hinh-aoc-u32u3cv-74"
+       ],
+       "9.990.000",
+       -9.1
+      ],
+      [
+       [
+        "Laptop gaming Acer Aspire 7 A715-59G-53RH (Core 5-210H/ RTX 4050 6GB/ 16GB/ 512GB/ 15.6\" FHD IPS 144Hz/ Win 11)",
+        "https://gearvn.com/products/laptop-gaming-acer-aspire-7-a715-59g-53rh-core-5-210h-rtx-4050-6gb-16gb-512gb-15-6-fhd-ips-144hz"
+       ],
+       "29.990.000",
+       -7.7
+      ],
+      [
+       [
+        "SSD Kingston NV3 500GB M.2 PCIe Gen4 x4 NVMe SNV3S/500G",
+        "https://memoryzone.com.vn/ssd-kingston-nv3-500gb-m-2-pcie-gen4-x4-nvme-snv3s-500g"
+       ],
+       "2.790.000",
+       -2.1
+      ]
+     ]
+    },
+    {
+     "type": "table",
+     "caption": "Tăng giá nhiều nhất",
+     "columns": [
+      {
+       "label": "Sản phẩm",
+       "kind": "link"
+      },
+      {
+       "label": "Giá (VND)",
+       "kind": "num"
+      },
+      {
+       "label": "7 ngày",
+       "kind": "change"
+      }
+     ],
+     "rows": [
+      [
+       [
+        "Ram laptop Kingston 16GB DDR5 bus 5600 (KVR56S46BS8-16)",
+        "https://www.anphatpc.com.vn/ram-laptop-kingston-16gb-ddr5-bus-5600-kvr56s46bs8-16.html"
+       ],
+       "7.999.000",
+       5.3
+      ],
+      [
+       [
+        "Mainboard ASRock B760M Pro RS WIFI DDR5",
+        "https://memoryzone.com.vn/mainboard-pc-asrock-b760m-pro-rs-wifi"
+       ],
+       "3.290.000",
+       4.4
+      ],
+      [
+       [
+        "Laptop Gigabyte A16 (A16-CMHI2VN893SH) (i7 13620H/16GB RAM/512GB SSD/RTX 4050 6G/WF6E/16.0FHD+ 165Hz/Win 11/Đen)",
+        "https://hacom.vn/laptop-gigabyte-a16-a16-cmhi2vn893sh-ltgi0066"
+       ],
+       "33.999.000",
+       3.0
+      ],
+      [
+       [
+        "Laptop gaming Acer Nitro ProPanel ANV16-72-71T9 (Core 7-240H/ RTX 5060/ 16GB/ 512GB/ 16.0\" FHD/ Win 11)",
+        "https://gearvn.com/products/laptop-gaming-acer-nitro-propanel-anv16-72-71t9"
+       ],
+       "44.990.000",
+       2.3
+      ]
+     ]
+    }
+   ],
+   "empty_text": null,
+   "text": [
+    "Laptop ASUS Vivobook Go 14 E1404FA-EB935W (AMD Mendocino R5 | AMD Radeon Graphics | 14.0-inch FHD | 16GB | 512GB | Windows 11 | Bạc): 18.990.000 (-25.5%)",
+    "Màn hình đồ họa AOC U32U3CV/74 (32 inch/ 4K/ IPS/ 60Hz/ USB-C 96W/ Loa): 9.990.000 (-9.1%)",
+    "Laptop gaming Acer Aspire 7 A715-59G-53RH (Core 5-210H/ RTX 4050 6GB/ 16GB/ 512GB/ 15.6\" FHD IPS 144Hz/ Win 11): 29.990.000 (-7.7%)",
+    "SSD Kingston NV3 500GB M.2 PCIe Gen4 x4 NVMe SNV3S/500G: 2.790.000 (-2.1%)",
+    "Ram laptop Kingston 16GB DDR5 bus 5600 (KVR56S46BS8-16): 7.999.000 (+5.3%)",
+    "Mainboard ASRock B760M Pro RS WIFI DDR5: 3.290.000 (+4.4%)",
+    "Laptop Gigabyte A16 (A16-CMHI2VN893SH) (i7 13620H/16GB RAM/512GB SSD/RTX 4050 6G/WF6E/16.0FHD+ 165Hz/Win 11/Đen): 33.999.000 (+3.0%)",
+    "Laptop gaming Acer Nitro ProPanel ANV16-72-71T9 (Core 7-240H/ RTX 5060/ 16GB/ 512GB/ 16.0\" FHD/ Win 11): 44.990.000 (+2.3%)"
+   ]
   },
   {
    "id": "phones",
