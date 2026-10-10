@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-10T05:02:44+00:00",
+ "generated_at": "2026-10-10T06:40:35+00:00",
  "owner": "tuongphanbase",
  "sections": [
   {
@@ -37,22 +37,22 @@
         "https://github.com/tuongphanbase/currency-rate-emailer/actions/runs/37897391905"
        ],
        52,
-       5,
+       2,
        "❌ Send Currency Rate Summary lỗi lúc 14:09 09/10"
       ],
       [
        [
         "gold-price-emailer",
-        "https://github.com/tuongphanbase/gold-price-emailer/actions/runs/38025075835"
+        "https://github.com/tuongphanbase/gold-price-emailer/actions/runs/38029903644"
        ],
-       43,
+       46,
        0,
        "✅ bình thường"
       ],
       [
        [
         "tech-price-mailer",
-        "https://github.com/tuongphanbase/tech-price-mailer/actions/runs/38021325488"
+        "https://github.com/tuongphanbase/tech-price-mailer/actions/runs/38026145267"
        ],
        16,
        0,
@@ -61,9 +61,9 @@
       [
        [
         "house-price-emailer",
-        "https://github.com/tuongphanbase/house-price-emailer/actions/runs/38020117020"
+        "https://github.com/tuongphanbase/house-price-emailer/actions/runs/38030773396"
        ],
-       17,
+       19,
        0,
        "✅ bình thường"
       ],
@@ -79,7 +79,7 @@
       [
        [
         "vn-stock-price-emailer",
-        "https://github.com/tuongphanbase/vn-stock-price-emailer/actions/runs/38024999586"
+        "https://github.com/tuongphanbase/vn-stock-price-emailer/actions/runs/38029754611"
        ],
        50,
        0,
@@ -88,16 +88,16 @@
       [
        [
         "interest-rate-emailer",
-        "https://github.com/tuongphanbase/interest-rate-emailer/actions/runs/38025380060"
+        "https://github.com/tuongphanbase/interest-rate-emailer/actions/runs/38030635431"
        ],
-       50,
+       51,
        0,
        "✅ bình thường"
       ],
       [
        [
         "apps-gone-free-emailer",
-        "https://github.com/tuongphanbase/apps-gone-free-emailer/actions/runs/38025136942"
+        "https://github.com/tuongphanbase/apps-gone-free-emailer/actions/runs/38030090611"
        ],
        49,
        0,
@@ -106,9 +106,9 @@
       [
        [
         "9gag-meme-emailer",
-        "https://github.com/tuongphanbase/9gag-meme-emailer/actions/runs/38007458667"
+        "https://github.com/tuongphanbase/9gag-meme-emailer/actions/runs/38029667045"
        ],
-       12,
+       13,
        0,
        "✅ bình thường"
       ],
@@ -125,15 +125,15 @@
     }
    ],
    "text": [
-    "currency-rate-emailer: ❌ Send Currency Rate Summary lỗi lúc 14:09 09/10 (5/52 lỗi)",
-    "gold-price-emailer: ✅ bình thường (0/43 lỗi)",
+    "currency-rate-emailer: ❌ Send Currency Rate Summary lỗi lúc 14:09 09/10 (2/52 lỗi)",
+    "gold-price-emailer: ✅ bình thường (0/46 lỗi)",
     "tech-price-mailer: ✅ bình thường (0/16 lỗi)",
-    "house-price-emailer: ✅ bình thường (0/17 lỗi)",
+    "house-price-emailer: ✅ bình thường (0/19 lỗi)",
     "phone-tablet-price-emailer: ✅ bình thường (0/11 lỗi)",
     "vn-stock-price-emailer: ✅ bình thường (0/50 lỗi)",
-    "interest-rate-emailer: ✅ bình thường (0/50 lỗi)",
+    "interest-rate-emailer: ✅ bình thường (0/51 lỗi)",
     "apps-gone-free-emailer: ✅ bình thường (0/49 lỗi)",
-    "9gag-meme-emailer: ✅ bình thường (0/12 lỗi)",
+    "9gag-meme-emailer: ✅ bình thường (0/13 lỗi)",
     "reddit-top-post-emailer: ✅ bình thường (0/9 lỗi)"
    ]
   },
@@ -237,7 +237,7 @@
    "title": "Tỷ giá",
    "icon": "💱",
    "ok": true,
-   "as_of": "2026-10-10 12:02",
+   "as_of": "2026-10-10 13:06",
    "blocks": [
     {
      "type": "tiles",
@@ -620,8 +620,8 @@
       ],
       [
        "MB Bank",
-       6.3,
-       6.3
+       6.2,
+       6.2
       ],
       [
        "Vietcombank",
@@ -675,7 +675,7 @@
    "text": [
     "Sacombank: 7.0%",
     "Techcombank: 6.75%",
-    "MB Bank: 6.3%",
+    "MB Bank: 6.2%",
     "Vietcombank: 5.9%",
     "BIDV: 5.9%"
    ]
@@ -686,141 +686,9 @@
    "icon": "💻",
    "ok": true,
    "note": "Thay đổi giá trong 7 ngày",
-   "blocks": [
-    {
-     "type": "table",
-     "caption": "Giảm giá nhiều nhất",
-     "columns": [
-      {
-       "label": "Sản phẩm",
-       "kind": "link"
-      },
-      {
-       "label": "Giá (VND)",
-       "kind": "num"
-      },
-      {
-       "label": "7 ngày",
-       "kind": "change"
-      }
-     ],
-     "rows": [
-      [
-       [
-        "Phân giải điểm ảnh: 2K (2560x1440)",
-        ""
-       ],
-       "4.999.000",
-       -80.8
-      ],
-      [
-       [
-        "Ổ cứng Western Digital Caviar Blue 2TB 64MB Cache 5400rpm ( WD20EARZ)",
-        "https://www.anphatpc.com.vn/o-cung-western-digital-caviar-blue-2tb-64mb-cache-5400rpm-wd20earz.html"
-       ],
-       "5.999.000",
-       -53.1
-      ],
-      [
-       [
-        "Phân giải điểm ảnh: FHD (1920 x 1080)",
-        ""
-       ],
-       "2.999.000",
-       -50.0
-      ],
-      [
-       [
-        "Màn hình LG UltraGear 34GX90SA-W (34 inch/WQHD/OLED/240Hz/0.03ms/webOS/cong)",
-        "https://hacom.vn/man-hinh-ultragear-34gx90sa-w"
-       ],
-       "26.990.000",
-       -20.6
-      ],
-      [
-       [
-        "Mainboard ASUS TUF GAMING X870-PLUS WIFI",
-        "https://hacom.vn/mainboard-asus-tuf-gaming-x870-plus-wifi"
-       ],
-       "8.599.000",
-       -19.6
-      ]
-     ]
-    },
-    {
-     "type": "table",
-     "caption": "Tăng giá nhiều nhất",
-     "columns": [
-      {
-       "label": "Sản phẩm",
-       "kind": "link"
-      },
-      {
-       "label": "Giá (VND)",
-       "kind": "num"
-      },
-      {
-       "label": "7 ngày",
-       "kind": "change"
-      }
-     ],
-     "rows": [
-      [
-       [
-        "Ổ cứng: 512GB PCIe® 4.0 NVMe™ M.2 SSD",
-        ""
-       ],
-       "83.990.000",
-       95.4
-      ],
-      [
-       [
-        "Card màn hình Leadtek NVIDIA RTX PRO 4000 Blackwell 24GB GDDR7",
-        "https://gearvn.com/products/card-man-hinh-leadtek-nvidia-rtx-pro-4000-blackwell-24gb-gddr7"
-       ],
-       "106.090.000",
-       73.9
-      ],
-      [
-       [
-        "Nguồn Gigabyte GP- P850GM 850W (80 Plus Gold/Full Modular/Màu Đen)",
-        "https://hacom.vn/nguon-gigabyte-gp-p850gm-850w-80-plus-gold-full-modular-mau-den"
-       ],
-       "3.299.000",
-       72.8
-      ],
-      [
-       [
-        "Nguồn máy tính Cooler Master MWE V3 230V 650 - 650W (80 Plus Bronze/ATX3.1)",
-        "https://hacom.vn/nguon-may-tinh-cooler-master-mwe-v3-230v-650-650w-80-plus-bronze-atx3.1"
-       ],
-       "1.899.000",
-       66.7
-      ],
-      [
-       [
-        "VGA GIGABYTE GEFORCE RTX 5060 GAMING OC 8G (GDDR7, 128-bit, HDMI+DP, 1x8-pin) - 3 FAN",
-        "https://hoanghapc.vn/vga-gigabyte-rtx-5060-gaming-oc-8g"
-       ],
-       "17.000.000",
-       61.1
-      ]
-     ]
-    }
-   ],
-   "empty_text": null,
-   "text": [
-    "Phân giải điểm ảnh: 2K (2560x1440): 4.999.000 (-80.8%)",
-    "Ổ cứng Western Digital Caviar Blue 2TB 64MB Cache 5400rpm ( WD20EARZ): 5.999.000 (-53.1%)",
-    "Phân giải điểm ảnh: FHD (1920 x 1080): 2.999.000 (-50.0%)",
-    "Màn hình LG UltraGear 34GX90SA-W (34 inch/WQHD/OLED/240Hz/0.03ms/webOS/cong): 26.990.000 (-20.6%)",
-    "Mainboard ASUS TUF GAMING X870-PLUS WIFI: 8.599.000 (-19.6%)",
-    "Ổ cứng: 512GB PCIe® 4.0 NVMe™ M.2 SSD: 83.990.000 (+95.4%)",
-    "Card màn hình Leadtek NVIDIA RTX PRO 4000 Blackwell 24GB GDDR7: 106.090.000 (+73.9%)",
-    "Nguồn Gigabyte GP- P850GM 850W (80 Plus Gold/Full Modular/Màu Đen): 3.299.000 (+72.8%)",
-    "Nguồn máy tính Cooler Master MWE V3 230V 650 - 650W (80 Plus Bronze/ATX3.1): 1.899.000 (+66.7%)",
-    "VGA GIGABYTE GEFORCE RTX 5060 GAMING OC 8G (GDDR7, 128-bit, HDMI+DP, 1x8-pin) - 3 FAN: 17.000.000 (+61.1%)"
-   ]
+   "blocks": [],
+   "empty_text": "Không có thay đổi giá trong 7 ngày qua.",
+   "text": []
   },
   {
    "id": "phones",
